@@ -1080,8 +1080,15 @@
         .qr-kartu-kepala{font-family:var(--font-head);font-weight:800;font-size:15px;color:#2f6f4c;margin-bottom:10px;}
         .qr-kartu-canvas{display:flex;justify-content:center;}
         .qr-kartu-canvas canvas,.qr-kartu-canvas img{width:220px;height:220px;max-width:70vw;image-rendering:pixelated;border-radius:8px;}
-        .qr-kartu-nama{font-family:var(--font-head);font-weight:800;font-size:17px;color:#5b3a8a;margin-top:10px;word-break:break-word;}
-        .qr-kartu-info{font-size:12px;font-weight:700;color:#8a7ab0;margin-top:2px;}
+        .qr-kartu-nama{font-family:var(--font-head);font-weight:800;font-size:18px;color:#5b3a8a;margin-top:10px;word-break:break-word;}
+        .qr-kartu-kelas{font-size:12px;font-weight:700;color:#8a7ab0;margin-top:1px;}
+        .qr-kartu-stat{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:10px;}
+        .qr-kartu-stat .st{background:#f3eefe;border-radius:12px;padding:6px 12px;min-width:56px;}
+        .qr-kartu-stat .st .a{font-family:var(--font-head);font-weight:800;font-size:16px;color:#6a3fb0;line-height:1;}
+        .qr-kartu-stat .st .l{font-size:10px;font-weight:700;color:#8a7ab0;margin-top:2px;}
+        .qr-kartu-stat .st.poin{background:#fff2c7;}
+        .qr-kartu-stat .st.poin .a{color:#c47b00;}
+        body.dark .qr-kartu-stat .st{background:#efe6ff;}
         .qr-kartu-aksi{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px;}
         body.dark .qr-kartu{background:#f7f9f8;border-color:#3a7a5c;}
         /* Alat scan guru */
@@ -1583,13 +1590,16 @@
                     <div class="qr-kartu-kepala">🎫 Kartu Nilai AiHana</div>
                     <div id="qr-kartu-canvas" class="qr-kartu-canvas"></div>
                     <div id="qr-kartu-nama" class="qr-kartu-nama"></div>
-                    <div id="qr-kartu-info" class="qr-kartu-info"></div>
+                    <div id="qr-kartu-kelas" class="qr-kartu-kelas"></div>
+                    <div id="qr-kartu-stat" class="qr-kartu-stat"></div>
                 </div>
                 <div class="qr-kartu-aksi">
-                    <button class="aksi" onclick="window.unduhQRKartu()">⬇️ Simpan Gambar QR</button>
-                    <button class="aksi secondary" onclick="window.salinKodeKartu()">📋 Salin Kode Teks</button>
+                    <button class="aksi" onclick="window.kirimQRKartu()">📤 Kirim / Bagikan</button>
+                    <button class="aksi secondary" onclick="window.unduhQRKartu()">⬇️ Simpan Gambar</button>
+                    <button class="aksi secondary" onclick="window.cetakQRKartu()">🖨️ Cetak / PDF</button>
+                    <button class="aksi secondary" onclick="window.salinKodeKartu()">📋 Salin Kode</button>
                 </div>
-                <p class="helper-text" style="margin:8px 0 0;font-size:12px;">📲 Kirim gambar QR ini ke gurumu lewat WhatsApp, atau tunjukkan layarnya untuk discan langsung. 😊</p>
+                <p class="helper-text" style="margin:8px 0 0;font-size:12px;">📲 <b>Kirim/Bagikan</b> paling mudah di HP (bisa langsung ke WhatsApp atau simpan ke Galeri/Foto). Atau tunjukkan layarnya untuk discan langsung. 😊</p>
                 <textarea id="kartu-nilai-out" class="pr-kode" readonly style="display:none;"></textarea>
             </div>
         </div>
@@ -3256,11 +3266,12 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         if (!w){ alert('Mohon izinkan pop-up untuk mencetak ya.'); return; }
         w.document.write(
             '<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><title>Studio Karya — ' + judul.replace(/</g,'') + '</title>'
-            + '<style>@page{size:' + dim + ';margin:0;}html,body{margin:0;padding:0;}'
-            + 'img{display:block;width:100%;height:100%;object-fit:contain;}'
+            + '<style>@page{size:' + dim + ';margin:0;}html,body{margin:0;padding:0;background:#f7f4fd;}'
+            + 'img{display:block;width:100%;height:auto;max-width:800px;margin:12px auto;object-fit:contain;box-shadow:0 6px 20px rgba(0,0,0,.15);}'
+            + '@media print{@page{margin:0;}body{background:#fff;}.aihana-printbar{display:none !important;}img{margin:0;max-width:none;width:100%;height:100%;box-shadow:none;}}'
             + '</style></head><body>'
+            + window._toolbarCetak
             + '<img src="' + dataUrl + '">'
-            + '<scr'+'ipt>window.onload=function(){setTimeout(function(){window.print();},300);};</scr'+'ipt>'
             + '</body></html>'
         );
         w.document.close();
@@ -4981,6 +4992,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
             .ttd .garis{margin-top:56px;border-top:1px solid #333;padding-top:4px;}
             .footer{text-align:center;font-size:10px;color:#999;margin-top:28px;}
         </style></head><body>
+            ${window._toolbarCetak}
             <div class="kop">
                 <h1>📜 RAPOR HASIL BELAJAR</h1>
                 ${sekolah ? `<h2>${escSekolah(sekolah)}</h2>` : ''}
@@ -5085,6 +5097,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
             .kosong{text-align:center;color:#bbb;padding:16px 0;}
             .footer{text-align:center;font-size:10px;color:#999;margin-top:20px;}
         </style></head><body>
+            ${window._toolbarCetak}
             <div class="kop">
                 <h1>🏫 JADWAL PELAJARAN</h1>
                 ${sekolah ? `<h2>${window._esc(sekolah)}</h2>` : ''}
@@ -5328,10 +5341,14 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
             box.innerHTML = '<p style="font-size:12px;color:#a23230;">Kode terlalu panjang untuk QR. Pakai tombol "Salin Kode Teks" ya. 😊</p>';
             window._qrKartuCanvas = null;
         }
-        // Identitas di bawah QR
+        // Identitas + statistik di bawah QR (poin ditonjolkan)
         document.getElementById('qr-kartu-nama').innerText = d.n;
-        document.getElementById('qr-kartu-info').innerText =
-            (d.k ? d.k + ' • ' : '') + 'Lv ' + d.lv + ' • ' + d.p + ' poin • ' + d.q + ' kuis';
+        document.getElementById('qr-kartu-kelas').innerText = d.k ? ('Kelas ' + d.k) : '';
+        document.getElementById('qr-kartu-stat').innerHTML =
+            '<div class="st poin"><div class="a">' + d.p + '</div><div class="l">✨ Poin</div></div>' +
+            '<div class="st"><div class="a">Lv ' + d.lv + '</div><div class="l">Level</div></div>' +
+            '<div class="st"><div class="a">' + d.q + '</div><div class="l">📝 Kuis</div></div>' +
+            '<div class="st"><div class="a">' + d.r + '</div><div class="l">⭐ Rata</div></div>';
         if (wrap) wrap.style.display = 'block';
         beri('✅ Kartu Nilai (QR) siap! Simpan gambarnya lalu kirim ke gurumu, atau tunjukkan untuk discan. 🎉', true);
         if (wrap) wrap.scrollIntoView({behavior:'smooth', block:'nearest'});
@@ -5339,34 +5356,131 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
     };
 
     // Murid: unduh kartu QR (QR + nama + info) sebagai gambar PNG
-    window.unduhQRKartu = function(){
+    // Gambar kartu lengkap (QR + nama + statistik termasuk POIN) ke sebuah canvas → dipakai unduh/kirim/cetak
+    window._gambarKartuNilai = function(){
         const src = window._qrKartuCanvas;
         const d = window.dataKartuNilai();
-        if (!src){ alert('QR belum siap. Coba buat kartunya lagi ya. 😊'); return; }
-        // Gambar kartu lengkap: judul + QR + nama + info
-        const W = 360, pad = 20;
+        if (!src) return null;
+        const W = 380, H = 500;
         const cv = document.createElement('canvas');
-        cv.width = W; cv.height = 430;
+        cv.width = W; cv.height = H;
         const ctx = cv.getContext('2d');
-        ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,cv.width,cv.height);
-        ctx.fillStyle = '#eafff4'; ctx.fillRect(0,0,cv.width,60);
-        ctx.fillStyle = '#2f6f4c'; ctx.font = 'bold 20px sans-serif'; ctx.textAlign = 'center';
-        ctx.fillText('🎫 Kartu Nilai AiHana', W/2, 38);
-        // QR di tengah
-        const qrSize = 240;
-        ctx.drawImage(src, (W-qrSize)/2, 80, qrSize, qrSize);
-        // Nama
-        ctx.fillStyle = '#5b3a8a'; ctx.font = 'bold 22px sans-serif';
-        ctx.fillText(d.n || 'Siswa', W/2, 360);
-        ctx.fillStyle = '#8a7ab0'; ctx.font = 'bold 13px sans-serif';
-        ctx.fillText((d.k ? d.k + ' • ' : '') + 'Lv ' + d.lv + ' • ' + d.p + ' poin', W/2, 385);
-        ctx.fillStyle = '#8a7ab0'; ctx.font = '12px sans-serif';
-        ctx.fillText(d.q + ' kuis • rata-rata ' + d.r + ' • ' + d.b + ' lencana', W/2, 405);
-        const a = document.createElement('a');
-        a.href = cv.toDataURL('image/png');
-        a.download = 'kartu-nilai-' + (d.n||'siswa').replace(/[^a-z0-9]+/gi,'-').toLowerCase() + '.png';
-        a.click();
+        // latar
+        ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,W,H);
+        ctx.fillStyle = '#eafff4'; ctx.fillRect(0,0,W,58);
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#2f6f4c'; ctx.font = 'bold 20px sans-serif';
+        ctx.fillText('🎫 Kartu Nilai AiHana', W/2, 37);
+        // QR
+        const qrSize = 236;
+        ctx.drawImage(src, (W-qrSize)/2, 74, qrSize, qrSize);
+        // Nama + kelas
+        ctx.fillStyle = '#5b3a8a'; ctx.font = 'bold 23px sans-serif';
+        ctx.fillText(d.n || 'Siswa', W/2, 344);
+        if (d.k){ ctx.fillStyle = '#8a7ab0'; ctx.font = 'bold 13px sans-serif'; ctx.fillText('Kelas ' + d.k, W/2, 366); }
+        // Kotak statistik (POIN ditonjolkan)
+        const stats = [
+            { a: String(d.p), l: 'Poin', poin:true },
+            { a: 'Lv ' + d.lv, l: 'Level' },
+            { a: String(d.q), l: 'Kuis' },
+            { a: String(d.r), l: 'Rata' }
+        ];
+        const bw = 80, bh = 56, gap = 10, totalW = bw*4 + gap*3;
+        let x0 = (W - totalW)/2, y0 = 386;
+        stats.forEach(s => {
+            ctx.fillStyle = s.poin ? '#fff2c7' : '#f3eefe';
+            const rr = 12;
+            ctx.beginPath();
+            ctx.moveTo(x0+rr,y0); ctx.arcTo(x0+bw,y0,x0+bw,y0+bh,rr); ctx.arcTo(x0+bw,y0+bh,x0,y0+bh,rr);
+            ctx.arcTo(x0,y0+bh,x0,y0,rr); ctx.arcTo(x0,y0,x0+bw,y0,rr); ctx.closePath(); ctx.fill();
+            ctx.fillStyle = s.poin ? '#c47b00' : '#6a3fb0'; ctx.font = 'bold 18px sans-serif';
+            ctx.fillText(s.a, x0+bw/2, y0+26);
+            ctx.fillStyle = '#8a7ab0'; ctx.font = 'bold 11px sans-serif';
+            ctx.fillText(s.l, x0+bw/2, y0+44);
+            x0 += bw + gap;
+        });
+        ctx.fillStyle = '#b7add0'; ctx.font = '11px sans-serif';
+        ctx.fillText('AiHana • Belajar Seru Bareng Pio & Oyen', W/2, H-14);
+        return { canvas: cv, data: d };
     };
+
+    window._namaFileKartu = function(d){
+        return 'kartu-nilai-' + ((d && d.n)||'siswa').replace(/[^a-z0-9]+/gi,'-').toLowerCase() + '.png';
+    };
+
+    // Simpan gambar kartu (unduh PNG)
+    window.unduhQRKartu = function(){
+        const r = window._gambarKartuNilai();
+        if (!r){ alert('QR belum siap. Coba buat kartunya lagi ya. 😊'); return; }
+        const a = document.createElement('a');
+        a.href = r.canvas.toDataURL('image/png');
+        a.download = window._namaFileKartu(r.data);
+        document.body.appendChild(a); a.click(); a.remove();
+    };
+
+    // Kirim / Bagikan kartu (Web Share API — paling ramah iPhone/PWA: bisa ke WA, simpan ke Foto, dll)
+    window.kirimQRKartu = function(){
+        const r = window._gambarKartuNilai();
+        const status = document.getElementById('kartu-nilai-status');
+        const beri = function(p,ok){ if(status){status.className='status-box '+(ok?'status-sukses':'status-gagal');status.innerHTML=p;status.style.display='block';} };
+        if (!r){ alert('QR belum siap. Coba buat kartunya lagi ya. 😊'); return; }
+        const d = r.data;
+        const namaFile = window._namaFileKartu(d);
+        const judul = 'Kartu Nilai ' + (d.n||'Siswa');
+        const pesan = 'Kartu Nilai AiHana — ' + (d.n||'Siswa') + (d.k?(' ('+d.k+')'):'') + ' • ' + d.p + ' poin. Scan QR-nya di menu Peringkat ya, Bu/Pak Guru! 🎫';
+        r.canvas.toBlob(function(blob){
+            if (!blob){ window.unduhQRKartu(); return; }
+            const file = new File([blob], namaFile, { type:'image/png' });
+            // 1) Coba bagikan file gambar (paling bagus di HP)
+            if (navigator.canShare && navigator.canShare({ files:[file] }) && navigator.share){
+                navigator.share({ files:[file], title:judul, text:pesan })
+                    .then(function(){ beri('✅ Kartu terkirim/dibagikan! 🎉', true); })
+                    .catch(function(e){ if(String(e).indexOf('Abort')===-1) window.unduhQRKartu(); });
+                return;
+            }
+            // 2) Bagikan teks + fallback unduh gambar
+            if (navigator.share){
+                navigator.share({ title:judul, text:pesan }).catch(function(){});
+            }
+            window.unduhQRKartu();
+            beri('📥 Perangkat ini belum bisa kirim gambar langsung — gambar sudah diunduh, tinggal lampirkan ke WhatsApp ya. 😊', true);
+        }, 'image/png');
+    };
+
+    // Cetak / Simpan PDF kartu — dgn tombol kembali ke aplikasi
+    window.cetakQRKartu = function(){
+        const r = window._gambarKartuNilai();
+        if (!r){ alert('QR belum siap. Coba buat kartunya lagi ya. 😊'); return; }
+        const dataUrl = r.canvas.toDataURL('image/png');
+        const d = r.data;
+        const w = window.open('', '_blank');
+        if (!w){ alert('Mohon izinkan pop-up untuk mencetak ya. Atau pakai tombol "Simpan Gambar". 😊'); return; }
+        w.document.write(
+            '<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><title>Kartu Nilai — ' + (d.n||'Siswa').replace(/</g,'') + '</title>'
+            + '<style>@page{size:auto;margin:12mm;}body{margin:0;font-family:Arial,sans-serif;text-align:center;background:#f7f4fd;}'
+            + 'img{width:340px;max-width:90vw;height:auto;margin:10px auto;display:block;box-shadow:0 6px 20px rgba(0,0,0,.15);border-radius:14px;}'
+            + '.bar{position:sticky;top:0;background:#fff;padding:10px;display:flex;gap:10px;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.08);}'
+            + '.bar button{border:none;border-radius:12px;padding:11px 18px;font-size:15px;font-weight:bold;font-family:Arial,sans-serif;cursor:pointer;}'
+            + '.cetak{background:#8a5fd0;color:#fff;}.kembali{background:#e6e0f5;color:#5b3a8a;}'
+            + '@media print{.bar{display:none;}body{background:#fff;}}</style></head><body>'
+            + '<div class="bar"><button class="cetak" onclick="window.print()">🖨️ Cetak / Simpan PDF</button>'
+            + '<button class="kembali" onclick="window.close()">↩️ Kembali ke Aplikasi</button></div>'
+            + '<img src="' + dataUrl + '" alt="Kartu Nilai">'
+            + '<p style="color:#888;font-size:13px;">Setelah selesai, tekan <b>Kembali ke Aplikasi</b> untuk menutup halaman ini.</p>'
+            + '</body></html>'
+        );
+        w.document.close();
+    };
+
+    // Toolbar "Cetak / Kembali" untuk semua jendela cetak (agar bisa kembali ke aplikasi, tak perlu tutup app).
+    // Sisipkan tepat setelah <body>. CSS-nya disembunyikan saat mode print.
+    window._toolbarCetak = '<div class="aihana-printbar" style="position:sticky;top:0;z-index:99;background:#fff;'
+        + 'padding:10px;display:flex;gap:10px;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.1);">'
+        + '<button onclick="window.print()" style="border:none;border-radius:12px;padding:11px 18px;font-size:15px;'
+        + 'font-weight:bold;font-family:Arial,sans-serif;cursor:pointer;background:#8a5fd0;color:#fff;">🖨️ Cetak / Simpan PDF</button>'
+        + '<button onclick="window.close()" style="border:none;border-radius:12px;padding:11px 18px;font-size:15px;'
+        + 'font-weight:bold;font-family:Arial,sans-serif;cursor:pointer;background:#e6e0f5;color:#5b3a8a;">↩️ Kembali ke Aplikasi</button>'
+        + '</div><style>@media print{.aihana-printbar{display:none !important;}}</style>';
 
     // Murid: salin kode teks (cadangan bila QR tak bisa)
     window.salinKodeKartu = function(){
@@ -5797,6 +5911,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
             '.ttd{display:flex;justify-content:flex-end;margin-top:36px;font-size:13px;}.ttd div{text-align:center;width:45%;}'+
             '.ttd .garis{margin-top:56px;border-top:1px solid #333;padding-top:4px;}'+
             '.footer{text-align:center;font-size:10px;color:#999;margin-top:28px;}</style></head><body>'+
+            window._toolbarCetak +
             '<div class="kop"><h1>🏫 '+(sekolah?E(sekolah):'Laporan Nilai Siswa')+'</h1>'+
                 (sekolah?'':'')+'<p>Aplikasi Belajar AiHana • Belajar Seru Bareng Pio &amp; Oyen 🦉🐱</p></div>'+
             '<div class="judul-lap">'+E(judul)+'</div>'+
@@ -6082,6 +6197,6 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
     });
 </script>
 
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3c9ee98ab2e64ca',t:'MTc4OTY2NzIwMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3ca19ff8f54f02d',t:'MTc4OTY2ODk4MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>

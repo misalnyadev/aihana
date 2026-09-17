@@ -251,7 +251,7 @@
 
         .input-group{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
         input,select,textarea{
-            flex:1;min-width:120px;padding:12px 14px;
+            flex:1;min-width:120px;max-width:100%;padding:12px 14px;
             border:2px solid #e7e0f7;border-radius:14px;
             font-family:var(--font-body);font-size:14px;background:#fff;
             color:var(--ink);transition:border-color .25s, box-shadow .25s;
@@ -519,8 +519,9 @@
         }
         .set-kartu > .set-judul small{display:block;font-size:11.5px;font-weight:600;color:var(--ink-soft);margin-top:1px;}
         .set-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px 16px;}
-        .set-grid .form-group{margin-bottom:14px;}
-        .set-full{grid-column:1 / -1;}
+        .set-grid .form-group{margin-bottom:14px;min-width:0;}
+        .set-grid .form-group select,.set-grid .form-group input{width:100%;min-width:0;}
+        .set-full{grid-column:1 / -1;min-width:0;}
         @media (max-width:520px){.set-grid{grid-template-columns:1fr;}}
         .set-kartu.warna-tampilan{background:linear-gradient(135deg,#fbf7ff,#f4f9ff);border-color:#e4d9fb;}
         .set-kartu.warna-suara{background:linear-gradient(135deg,#fff8fb,#fff3ea);border-color:#ffdcd0;}
@@ -1171,7 +1172,17 @@
             .app-title{font-size:22px;}
             .banner h2{font-size:21px;}
             .hasil-nilai{font-size:52px;}
-            .input-group{flex-direction:column;}
+            .input-group{flex-direction:column;align-items:stretch;}
+            /* Semua kolom isian & tombol menumpuk rapi selebar layar, tak ada yang keluar body */
+            .input-group input,.input-group select,.input-group textarea{
+                width:100%;min-width:0;max-width:100%;flex:1 1 auto;}
+            .kuis-toolbar{align-items:stretch;}
+            /* Form roster (Jadwal Pelajaran) & PR menumpuk rapi, tak meluber */
+            .ros-tambah-grid,.pr-tambah-grid{flex-direction:column;align-items:stretch;}
+            .ros-tambah-grid input,.pr-tambah-grid input{width:100%;min-width:0;flex:1 1 auto;}
+            .ros-tambah-grid .ros-sd{text-align:center;}
+            .ros-topbar{flex-direction:column;align-items:stretch;}
+            .ros-kelas-box{min-width:0;}
             button.aksi{width:100%;}
             /* Maskot lebih kecil & tak menutupi konten di HP */
             #maskot-buddy{width:76px;height:76px;}
@@ -5712,6 +5723,6 @@
     });
 </script>
 
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3c973ff6f4cf8dc',t:'MTc4OTY2MjE4Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3c98f8bb838eba1',t:'MTc4OTY2MzMxMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
+</body>
 </html>

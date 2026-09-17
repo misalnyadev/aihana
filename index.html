@@ -747,7 +747,7 @@
         .mw-penata-isi{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start;justify-content:center;margin-bottom:14px;}
         .mw-kiri{flex:1;min-width:240px;display:flex;flex-direction:column;gap:8px;}
         .mw-paper-wrap{display:flex;justify-content:center;}
-        #mw-paper{max-width:100%;height:auto;border-radius:6px;box-shadow:0 6px 20px rgba(120,110,180,.25);
+        #mw-paper{max-width:100%;width:auto;height:auto;border-radius:6px;box-shadow:0 6px 20px rgba(120,110,180,.25);
             background:#fbfaf6;cursor:grab;touch-action:none;}
         #mw-paper:active{cursor:grabbing;}
         .mw-kontrol{flex:1;min-width:250px;max-width:340px;display:flex;flex-direction:column;gap:12px;}
@@ -3008,7 +3008,10 @@
         else { PH = MAKS; PW = Math.round(MAKS * geo.rasio); }
         window._mwPW = PW; window._mwPH = PH;
         paper.width = PW; paper.height = PH;
-        paper.style.maxWidth = (geo.rasio >= 1 ? '100%' : (PW/PH*70)+'vh');
+        // Lebar TAK PERNAH melebihi wadah (anti keluar body di HP, termasuk mode Potret).
+        // Tinggi dibatasi vh agar kertas potret tak kepanjangan di layar lebar.
+        paper.style.maxWidth = '100%';
+        paper.style.maxHeight = (geo.rasio >= 1 ? '' : '78vh');
         const ctx = paper.getContext('2d');
         window._mwGambarKanvasKe(ctx, PW, PH, window._mwAktif);
         ctx.strokeStyle = 'rgba(150,140,190,.5)';
@@ -5727,6 +5730,6 @@
     });
 </script>
 
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3c9a8166dfaa8fd',t:'MTc4OTY2NDMxNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
-</body>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3c9bb834de5a550',t:'MTc4OTY2NTExMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

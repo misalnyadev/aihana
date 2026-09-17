@@ -939,6 +939,8 @@
         body.dark .ros-tambah-judul{color:#8ee6c0;}
         .ros-tambah-grid{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
         .ros-tambah-grid input[type=time]{padding:8px 10px;border-radius:10px;border:2px solid #d4eee5;background:#fff;color:#444;}
+        /* Kolom jam/tanggal (native) sering meluber di HP — paksa bisa mengecil & tak keluar form */
+        input[type=time],input[type=date]{-webkit-appearance:none;appearance:none;min-width:0;max-width:100%;box-sizing:border-box;}
         .ros-tambah-grid input[type=text]{flex:1;min-width:180px;padding:9px 12px;border-radius:10px;border:2px solid #d4eee5;background:#fff;color:#444;font-size:14px;}
         body.dark .ros-tambah-grid input{background:#23243f;color:#dfe2ff;border-color:#3b5563;}
         .ros-sd{color:#7a9a90;font-weight:700;font-size:13px;}
@@ -1177,9 +1179,11 @@
             .input-group input,.input-group select,.input-group textarea{
                 width:100%;min-width:0;max-width:100%;flex:1 1 auto;}
             .kuis-toolbar{align-items:stretch;}
+            /* Kolom jam & tanggal (native picker) ikut selebar layar, tak keluar form */
+            input[type=time],input[type=date]{width:100%;min-width:0;max-width:100%;box-sizing:border-box;}
             /* Form roster (Jadwal Pelajaran) & PR menumpuk rapi, tak meluber */
             .ros-tambah-grid,.pr-tambah-grid{flex-direction:column;align-items:stretch;}
-            .ros-tambah-grid input,.pr-tambah-grid input{width:100%;min-width:0;flex:1 1 auto;}
+            .ros-tambah-grid input,.pr-tambah-grid input{width:100%;min-width:0;max-width:100%;flex:1 1 auto;box-sizing:border-box;}
             .ros-tambah-grid .ros-sd{text-align:center;}
             .ros-topbar{flex-direction:column;align-items:stretch;}
             .ros-kelas-box{min-width:0;}
@@ -5723,6 +5727,6 @@
     });
 </script>
 
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3c98f8bb838eba1',t:'MTc4OTY2MzMxMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3c9a8166dfaa8fd',t:'MTc4OTY2NDMxNQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>

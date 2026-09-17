@@ -694,6 +694,147 @@
         }
         .fakta-kartu .judul{font-family:var(--font-head);font-weight:700;color:#c05e8a;margin-bottom:6px;}
         #fakta-teks{font-weight:600;color:#6a6a94;min-height:42px;transition:opacity .4s;}
+        /* ---------- Studio Mewarnai ---------- */
+        .mw-form{background:linear-gradient(120deg,var(--sky-soft),var(--grape-soft));border:2px dashed var(--grape);
+            border-radius:20px;padding:18px;margin-bottom:18px;}
+        .mw-ide{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:4px 0 16px;}
+        .mw-ide span{font-weight:700;color:#6a6a94;font-size:13px;font-family:var(--font-head);}
+        .mw-ide button{border:none;cursor:pointer;background:#fff;color:#6a3fb0;font-family:var(--font-head);
+            font-weight:700;font-size:13px;padding:7px 13px;border-radius:999px;box-shadow:var(--shadow);
+            transition:transform .18s cubic-bezier(.34,1.56,.64,1),background .18s;}
+        .mw-ide button:hover{transform:translateY(-3px) scale(1.05);background:var(--butter-soft);}
+        .mw-ide button:active{transform:scale(.96);}
+        .mw-hasil{text-align:center;}
+        .mw-loading{padding:36px 16px;}
+        .mw-spinner{font-size:52px;display:inline-block;animation:mw-goyang 1s ease-in-out infinite;}
+        @keyframes mw-goyang{0%,100%{transform:rotate(-18deg) translateY(0);}50%{transform:rotate(18deg) translateY(-8px);}}
+        .mw-loading p{font-weight:700;color:#6a6a94;margin-top:10px;}
+        .mw-gambar-wrap{display:inline-block;background:#fff;padding:14px;border-radius:18px;
+            box-shadow:var(--shadow-lg);border:3px solid #fff;margin-bottom:16px;max-width:100%;}
+        #mw-canvas{display:block;max-width:100%;height:auto;border-radius:8px;border:1px solid #eee;}
+        .mw-aksi{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+        .mw-aksi .aksi{flex:1;min-width:120px;max-width:210px;}
+        .mw-aksi-wrap{margin-bottom:8px;}
+        /* Pilih ukuran kertas */
+        .mw-kertas-baris{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin-bottom:12px;}
+        .mw-kertas-baris label{font-weight:700;color:#6a6a94;font-size:13px;font-family:var(--font-head);}
+        .mw-kertas-baris select{font-family:var(--font-head);font-weight:700;font-size:13px;color:#6a3fb0;
+            background:#fff;border:2px solid #ece7fb;border-radius:999px;padding:7px 12px;cursor:pointer;box-shadow:var(--shadow);}
+        .mw-kertas-baris select:focus{outline:none;border-color:#c9b6f5;}
+        /* Alat crop */
+        .mw-crop{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1000;
+            background:#fff;padding:16px;border-radius:18px;box-shadow:0 10px 50px rgba(0,0,0,.4);
+            border:3px solid #fff;max-width:94vw;max-height:92vh;overflow:auto;text-align:center;}
+        .mw-crop-tip{font-size:13px;color:#6a6a94;font-weight:600;margin:0 0 10px;max-width:520px;}
+        .mw-crop-area{position:relative;display:inline-block;line-height:0;touch-action:none;user-select:none;}
+        #mw-crop-img{display:block;max-width:100%;max-height:60vh;height:auto;border-radius:8px;
+            border:1px solid #eee;pointer-events:none;}
+        .mw-sel{position:absolute;border:2px dashed #6a3fb0;background:rgba(106,63,176,.12);
+            box-shadow:0 0 0 9999px rgba(0,0,0,.35);cursor:move;box-sizing:border-box;}
+        .mw-h{position:absolute;width:18px;height:18px;background:#6a3fb0;border:2px solid #fff;
+            border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.3);}
+        .mw-h.tl{top:-9px;left:-9px;cursor:nwse-resize;}
+        .mw-h.tr{top:-9px;right:-9px;cursor:nesw-resize;}
+        .mw-h.bl{bottom:-9px;left:-9px;cursor:nesw-resize;}
+        .mw-h.br{bottom:-9px;right:-9px;cursor:nwse-resize;}
+        body.dark .mw-crop{background:#f4f4fb;border-color:#4a4470;}
+        body.dark .mw-kertas-baris label{color:#a9adde;}
+        body.dark .mw-kertas-baris select{background:#2f3154;color:#d3bcff;border-color:#4a4470;}
+        /* Penata Cetak */
+        .mw-penata{background:#fff;padding:16px;border-radius:20px;box-shadow:var(--shadow-lg);
+            border:3px solid #fff;margin-bottom:16px;text-align:left;}
+        .mw-penata-isi{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start;justify-content:center;margin-bottom:14px;}
+        .mw-kiri{flex:1;min-width:240px;display:flex;flex-direction:column;gap:8px;}
+        .mw-paper-wrap{display:flex;justify-content:center;}
+        #mw-paper{max-width:100%;height:auto;border-radius:6px;box-shadow:0 6px 20px rgba(120,110,180,.25);
+            background:#fbfaf6;cursor:grab;touch-action:none;}
+        #mw-paper:active{cursor:grabbing;}
+        .mw-kontrol{flex:1;min-width:250px;max-width:340px;display:flex;flex-direction:column;gap:12px;}
+        .mw-slider{display:flex;flex-direction:column;gap:5px;font-family:var(--font-head);
+            font-weight:700;font-size:13px;color:#6a6a94;}
+        .mw-slider span{color:#6a3fb0;font-size:12px;}
+        .mw-slider input[type=range]{width:100%;accent-color:#6a3fb0;cursor:pointer;height:6px;}
+        .mw-rot-cepat{display:flex;gap:8px;flex-wrap:wrap;}
+        .mw-rot-cepat button{flex:1;min-width:72px;border:2px solid #ece7fb;background:#fff;color:#6a3fb0;
+            font-family:var(--font-head);font-weight:700;font-size:13px;padding:7px 8px;border-radius:12px;
+            cursor:pointer;transition:transform .15s,background .15s;}
+        .mw-rot-cepat button:hover{transform:translateY(-2px);background:var(--butter-soft);}
+        .mw-rot-cepat button:active{transform:scale(.96);}
+        body.dark .mw-penata{background:linear-gradient(120deg,#26374a,#2f2a52);border-color:#4a4470;}
+        body.dark .mw-slider{color:#a9adde;}
+        body.dark .mw-slider span{color:#d3bcff;}
+        body.dark .mw-rot-cepat button{background:#2f3154;color:#d3bcff;border-color:#4a4470;}
+        body.dark #mw-paper{background:#f7f6f0;}
+        /* Tambah gambar + navigasi objek + penghapus */
+        .mw-tambah{display:flex;gap:8px;}
+        .mw-tambah input{flex:1;min-width:0;font-family:var(--font-body);font-size:13px;padding:9px 12px;
+            border:2px solid #ece7fb;border-radius:12px;}
+        .mw-tambah input:focus{outline:none;border-color:#c9b6f5;}
+        .mw-tambah .aksi{flex:0 0 auto;padding:9px 14px;}
+        .mw-objbar{display:flex;align-items:center;gap:8px;background:var(--butter-soft,#fff7e6);
+            border-radius:12px;padding:6px 8px;}
+        .mw-objbar #mw-obj-info{flex:1;text-align:center;font-family:var(--font-head);font-weight:700;
+            font-size:13px;color:#6a3fb0;}
+        .mw-objnav,.mw-objhapus{border:2px solid #ece7fb;background:#fff;color:#6a3fb0;font-weight:800;
+            font-size:16px;width:34px;height:34px;border-radius:10px;cursor:pointer;line-height:1;
+            transition:transform .15s,background .15s;}
+        .mw-objnav:hover,.mw-objhapus:hover{transform:translateY(-2px);background:var(--butter-soft);}
+        .mw-objhapus{color:#d1466a;}
+        .mw-hapus-baris{display:flex;}
+        .mw-toggle{flex:1;border:2px dashed #ece7fb;background:#fff;color:#6a6a94;font-family:var(--font-head);
+            font-weight:700;font-size:13px;padding:9px;border-radius:12px;cursor:pointer;transition:.15s;}
+        .mw-toggle.on{background:#ffe1ec;color:#d1466a;border-color:#f5b6cd;border-style:solid;}
+        #mw-paper.mw-erase{cursor:cell;}
+        body.dark .mw-tambah input{background:#2f3154;color:#eee;border-color:#4a4470;}
+        body.dark .mw-objbar{background:#2a2c4e;}
+        body.dark .mw-objnav,body.dark .mw-objhapus,body.dark .mw-toggle{background:#2f3154;color:#d3bcff;border-color:#4a4470;}
+        body.dark .mw-toggle.on{background:#4a2740;color:#ffbcd4;border-color:#7a3a5c;}
+        /* Galeri aset */
+        .mw-galeri{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:flex-start;
+            margin:6px 0 14px;padding:10px;background:#faf8ff;border-radius:14px;min-height:40px;}
+        .mw-galeri-judul{font-family:var(--font-head);font-weight:700;font-size:13px;color:#6a6a94;margin-right:4px;}
+        .mw-galeri-kosong{font-size:12px;color:#9a9ab5;font-style:italic;}
+        .mw-thumb-wrap{position:relative;}
+        .mw-thumb{border:2px solid #ece7fb;background:#fff;border-radius:10px;padding:3px;cursor:pointer;
+            display:flex;flex-direction:column;align-items:center;gap:2px;width:64px;transition:transform .15s,border-color .15s;}
+        .mw-thumb:hover{transform:translateY(-3px) scale(1.04);border-color:#c9b6f5;}
+        .mw-thumb img{width:52px;height:52px;object-fit:contain;border-radius:6px;background:#fff;}
+        .mw-thumb-x{position:absolute;top:-7px;right:-7px;width:20px;height:20px;border-radius:50%;
+            border:2px solid #fff;background:#d1466a;color:#fff;font-weight:800;font-size:12px;line-height:1;
+            cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.3);padding:0;}
+        .mw-thumb-x:hover{background:#b6335a;transform:scale(1.1);}
+        .mw-thumb span{font-size:9px;color:#6a6a94;font-weight:700;max-width:58px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+        body.dark .mw-galeri{background:#262845;}
+        body.dark .mw-galeri-judul{color:#a9adde;}
+        body.dark .mw-thumb{background:#2f3154;border-color:#4a4470;}
+        body.dark .mw-thumb span{color:#c7c9ee;}
+        /* Alat impor/ekspor aset */
+        .mw-galeri-alat{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
+        .mw-mini{flex:1;min-width:120px;border:2px solid #ece7fb;background:#fff;color:#6a3fb0;
+            font-family:var(--font-head);font-weight:700;font-size:12px;padding:7px 10px;border-radius:10px;
+            cursor:pointer;transition:transform .15s,background .15s;}
+        .mw-mini:hover{transform:translateY(-2px);background:var(--butter-soft);}
+        body.dark .mw-mini{background:#2f3154;color:#d3bcff;border-color:#4a4470;}
+        .mw-aksi-utama{margin-top:4px;}
+        /* Panel kontrol versi ringkas (compact) */
+        .mw-compact{gap:8px;}
+        .mw-compact .mw-slider{gap:2px;font-size:12px;}
+        .mw-compact .mw-rot-cepat{gap:6px;}
+        .mw-compact .mw-rot-cepat button{min-width:56px;padding:6px 6px;font-size:12px;border-radius:10px;}
+        .mw-compact .mw-tambah input{padding:7px 10px;}
+        .mw-compact .mw-objbar{padding:5px 7px;}
+        .mw-compact .mw-kertas-baris{margin-bottom:0;justify-content:flex-start;}
+        #mw-hapus-btn.on{background:#ffe1ec;color:#d1466a;border-color:#f5b6cd;}
+        body.dark #mw-hapus-btn.on{background:#4a2740;color:#ffbcd4;border-color:#7a3a5c;}
+        #mw-pensil-btn.on{background:#d9f2e3;color:#1f8a54;border-color:#9fd9ba;}
+        body.dark #mw-pensil-btn.on{background:#204a37;color:#9df0c4;border-color:#3a7a5c;}
+        #mw-paper.mw-pensil{cursor:crosshair;}
+        body.dark .mw-form{background:linear-gradient(120deg,#26374a,#2f2a52);border-color:#4a4470;}
+        body.dark .mw-ide span,body.dark .mw-loading p{color:#a9adde;}
+        body.dark .mw-ide button{background:#2f3154;color:#d3bcff;}
+        body.dark .mw-ide button:hover{background:#3a3d68;}
+        body.dark .mw-gambar-wrap{background:#f4f4fb;border-color:#4a4470;}
+        @media (prefers-reduced-motion:reduce){.mw-spinner{animation:none;}}
         .grid-ref{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;}
         .ref-kartu{
             display:flex;align-items:center;gap:12px;text-decoration:none;
@@ -1090,6 +1231,7 @@
         <button class="tab-btn" onclick="window.switchTab('jadwal')">⏰ Jadwal Les</button>
         <button class="tab-btn" onclick="window.switchTab('rapor')">📊 Rapor</button>
         <button class="tab-btn" onclick="window.switchTab('peringkat')">🏆 Peringkat</button>
+        <button class="tab-btn" onclick="window.switchTab('mewarnai')">🎨 Mewarnai</button>
         <button class="tab-btn" onclick="window.switchTab('referensi')">📚 Referensi</button>
         <button class="tab-btn" onclick="window.switchTab('setelan')">⚙️ Setelan</button>
     </div>
@@ -1388,6 +1530,140 @@
     </div>
 
     <!-- HALAMAN REFERENSI BELAJAR -->
+    <!-- HALAMAN MEWARNAI (Generator Sketsa) -->
+    <div id="konten-mewarnai" class="halaman">
+        <h3>🎨 Studio Mewarnai</h3>
+        <p class="helper-text">Buat gambar, tata seperti komik, lalu cetak &amp; warnai! ✏️ Klik gambar untuk memilih, geser untuk memindah.</p>
+
+        <div id="mw-loading" class="mw-loading" style="display:none;">
+            <div class="mw-spinner">🖍️</div>
+            <p id="mw-loading-teks">AiHana sedang menggambar untukmu<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+        </div>
+        <div id="mw-error" class="status-box status-gagal" style="display:none;"></div>
+
+        <div class="mw-penata-isi">
+            <div class="mw-kiri">
+                <div class="mw-paper-wrap">
+                    <canvas id="mw-paper"></canvas>
+                </div>
+                <!-- Galeri aset TEPAT di bawah kanvas -->
+                <div id="mw-galeri" class="mw-galeri"></div>
+                <!-- Impor / ekspor aset untuk berbagi dengan teman -->
+                <div class="mw-galeri-alat">
+                    <button type="button" class="mw-mini" onclick="window.mwEksporAset()">📤 Ekspor Aset</button>
+                    <button type="button" class="mw-mini" onclick="document.getElementById('mw-impor-file').click()">📥 Impor Aset</button>
+                    <input type="file" id="mw-impor-file" accept="application/json,.json,.aihana" style="display:none;" onchange="window.mwImporAset(event)">
+                </div>
+                <!-- Tombol cetak & simpan DI BAWAH ASET -->
+                <div class="mw-aksi mw-aksi-utama">
+                    <button class="aksi" onclick="window.mwCetakTata()">🖨️ Cetak Sekarang</button>
+                    <button class="aksi secondary" onclick="window.mwUnduhTata()">⬇️ Simpan Hasil (PNG)</button>
+                </div>
+            </div>
+
+            <div class="mw-kontrol mw-compact">
+                <!-- Buat gambar -->
+                <div class="mw-tambah">
+                    <input type="text" id="mw-tambah-prompt" placeholder="Buat gambar: mis. kucing, rumah, pohon, mobil"
+                           onkeydown="if(event.key==='Enter')window.mwTambahGambar()">
+                    <button class="aksi" id="mw-tambah-btn" onclick="window.mwTambahGambar()">➕ Buat</button>
+                </div>
+
+                <div class="mw-kertas-baris">
+                    <label for="mw-kertas">📄</label>
+                    <select id="mw-kertas" onchange="window.mwRedrawPenata()">
+                        <option value="A4">A4</option>
+                        <option value="F4">F4 / Folio</option>
+                        <option value="A3">A3</option>
+                    </select>
+                    <select id="mw-orientasi" onchange="window.mwRedrawPenata()">
+                        <option value="potret">Potret ↕️</option>
+                        <option value="lanskap">Lanskap ↔️</option>
+                    </select>
+                </div>
+
+                <!-- Objek terpilih -->
+                <div class="mw-objbar">
+                    <button type="button" class="mw-objnav" onclick="window.mwPilihObjek(-1)" title="Objek sebelumnya">‹</button>
+                    <span id="mw-obj-info">Belum ada objek</span>
+                    <button type="button" class="mw-objnav" onclick="window.mwPilihObjek(1)" title="Objek berikutnya">›</button>
+                    <button type="button" class="mw-objhapus" onclick="window.mwUndo()" title="Urungkan (Undo)">↶</button>
+                    <button type="button" class="mw-objhapus" onclick="window.mwHapusObjek()" title="Hapus objek ini">🗑️</button>
+                </div>
+
+                <label class="mw-slider">📐 Ukuran <span id="mw-skala-val">85%</span>
+                    <input type="range" id="mw-skala" min="10" max="200" value="85"
+                           onmousedown="window._mwSnapshot()" ontouchstart="window._mwSnapshot()" oninput="window.mwUbahTata()"></label>
+                <label class="mw-slider">🔄 Putar <span id="mw-rot-val">0°</span>
+                    <input type="range" id="mw-rot" min="-180" max="180" value="0"
+                           onmousedown="window._mwSnapshot()" ontouchstart="window._mwSnapshot()" oninput="window.mwUbahTata()"></label>
+                <div class="mw-rot-cepat">
+                    <button type="button" onclick="window.mwPutar(-90)">↺90°</button>
+                    <button type="button" onclick="window.mwPutar(90)">↻90°</button>
+                    <button type="button" onclick="window.mwPutar('reset')">↑Lurus</button>
+                    <button type="button" onclick="window.mwCermin()">🪞Cermin</button>
+                    <button type="button" onclick="window.mwKeDepan()">⬆️Depan</button>
+                </div>
+
+                <!-- Teks & balon kata -->
+                <div class="mw-tambah">
+                    <input type="text" id="mw-teks-input" placeholder="Teks / kata di balon (mis. Halo!)"
+                           onkeydown="if(event.key==='Enter')window.mwTambahTeks(true)">
+                </div>
+                <div class="mw-rot-cepat">
+                    <button type="button" onclick="window.mwTambahTeks(false)">🔤Teks</button>
+                    <button type="button" onclick="window.mwTambahTeks(true)">💬Balon</button>
+                    <button type="button" onclick="window.mwEditTeks()">✏️Edit</button>
+                    <button type="button" onclick="window.mwArahBalon()">🔃Arah</button>
+                </div>
+
+                <label class="mw-slider">✏️ Tebal garis <span id="mw-tebal-val">Normal</span>
+                    <input type="range" id="mw-tebal" min="0" max="4" value="0"
+                           onmousedown="window._mwSnapshot()" ontouchstart="window._mwSnapshot()" oninput="window.mwUbahGaris()"></label>
+                <label class="mw-slider">🔍 Detail garis <span id="mw-detail-val">Sedang</span>
+                    <input type="range" id="mw-detail" min="30" max="100" value="60"
+                           onmousedown="window._mwSnapshot()" ontouchstart="window._mwSnapshot()" oninput="window.mwUbahGaris()"></label>
+
+                <!-- Gambar bebas dengan pensil -->
+                <div class="mw-rot-cepat">
+                    <button type="button" id="mw-pensil-btn" onclick="window.mwTogglePensil()">✏️ Pensil: Mati</button>
+                    <button type="button" onclick="window.mwCoretanBaru()">🆕 Lapisan Coret</button>
+                </div>
+                <label class="mw-slider" id="mw-pensil-wrap" style="display:none;">✏️ Tebal pensil <span id="mw-pensil-val">Sedang</span>
+                    <input type="range" id="mw-pensil-tebal" min="1" max="24" value="5" oninput="window._mwLabelKontrol()"></label>
+
+                <!-- Potong & Penghapus -->
+                <div class="mw-rot-cepat">
+                    <button type="button" onclick="window.mwMulaiPotong()">✂️ Potong</button>
+                    <button type="button" id="mw-hapus-btn" onclick="window.mwToggleHapus()">🧽 Hapus: Mati</button>
+                </div>
+                <label class="mw-slider" id="mw-hapus-ukuran-wrap" style="display:none;">🧽 Ukuran penghapus <span id="mw-hapus-val">Sedang</span>
+                    <input type="range" id="mw-hapus-ukuran" min="6" max="60" value="22" oninput="window._mwLabelKontrol()"></label>
+
+                <div class="mw-rot-cepat">
+                    <button type="button" onclick="window.mwRapikan()">🧩 Rapikan</button>
+                    <button type="button" onclick="window.mwResetTata()">🎯 Ke Tengah</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alat memilih bagian gambar (crop) — muncul melayang saat dipakai -->
+        <div id="mw-crop" class="mw-crop" style="display:none;">
+            <p class="mw-crop-tip">✂️ Tarik sudut kotak atau geser kotaknya untuk memilih bagian yang kamu suka, lalu tekan <b>Terapkan</b>.</p>
+            <div class="mw-crop-area" id="mw-crop-area">
+                <img id="mw-crop-img" alt="Gambar asli">
+                <div class="mw-sel" id="mw-sel">
+                    <span class="mw-h tl" data-h="tl"></span><span class="mw-h tr" data-h="tr"></span>
+                    <span class="mw-h bl" data-h="bl"></span><span class="mw-h br" data-h="br"></span>
+                </div>
+            </div>
+            <div class="mw-aksi">
+                <button class="aksi" onclick="window.mwTerapkanPotong()">✅ Terapkan Potong</button>
+                <button class="aksi secondary" onclick="window.mwBatalPotong()">↩️ Batal</button>
+            </div>
+        </div>
+    </div>
+
     <div id="konten-referensi" class="halaman">
         <h3>📚 Referensi Belajar Seru</h3>
         <p class="helper-text">Tempat belajar tambahan yang aman & menyenangkan untuk anak SD! 🌈</p>
@@ -1819,7 +2095,7 @@
         const btns = document.querySelectorAll('.tab-btn');
         btns.forEach(b => b.classList.remove('active'));
 
-        const tabNames = ['beranda', 'profil', 'tanya-guru', 'kuis', 'roster', 'jadwal', 'rapor', 'peringkat', 'referensi', 'setelan'];
+        const tabNames = ['beranda', 'profil', 'tanya-guru', 'kuis', 'roster', 'jadwal', 'rapor', 'peringkat', 'mewarnai', 'referensi', 'setelan'];
         const idx = tabNames.indexOf(tabId);
         if (idx !== -1 && btns[idx]) btns[idx].classList.add('active');
 
@@ -1832,6 +2108,1015 @@
         if (tabId === 'roster') { window.renderRoster(); window.renderPR(); }
         if (tabId === 'profil') window.renderProfilDashboard();
         if (tabId === 'referensi') window.faktaBerikutnya();
+        if (tabId === 'mewarnai') window.mwInit();
+    };
+
+    // ==========================================
+    //  STUDIO MEWARNAI (Generator Sketsa)
+    // ==========================================
+    window._mwProses = false;
+
+    // Muat gambar dengan CORS agar bisa diproses di canvas (timeout 60 detik).
+    window._mwMuatGambar = function(url){
+        return new Promise(function(resolve, reject){
+            const img = new Image();
+            img.crossOrigin = "anonymous";
+            const timer = setTimeout(function(){ reject(new Error("waktu habis")); }, 60000);
+            img.onload = function(){ clearTimeout(timer); resolve(img); };
+            img.onerror = function(){ clearTimeout(timer); reject(new Error("gagal memuat")); };
+            img.src = url;
+        });
+    };
+
+    // Prompt "objek utuh tanpa bingkai bulat" — sederhana + model turbo (paling patuh).
+    window._mwPromptGambar = function(subjek){
+        return subjek + ", black and white coloring page, simple bold outline, "
+            + "full whole object, plain white background, for children";
+    };
+    window._mwUrlGambar = function(subjek){
+        return "https://image.pollinations.ai/prompt/" + encodeURIComponent(window._mwPromptGambar(subjek))
+            + "?width=768&height=768&nologo=true&model=turbo&seed=" + Math.floor(Math.random()*100000);
+    };
+    // Galeri aset: gambar sumber yang pernah dibuat, TERSIMPAN di localStorage (pakai ulang kapan saja).
+    window._mwGaleri = [];   // {img:Image, label, dataUrl}
+    window._mwTambahGaleri = function(img, label){
+        let dataUrl = '';
+        try {
+            // simpan versi kecil (thumbnail 256px) agar hemat ruang localStorage
+            const t = document.createElement('canvas');
+            const s = 256 / Math.max(img.naturalWidth||256, img.naturalHeight||256);
+            t.width = Math.round((img.naturalWidth||256)*s);
+            t.height = Math.round((img.naturalHeight||256)*s);
+            t.getContext('2d').drawImage(img, 0, 0, t.width, t.height);
+            dataUrl = t.toDataURL('image/jpeg', 0.7);
+        } catch(e){}
+        window._mwGaleri.push({ img: img, label: label || 'gambar', dataUrl: dataUrl });
+        window._mwSimpanGaleri();
+    };
+    window._mwSimpanGaleri = function(){
+        try {
+            const data = window._mwGaleri.slice(-30).map(function(g){
+                return { label: g.label, dataUrl: g.dataUrl || (g.img && g.img.src) || '' };
+            });
+            localStorage.setItem(MW_GALERI_KEY, JSON.stringify(data));
+        } catch(e){}
+    };
+    window._mwMuatGaleri = function(){
+        if (window._mwGaleriDimuat) return;
+        window._mwGaleriDimuat = true;
+        try {
+            const raw = localStorage.getItem(MW_GALERI_KEY);
+            if (!raw) return;
+            const data = JSON.parse(raw);
+            data.forEach(function(d){
+                if (!d.dataUrl) return;
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.onload = function(){ window._mwRenderGaleri(); };
+                img.src = d.dataUrl;
+                window._mwGaleri.push({ img: img, label: d.label || 'gambar', dataUrl: d.dataUrl });
+            });
+        } catch(e){}
+    };
+
+    // Pelebaran garis (min-filter separable): piksel hitam menyebar → garis lebih tebal.
+    window._mwDilate = function(bw, w, h, r){
+        if (r <= 0) return bw;
+        const tmp = new Uint8Array(w*h);
+        for (let y=0; y<h; y++){
+            const row = y*w;
+            for (let x=0; x<w; x++){
+                let m = 255;
+                const a = Math.max(0, x-r), b = Math.min(w-1, x+r);
+                for (let xx=a; xx<=b; xx++){ const v = bw[row+xx]; if (v<m){ m=v; if(m===0) break; } }
+                tmp[row+x] = m;
+            }
+        }
+        const out = new Uint8Array(w*h);
+        for (let x=0; x<w; x++){
+            for (let y=0; y<h; y++){
+                let m = 255;
+                const a = Math.max(0, y-r), b = Math.min(h-1, y+r);
+                for (let yy=a; yy<=b; yy++){ const v = tmp[yy*w+x]; if (v<m){ m=v; if(m===0) break; } }
+                out[y*w+x] = m;
+            }
+        }
+        return out;
+    };
+
+    // Bangun line-art (kanvas offscreen putih dengan garis hitam) dari gambar sumber.
+    // potong opsional {sx,sy,sw,sh}; ambang = ambang tepi; tebal = radius pelebaran garis.
+    window._mwLineArtCanvas = function(img, potong, ambang, tebal){
+        const iw = img.naturalWidth || 768, ih = img.naturalHeight || 768;
+        let sx = 0, sy = 0, sw = iw, sh = ih;
+        if (potong){ sx = potong.sx; sy = potong.sy; sw = potong.sw; sh = potong.sh; }
+        const w = Math.round(sw), h = Math.round(sh);
+        const cv = document.createElement('canvas');
+        cv.width = w; cv.height = h;
+        const ctx = cv.getContext('2d');
+        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, w, h);
+        let src;
+        try { src = ctx.getImageData(0, 0, w, h); }
+        catch (e) { return { canvas: cv, ok: false }; }   // CORS gagal → pakai gambar apa adanya
+        const d = src.data;
+        const gray = new Float32Array(w*h);
+        for (let i=0, p=0; i<d.length; i+=4, p++){
+            gray[p] = 0.299*d[i] + 0.587*d[i+1] + 0.114*d[i+2];
+        }
+        const bw = new Uint8Array(w*h);
+        for (let y=0; y<h; y++){
+            for (let x=0; x<w; x++){
+                const idx = y*w + x;
+                let val = 255;
+                if (x>0 && y>0 && x<w-1 && y<h-1){
+                    const tl=gray[idx-w-1], tc=gray[idx-w], tr=gray[idx-w+1];
+                    const ml=gray[idx-1],                   mr=gray[idx+1];
+                    const bl=gray[idx+w-1], bc=gray[idx+w], br=gray[idx+w+1];
+                    const gx = -tl - 2*ml - bl + tr + 2*mr + br;
+                    const gy = -tl - 2*tc - tr + bl + 2*bc + br;
+                    val = Math.sqrt(gx*gx + gy*gy) > ambang ? 0 : 255;
+                }
+                bw[idx] = val;
+            }
+        }
+        const fin = window._mwDilate(bw, w, h, tebal|0);
+
+        // AUTO-CROP: cari bounding box garis (buang ruang kosong) agar objek pas & mudah disusun.
+        let minX=w, minY=h, maxX=-1, maxY=-1;
+        for (let y=0; y<h; y++){
+            for (let x=0; x<w; x++){
+                if (fin[y*w+x] === 0){
+                    if (x<minX) minX=x; if (x>maxX) maxX=x;
+                    if (y<minY) minY=y; if (y>maxY) maxY=y;
+                }
+            }
+        }
+        let cw = w, ch = h, offX = 0, offY = 0;
+        if (maxX >= minX && maxY >= minY){
+            const pad = Math.round(Math.min(w,h) * 0.02);   // sisa margin kecil
+            minX = Math.max(0, minX-pad); minY = Math.max(0, minY-pad);
+            maxX = Math.min(w-1, maxX+pad); maxY = Math.min(h-1, maxY+pad);
+            cw = maxX - minX + 1; ch = maxY - minY + 1; offX = minX; offY = minY;
+        }
+
+        // tulis line-art transparan ke kanvas hasil (sudah di-crop)
+        const hasil = document.createElement('canvas');
+        hasil.width = cw; hasil.height = ch;
+        const hctx = hasil.getContext('2d');
+        const out = hctx.createImageData(cw, ch);
+        const o = out.data;
+        // LATAR TRANSPARAN: garis = hitam pekat, sisanya transparan (tak menutupi objek lain)
+        for (let yy=0; yy<ch; yy++){
+            for (let xx=0; xx<cw; xx++){
+                const src = (yy+offY)*w + (xx+offX);
+                const q = (yy*cw + xx)*4;
+                if (fin[src] === 0){ o[q]=o[q+1]=o[q+2]=0; o[q+3]=255; }
+                else { o[q]=o[q+1]=o[q+2]=255; o[q+3]=0; }
+            }
+        }
+        hctx.putImageData(out, 0, 0);
+        return { canvas: hasil, ok: true };
+    };
+
+    // ===== Fitur Pilih Area (crop) — bekerja pada objek gambar yang terpilih =====
+    window._mwSel = null;   // {x,y,w,h} dalam piksel tampilan gambar crop
+    window.mwMulaiPotong = function(){
+        const o = window._mwObjAktif();
+        if (!o || o.tipe !== 'gambar' || !o.srcImg){
+            alert('Pilih dulu gambar yang mau dipotong ya. 😊');
+            return;
+        }
+        const crop = document.getElementById('mw-crop');
+        const cimg = document.getElementById('mw-crop-img');
+        // pakai gambar asli (bukan line-art) supaya pemilihan sudut jelas
+        cimg.src = o.srcImg.src;
+        crop.style.display = 'block';
+        // tunggu gambar ditata, lalu buat kotak awal (80% di tengah)
+        const pasang = function(){
+            const iw = cimg.clientWidth, ih = cimg.clientHeight;
+            const bw = iw*0.8, bh = ih*0.8;
+            window._mwSel = { x:(iw-bw)/2, y:(ih-bh)/2, w:bw, h:bh };
+            window._mwGambarSel();
+        };
+        if (cimg.complete && cimg.clientWidth) pasang();
+        else cimg.onload = pasang;
+        crop.scrollIntoView({ behavior:'smooth', block:'nearest' });
+        window._mwPasangDrag();
+    };
+    window._mwGambarSel = function(){
+        const sel = document.getElementById('mw-sel');
+        const s = window._mwSel; if (!s) return;
+        sel.style.left = s.x+'px'; sel.style.top = s.y+'px';
+        sel.style.width = s.w+'px'; sel.style.height = s.h+'px';
+    };
+    window._mwDragDipasang = false;
+    window._mwPasangDrag = function(){
+        if (window._mwDragDipasang) return;
+        window._mwDragDipasang = true;
+        const area = document.getElementById('mw-crop-area');
+        const sel = document.getElementById('mw-sel');
+        const cimg = document.getElementById('mw-crop-img');
+        let mode = null, hx = null, start = null;
+        const pos = function(e){
+            const r = area.getBoundingClientRect();
+            const t = e.touches ? e.touches[0] : e;
+            return { x:t.clientX - r.left, y:t.clientY - r.top };
+        };
+        const mulai = function(e){
+            const h = e.target.getAttribute && e.target.getAttribute('data-h');
+            if (h){ mode='resize'; hx=h; }
+            else if (e.target === sel){ mode='move'; }
+            else { return; }
+            start = pos(e); start.sel = Object.assign({}, window._mwSel);
+            e.preventDefault();
+        };
+        const gerak = function(e){
+            if (!mode) return;
+            const p = pos(e), s = start.sel;
+            const maxW = cimg.clientWidth, maxH = cimg.clientHeight;
+            const dx = p.x - start.x, dy = p.y - start.y;
+            let ns = Object.assign({}, s);
+            if (mode === 'move'){
+                ns.x = Math.min(Math.max(0, s.x+dx), maxW - s.w);
+                ns.y = Math.min(Math.max(0, s.y+dy), maxH - s.h);
+            } else {
+                const MIN = 30;
+                let l=s.x, t=s.y, r=s.x+s.w, b=s.y+s.h;
+                if (hx.indexOf('l')>=0) l = Math.min(Math.max(0, s.x+dx), r-MIN);
+                if (hx.indexOf('r')>=0) r = Math.max(Math.min(maxW, s.x+s.w+dx), l+MIN);
+                if (hx.indexOf('t')>=0) t = Math.min(Math.max(0, s.y+dy), b-MIN);
+                if (hx.indexOf('b')>=0) b = Math.max(Math.min(maxH, s.y+s.h+dy), t+MIN);
+                ns = { x:l, y:t, w:r-l, h:b-t };
+            }
+            window._mwSel = ns; window._mwGambarSel();
+            e.preventDefault();
+        };
+        const selesai = function(){ mode=null; hx=null; };
+        area.addEventListener('mousedown', mulai);
+        window.addEventListener('mousemove', gerak);
+        window.addEventListener('mouseup', selesai);
+        area.addEventListener('touchstart', mulai, {passive:false});
+        window.addEventListener('touchmove', gerak, {passive:false});
+        window.addEventListener('touchend', selesai);
+    };
+    window.mwTerapkanPotong = function(){
+        const o = window._mwObjAktif();
+        const s = window._mwSel, cimg = document.getElementById('mw-crop-img');
+        if (!s || !o || !o.srcImg){ window.mwBatalPotong(); return; }
+        window._mwSnapshot();
+        const img = o.srcImg;
+        const skala = (img.naturalWidth || 768) / cimg.clientWidth;
+        const potong = {
+            sx: Math.max(0, s.x*skala), sy: Math.max(0, s.y*skala),
+            sw: s.w*skala, sh: s.h*skala
+        };
+        // bangun ulang line-art objek aktif dari area terpilih
+        o.crop = potong;
+        const res = window._mwLineArtCanvas(img, potong, o.ambang, o.tebal);
+        o.art = res.canvas; o.ok = res.ok;
+        document.getElementById('mw-crop').style.display = 'none';
+        window.mwRedrawPenata();
+        window.playSound && window.playSound('sukses');
+    };
+    window.mwBatalPotong = function(){
+        document.getElementById('mw-crop').style.display = 'none';
+    };
+
+    // ===== Studio Mewarnai: kanvas kolase MULTI-OBJEK + penghapus + undo + galeri tersimpan =====
+    window._mwObjek = [];
+    window._mwAktif = 0;
+    window._mwHapusAktif = false;
+    window._mwUndoStack = [];
+    window._mwSiap = false;
+    const MW_KERTAS = { A4:[210,297], F4:[215,330], A3:[297,420] };
+    const MW_GALERI_KEY = 'aihana_galeri_mewarnai';
+
+    // ---- Riwayat (Undo) ----
+    window._mwSnapshot = function(){
+        try {
+            const snap = window._mwObjek.map(function(o){
+                const c = document.createElement('canvas');
+                c.width = o.art.width; c.height = o.art.height;
+                c.getContext('2d').drawImage(o.art, 0, 0);
+                return { ref:o, artCopy:c, skala:o.skala, rot:o.rot, px:o.px, py:o.py, flip:o.flip };
+            });
+            window._mwUndoStack.push({ aktif: window._mwAktif, objek: window._mwObjek.slice(), snap: snap });
+            if (window._mwUndoStack.length > 25) window._mwUndoStack.shift();
+        } catch(e){}
+    };
+    window.mwUndo = function(){
+        const st = window._mwUndoStack.pop();
+        if (!st){ window.maskotBicara ? window.maskotBicara('Tidak ada yang bisa diurungkan lagi. 😊', 2500) : null; return; }
+        window._mwObjek = st.objek;
+        window._mwAktif = Math.min(st.aktif, window._mwObjek.length-1);
+        st.snap.forEach(function(s){
+            const o = s.ref;
+            o.skala = s.skala; o.rot = s.rot; o.px = s.px; o.py = s.py; o.flip = s.flip;
+            o.art.width = s.artCopy.width; o.art.height = s.artCopy.height;
+            const c = o.art.getContext('2d');
+            c.clearRect(0,0,o.art.width,o.art.height);
+            c.drawImage(s.artCopy, 0, 0);
+        });
+        window._mwSyncKontrol();
+        window.mwRedrawPenata();
+        window.playSound && window.playSound('tap');
+    };
+
+    // ---- Inisialisasi tab Mewarnai (langsung mode kanvas) ----
+    window.mwInit = function(){
+        window._mwMuatGaleri();
+        if (!window._mwSiap){
+            window._mwSiap = true;
+            window._mwPasangDragPaper();
+        }
+        window._mwSyncKontrol();
+        window._mwRenderGaleri();
+        window.mwRedrawPenata();
+    };
+
+    // Buat objek line-art dari sebuah Image (+ potong opsional).
+    window._mwBuatObjek = function(img, crop, ambang, tebal){
+        const res = window._mwLineArtCanvas(img, crop, ambang, tebal);
+        return { tipe:'gambar', art: res.canvas, ok: res.ok, srcImg: img, crop: crop || null,
+                 ambang: ambang, tebal: tebal, skala: 0.55, rot: 0, px: 0.5, py: 0.5, flip:false };
+    };
+
+    // Render teks jadi kanvas (transparan). bubble=balon kata; arah='kiri'|'kanan' posisi ekor.
+    window._mwRenderTeksArt = function(teks, bubble, arah){
+        const skala = 3;                 // resolusi tinggi biar tajam saat dibesarkan
+        const fontPx = 44 * skala;
+        const pad = (bubble ? 40 : 12) * skala;
+        const ekor = bubble ? 40 * skala : 0;
+        const ukur = document.createElement('canvas').getContext('2d');
+        ukur.font = 'bold ' + fontPx + 'px "Comic Sans MS", "Baloo 2", sans-serif';
+        // bungkus kata jadi beberapa baris (maks ~14 char/baris)
+        const kata = (teks || '').split(/\s+/);
+        const baris = []; let ln = '';
+        kata.forEach(function(k){
+            const coba = ln ? ln + ' ' + k : k;
+            if (coba.length > 14 && ln){ baris.push(ln); ln = k; } else { ln = coba; }
+        });
+        if (ln) baris.push(ln);
+        if (!baris.length) baris.push(' ');
+        let maxW = 0;
+        baris.forEach(function(b){ maxW = Math.max(maxW, ukur.measureText(b).width); });
+        const lineH = fontPx * 1.2;
+        const w = Math.ceil(maxW + pad*2);
+        const h = Math.ceil(baris.length*lineH + pad*2 + ekor);
+        const cv = document.createElement('canvas');
+        cv.width = w; cv.height = h;
+        const ctx = cv.getContext('2d');
+        ctx.font = 'bold ' + fontPx + 'px "Comic Sans MS", "Baloo 2", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        const bubbleH = h - ekor;
+        if (bubble){
+            // balon kata: kotak membulat + ekor kecil
+            const r = 30 * skala;
+            ctx.fillStyle = '#ffffff';
+            ctx.strokeStyle = '#000000';
+            ctx.lineWidth = 4 * skala;
+            ctx.beginPath();
+            const kanan = (arah === 'kanan');
+            // titik ekor (x) — kiri secara default, atau kanan bila diminta
+            const ex1 = kanan ? w*0.70 : w*0.30;   // ujung ekor di garis bawah
+            const ex2 = kanan ? w*0.58 : w*0.42;   // pangkal ekor
+            ctx.moveTo(r, 0);
+            ctx.lineTo(w-r, 0);
+            ctx.arcTo(w, 0, w, r, r);
+            ctx.lineTo(w, bubbleH-r);
+            ctx.arcTo(w, bubbleH, w-r, bubbleH, r);
+            if (kanan){
+                ctx.lineTo(ex1, bubbleH);
+                ctx.lineTo(ex1, bubbleH + ekor);      // ekor ke bawah
+                ctx.lineTo(ex2, bubbleH);
+                ctx.lineTo(r, bubbleH);
+            } else {
+                ctx.lineTo(ex2, bubbleH);
+                ctx.lineTo(ex1, bubbleH + ekor);      // ekor ke bawah
+                ctx.lineTo(ex1, bubbleH);
+                ctx.lineTo(r, bubbleH);
+            }
+            ctx.arcTo(0, bubbleH, 0, bubbleH-r, r);
+            ctx.lineTo(0, r);
+            ctx.arcTo(0, 0, r, 0, r);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+        }
+        ctx.fillStyle = '#000000';
+        const y0 = pad + lineH/2;
+        baris.forEach(function(b, i){ ctx.fillText(b, w/2, y0 + i*lineH); });
+        return cv;
+    };
+    // Buat objek teks / balon kata.
+    window._mwBuatTeks = function(teks, bubble, arah){
+        arah = arah || 'kiri';
+        const art = window._mwRenderTeksArt(teks, bubble, arah);
+        return { tipe: bubble?'bubble':'teks', art: art, ok:true, teks: teks, bubble: !!bubble, arah: arah,
+                 skala: 0.4, rot: 0, px: 0.5, py: 0.5, flip:false };
+    };
+    window._mwObjAktif = function(){ return window._mwObjek[window._mwAktif] || null; };
+    window._mwLoadEl = function(){ return document.getElementById('mw-loading'); };
+
+    // Tambah gambar baru ke halaman (generate via Pollinations lalu jadi objek).
+    window.mwTambahGambar = async function(teks){
+        if (window._mwProses) return;
+        const inp = document.getElementById('mw-tambah-prompt');
+        const prompt = (teks || (inp ? inp.value : '') || '').trim();
+        if (!prompt){ if (inp) inp.focus(); return; }
+        const btn = document.getElementById('mw-tambah-btn');
+        const loading = window._mwLoadEl();
+        window._mwProses = true;
+        if (btn){ btn.disabled = true; btn.innerText = '⏳ Membuat...'; }
+        if (loading) loading.style.display = 'block';
+        const url = window._mwUrlGambar(prompt);
+        try {
+            const img = await window._mwMuatGambar(url);
+            window._mwTambahGaleri(img, prompt);   // simpan ke galeri (localStorage)
+            window._mwSnapshot();
+            const o = window._mwBuatObjek(img, null, 60, 0);
+            const n = window._mwObjek.length;
+            o.px = Math.min(0.85, Math.max(0.15, 0.5 + ((n % 3) - 1) * 0.22));
+            o.py = Math.min(0.85, Math.max(0.15, 0.5 + (Math.floor(n / 3) % 3 - 1) * 0.22));
+            window._mwObjek.push(o);
+            window._mwAktif = window._mwObjek.length - 1;
+            if (inp) inp.value = '';
+            window._mwSyncKontrol();
+            window._mwRenderGaleri();
+            window.mwRedrawPenata();
+            window.playSound && window.playSound('sukses');
+        } catch (e){
+            alert('😢 Gagal membuat gambar. Coba lagi ya.');
+        } finally {
+            window._mwProses = false;
+            if (btn){ btn.disabled = false; btn.innerText = '➕ Buat'; }
+            if (loading) loading.style.display = 'none';
+        }
+    };
+
+    // Pindah objek terpilih (arah -1 / +1).
+    window.mwPilihObjek = function(arah){
+        const n = window._mwObjek.length; if (!n) return;
+        window._mwAktif = (window._mwAktif + arah + n) % n;
+        window._mwSyncKontrol();
+        window.mwRedrawPenata();
+    };
+    window.mwHapusObjek = function(){
+        if (!window._mwObjek.length){ return; }
+        window._mwSnapshot();
+        window._mwObjek.splice(window._mwAktif, 1);
+        if (window._mwAktif >= window._mwObjek.length) window._mwAktif = window._mwObjek.length - 1;
+        window._mwSyncKontrol();
+        window.mwRedrawPenata();
+    };
+    // Bawa objek terpilih ke lapisan paling depan.
+    window.mwKeDepan = function(){
+        const o = window._mwObjAktif(); if (!o) return;
+        window._mwSnapshot();
+        window._mwObjek.splice(window._mwAktif, 1);
+        window._mwObjek.push(o);
+        window._mwAktif = window._mwObjek.length - 1;
+        window._mwSyncKontrol();
+        window.mwRedrawPenata();
+    };
+
+    // Cermin / balik arah objek terpilih.
+    window.mwCermin = function(){
+        const o = window._mwObjAktif(); if (!o) return;
+        window._mwSnapshot();
+        o.flip = !o.flip;
+        window.mwRedrawPenata();
+        window.playSound && window.playSound('tap');
+    };
+
+    // ===== Pensil freehand =====
+    // Lapisan coret = objek {tipe:'coret'} berukuran penuh kertas (skala 1, di tengah).
+    // Menggambar langsung ke bitmap art-nya dalam koordinat lokal 0..1 kertas.
+    window._mwPensilAktif = false;
+    window._mwCORET_RES = 1500;   // resolusi bitmap coretan (px, sisi terpanjang)
+    window._mwBuatCoret = function(){
+        const geo = window._mwGeoKertas();
+        const R = window._mwCORET_RES;
+        let cw, ch;
+        if (geo.rasio >= 1){ cw = R; ch = Math.round(R / geo.rasio); }
+        else { ch = R; cw = Math.round(R * geo.rasio); }
+        const cv = document.createElement('canvas');
+        cv.width = cw; cv.height = ch;
+        return { tipe:'coret', art: cv, ok:true, penuh:true,
+                 skala: 1, rot: 0, px: 0.5, py: 0.5, flip:false };
+    };
+    // Cari (atau buat) lapisan coret teratas untuk digambari.
+    window._mwCoretUntukGambar = function(){
+        let o = window._mwObjAktif();
+        if (!o || o.tipe !== 'coret'){
+            // cari lapisan coret paling atas
+            for (let i=window._mwObjek.length-1; i>=0; i--){
+                if (window._mwObjek[i].tipe === 'coret'){ o = window._mwObjek[i]; window._mwAktif = i; break; }
+            }
+        }
+        if (!o || o.tipe !== 'coret'){
+            o = window._mwBuatCoret();
+            window._mwObjek.push(o);
+            window._mwAktif = window._mwObjek.length - 1;
+            window._mwSyncKontrol();
+        }
+        return o;
+    };
+    window.mwCoretanBaru = function(){
+        window._mwSnapshot();
+        const o = window._mwBuatCoret();
+        window._mwObjek.push(o);
+        window._mwAktif = window._mwObjek.length - 1;
+        if (!window._mwPensilAktif) window.mwTogglePensil();
+        window._mwSyncKontrol();
+        window.mwRedrawPenata();
+    };
+    window.mwTogglePensil = function(){
+        window._mwPensilAktif = !window._mwPensilAktif;
+        // pensil & penghapus tak boleh aktif bersamaan
+        if (window._mwPensilAktif && window._mwHapusAktif){ window.mwToggleHapus(); }
+        const btn = document.getElementById('mw-pensil-btn');
+        const paper = document.getElementById('mw-paper');
+        document.getElementById('mw-pensil-wrap').style.display = window._mwPensilAktif ? 'flex' : 'none';
+        btn.classList.toggle('on', window._mwPensilAktif);
+        btn.innerText = window._mwPensilAktif ? '✏️ Pensil: Nyala' : '✏️ Pensil: Mati';
+        paper.classList.toggle('mw-pensil', window._mwPensilAktif);
+        if (window._mwPensilAktif){ window._mwCoretUntukGambar(); window.mwRedrawPenata(); }
+    };
+    // Gambar garis di lapisan coret aktif dari titik (fx1,fy1)→(fx2,fy2) relatif kertas.
+    window._mwGarisPensil = function(fx1, fy1, fx2, fy2){
+        const o = window._mwCoretUntukGambar();
+        const cw = o.art.width, ch = o.art.height;
+        const ctx = o.art.getContext('2d');
+        const tebalPaper = +document.getElementById('mw-pensil-tebal').value;
+        // konversi tebal dari px pratinjau ke px bitmap coret
+        const lw = tebalPaper * (cw / (window._mwPW || cw));
+        ctx.strokeStyle = '#000000';
+        ctx.lineWidth = Math.max(1, lw);
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.beginPath();
+        ctx.moveTo(fx1*cw, fy1*ch);
+        ctx.lineTo(fx2*cw, fy2*ch);
+        ctx.stroke();
+        window.mwRedrawPenata();
+    };
+
+    // Tambah teks biasa / balon kata ke kanvas.
+    window.mwTambahTeks = function(bubble){
+        const inp = document.getElementById('mw-teks-input');
+        const teks = (inp ? inp.value : '').trim();
+        if (!teks){ if (inp) inp.focus(); return; }
+        window._mwSnapshot();
+        const o = window._mwBuatTeks(teks, bubble, 'kiri');
+        o.px = 0.5; o.py = bubble ? 0.25 : 0.15;
+        window._mwObjek.push(o);
+        window._mwAktif = window._mwObjek.length - 1;
+        if (inp) inp.value = '';
+        window._mwSyncKontrol();
+        window.mwRedrawPenata();
+        window.playSound && window.playSound('sukses');
+    };
+    // Edit isi teks objek teks/balon terpilih.
+    window.mwEditTeks = function(){
+        const o = window._mwObjAktif();
+        if (!o || (o.tipe !== 'teks' && o.tipe !== 'bubble')){
+            alert('Pilih dulu teks atau balon kata yang mau diperbaiki ya. 😊'); return;
+        }
+        const baru = prompt('Perbaiki tulisan:', o.teks || '');
+        if (baru === null) return;
+        const t = baru.trim(); if (!t) return;
+        window._mwSnapshot();
+        o.teks = t;
+        o.art = window._mwRenderTeksArt(t, o.bubble, o.arah);
+        window.mwRedrawPenata();
+        window.playSound && window.playSound('tap');
+    };
+    // Ubah arah balon kata (ekor kiri/kanan) tanpa mengganti teks.
+    window.mwArahBalon = function(){
+        const o = window._mwObjAktif();
+        if (!o || o.tipe !== 'bubble'){ alert('Pilih dulu balon kata yang mau diubah arahnya ya. 💬'); return; }
+        window._mwSnapshot();
+        o.arah = (o.arah === 'kanan') ? 'kiri' : 'kanan';
+        o.art = window._mwRenderTeksArt(o.teks, true, o.arah);
+        window.mwRedrawPenata();
+        window.playSound && window.playSound('tap');
+    };
+    // Tambah objek dari galeri (gambar yang pernah dibuat) ke kanvas.
+    window.mwDariGaleri = function(idx){
+        const g = window._mwGaleri[idx]; if (!g) return;
+        window._mwSnapshot();
+        const o = window._mwBuatObjek(g.img, null, 60, 0);
+        const n = window._mwObjek.length;
+        o.px = Math.min(0.85, Math.max(0.15, 0.5 + ((n%3)-1)*0.22));
+        o.py = Math.min(0.85, Math.max(0.15, 0.5 + (Math.floor(n/3)%3-1)*0.22));
+        window._mwObjek.push(o);
+        window._mwAktif = window._mwObjek.length - 1;
+        window._mwSyncKontrol();
+        window.mwRedrawPenata();
+        window.playSound && window.playSound('sukses');
+    };
+    // Hapus 1 aset dari galeri tersimpan.
+    window.mwHapusGaleri = function(idx, ev){
+        if (ev) ev.stopPropagation();
+        if (idx < 0 || idx >= window._mwGaleri.length) return;
+        window._mwGaleri.splice(idx, 1);
+        window._mwSimpanGaleri();
+        window._mwRenderGaleri();
+        window.playSound && window.playSound('tap');
+    };
+
+    // ---- Ekspor semua aset ke satu file .aihana (JSON) untuk dibagikan ke teman ----
+    window.mwEksporAset = function(){
+        if (!window._mwGaleri.length){ alert('Belum ada aset untuk diekspor. Buat gambar dulu ya. 😊'); return; }
+        const data = {
+            aplikasi: 'AiHana Studio Mewarnai',
+            versi: 1,
+            tanggal: new Date().toISOString(),
+            aset: window._mwGaleri.map(function(g){
+                return { label: g.label || 'gambar', dataUrl: g.dataUrl || (g.img && g.img.src) || '' };
+            }).filter(function(a){ return a.dataUrl; })
+        };
+        try {
+            const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'aset-aihana-' + Date.now() + '.aihana';
+            a.click();
+            setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000);
+            window.playSound && window.playSound('sukses');
+        } catch(e){ alert('Maaf, gagal mengekspor aset di perangkat ini.'); }
+    };
+    // ---- Impor aset dari file .aihana (JSON), digabung ke galeri ----
+    window.mwImporAset = function(ev){
+        const file = ev.target.files && ev.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e){
+            let data;
+            try { data = JSON.parse(e.target.result); } catch(err){ alert('File tidak dikenali. Pastikan file .aihana yang benar ya.'); return; }
+            const list = (data && data.aset) ? data.aset : (Array.isArray(data) ? data : null);
+            if (!list || !list.length){ alert('Tidak ada aset di dalam file ini.'); return; }
+            let masuk = 0;
+            list.forEach(function(d){
+                if (!d || !d.dataUrl) return;
+                // hindari duplikat persis
+                if (window._mwGaleri.some(function(g){ return (g.dataUrl||'') === d.dataUrl; })) return;
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.onload = function(){ window._mwRenderGaleri(); };
+                img.src = d.dataUrl;
+                window._mwGaleri.push({ img: img, label: d.label || 'gambar', dataUrl: d.dataUrl });
+                masuk++;
+            });
+            window._mwSimpanGaleri();
+            window._mwRenderGaleri();
+            window.playSound && window.playSound('sukses');
+            alert('🎉 Berhasil impor ' + masuk + ' aset! Klik aset untuk menambahkannya ke kertas.');
+        };
+        reader.readAsText(file);
+        ev.target.value = '';   // reset agar bisa impor file sama lagi
+    };
+    // Render deretan thumbnail galeri di bawah kanvas (dengan tombol hapus).
+    window._mwRenderGaleri = function(){
+        const box = document.getElementById('mw-galeri'); if (!box) return;
+        if (!window._mwGaleri.length){ box.innerHTML = '<span class="mw-galeri-kosong">🗂️ Aset kamu akan muncul di sini &amp; tersimpan otomatis — klik untuk pakai lagi kapan saja. 🎨</span>'; return; }
+        let html = '<span class="mw-galeri-judul">🗂️ Aset (klik untuk tambah ke kertas):</span>';
+        window._mwGaleri.forEach(function(g, i){
+            const src = (g.img && g.img.src) ? g.img.src : (g.dataUrl || '');
+            html += '<div class="mw-thumb-wrap">'
+                 + '<button type="button" class="mw-thumb" title="' + (g.label||'').replace(/"/g,'') + '" onclick="window.mwDariGaleri(' + i + ')">'
+                 + '<img src="' + src + '" alt=""><span>' + (g.label||'').replace(/</g,'').slice(0,10) + '</span></button>'
+                 + '<button type="button" class="mw-thumb-x" title="Hapus aset ini" onclick="window.mwHapusGaleri(' + i + ',event)">×</button>'
+                 + '</div>';
+        });
+        box.innerHTML = html;
+    };
+
+    // Selaraskan slider & info dengan objek aktif.
+    window._mwSyncKontrol = function(){
+        const o = window._mwObjAktif();
+        const n = window._mwObjek.length;
+        const info = document.getElementById('mw-obj-info');
+        if (!n){ info.innerText = 'Belum ada objek'; return; }
+        const ikon = o ? (o.tipe==='bubble'?'💬 ':(o.tipe==='teks'?'🔤 ':(o.tipe==='coret'?'✏️ ':'🖼️ '))) : '';
+        info.innerText = ikon + 'Objek ' + (window._mwAktif+1) + ' / ' + n;
+        if (!o) return;
+        document.getElementById('mw-skala').value = Math.round(o.skala*100);
+        document.getElementById('mw-rot').value = o.rot;
+        // slider garis hanya berlaku untuk objek gambar
+        const adaGaris = (o.tipe === 'gambar');
+        document.getElementById('mw-tebal').value = adaGaris ? o.tebal : 0;
+        document.getElementById('mw-detail').value = adaGaris ? o.ambang : 60;
+        document.getElementById('mw-tebal').disabled = !adaGaris;
+        document.getElementById('mw-detail').disabled = !adaGaris;
+        window._mwLabelKontrol();
+    };
+
+    window._mwLabelKontrol = function(){
+        const sk = +document.getElementById('mw-skala').value;
+        const rt = +document.getElementById('mw-rot').value;
+        const tb = +document.getElementById('mw-tebal').value;
+        const dt = +document.getElementById('mw-detail').value;
+        document.getElementById('mw-skala-val').innerText = sk + '%';
+        document.getElementById('mw-rot-val').innerText = rt + '°';
+        const namaTebal = ['Tipis','Normal','Tebal','Lebih Tebal','Paling Tebal'];
+        document.getElementById('mw-tebal-val').innerText = namaTebal[tb] || 'Normal';
+        document.getElementById('mw-detail-val').innerText = dt >= 80 ? 'Sedikit' : (dt >= 55 ? 'Sedang' : 'Banyak');
+        const hv = +document.getElementById('mw-hapus-ukuran').value;
+        document.getElementById('mw-hapus-val').innerText = hv <= 14 ? 'Kecil' : (hv <= 34 ? 'Sedang' : 'Besar');
+        const pv = +document.getElementById('mw-pensil-tebal').value;
+        document.getElementById('mw-pensil-val').innerText = pv <= 4 ? 'Tipis' : (pv <= 12 ? 'Sedang' : 'Tebal');
+    };
+
+    window.mwUbahTata = function(){
+        const o = window._mwObjAktif(); if (!o) return;
+        o.skala = (+document.getElementById('mw-skala').value) / 100;
+        o.rot = +document.getElementById('mw-rot').value;
+        window._mwLabelKontrol();
+        window.mwRedrawPenata();
+    };
+    window.mwPutar = function(v){
+        window._mwSnapshot();
+        const el = document.getElementById('mw-rot');
+        if (v === 'reset'){ el.value = 0; }
+        else { let n = (+el.value) + v; if (n>180) n-=360; if (n<-180) n+=360; el.value = n; }
+        window.mwUbahTata();
+    };
+    // Ubah tebal/detail garis → bangun ulang line-art objek aktif DARI gambar sumbernya.
+    window.mwUbahGaris = function(){
+        const o = window._mwObjAktif(); if (!o || o.tipe !== 'gambar') return;
+        o.tebal = +document.getElementById('mw-tebal').value;
+        o.ambang = +document.getElementById('mw-detail').value;
+        const res = window._mwLineArtCanvas(o.srcImg, o.crop, o.ambang, o.tebal);
+        o.art = res.canvas; o.ok = res.ok;
+        window._mwLabelKontrol();
+        window.mwRedrawPenata();
+    };
+    // Kembalikan objek aktif ke tengah, ukuran & sudut standar.
+    window.mwResetTata = function(){
+        const o = window._mwObjAktif(); if (!o) return;
+        window._mwSnapshot();
+        o.px = 0.5; o.py = 0.5; o.rot = 0; o.skala = 0.85;
+        window._mwSyncKontrol();
+        window.mwRedrawPenata();
+    };
+    // Susun semua objek otomatis dalam kisi rapi.
+    window.mwRapikan = function(){
+        const n = window._mwObjek.length; if (!n) return;
+        window._mwSnapshot();
+        const kol = Math.ceil(Math.sqrt(n));
+        const bar = Math.ceil(n / kol);
+        const sk = Math.min(0.8, (1/kol) * 0.9);
+        for (let i=0; i<n; i++){
+            const c = i % kol, r = Math.floor(i / kol);
+            const o = window._mwObjek[i];
+            o.px = (c + 0.5) / kol;
+            o.py = (r + 0.5) / bar;
+            o.rot = 0;
+            o.skala = sk;
+        }
+        window._mwSyncKontrol();
+        window.mwRedrawPenata();
+    };
+
+    // ===== Penghapus =====
+    window.mwToggleHapus = function(){
+        window._mwHapusAktif = !window._mwHapusAktif;
+        const btn = document.getElementById('mw-hapus-btn');
+        const paper = document.getElementById('mw-paper');
+        document.getElementById('mw-hapus-ukuran-wrap').style.display = window._mwHapusAktif ? 'flex' : 'none';
+        btn.classList.toggle('on', window._mwHapusAktif);
+        btn.innerText = window._mwHapusAktif ? '🧽 Hapus: Nyala' : '🧽 Hapus: Mati';
+        paper.classList.toggle('mw-erase', window._mwHapusAktif);
+    };
+    // Hapus di titik (fx,fy relatif 0..1 kertas) pada objek aktif.
+    window._mwHapusDiTitik = function(fx, fy){
+        const o = window._mwObjAktif(); if (!o || !o.ok || (o.tipe !== 'gambar' && o.tipe !== 'coret')) return;
+        const g = window._mwGeoObjek(o, window._mwPW, window._mwPH);
+        // titik dalam px kertas
+        const X = fx * window._mwPW, Y = fy * window._mwPH;
+        // ke ruang lokal objek (batalkan translate + rotate)
+        const dx = X - g.cx, dy = Y - g.cy;
+        const a = -g.rot * Math.PI / 180;
+        let lx = dx*Math.cos(a) - dy*Math.sin(a);
+        const ly = dx*Math.sin(a) + dy*Math.cos(a);
+        if (o.flip) lx = -lx;
+        // ke piksel art
+        const ax = (lx + g.dw/2) / g.dw * o.art.width;
+        const ay = (ly + g.dh/2) / g.dh * o.art.height;
+        const rPaper = +document.getElementById('mw-hapus-ukuran').value;
+        const rArt = rPaper * (o.art.width / g.dw);
+        const ctx = o.art.getContext('2d');
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-out';   // lubangi jadi transparan
+        ctx.beginPath();
+        ctx.arc(ax, ay, rArt, 0, Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+        window.mwRedrawPenata();
+    };
+
+    // Geometri kertas (mm + rasio).
+    window._mwGeoKertas = function(){
+        const kertas = document.getElementById('mw-kertas').value || 'A4';
+        const orient = document.getElementById('mw-orientasi').value || 'potret';
+        let mm = MW_KERTAS[kertas] || MW_KERTAS.A4;
+        let pw = mm[0], ph = mm[1];
+        if (orient === 'lanskap'){ const t = pw; pw = ph; ph = t; }
+        return { pw, ph, rasio: pw/ph };
+    };
+    // Geometri satu objek pada kertas berukuran PW×PH px.
+    window._mwGeoObjek = function(o, PW, PH){
+        // lapisan coret memenuhi seluruh kertas
+        if (o.penuh){ return { cx: PW/2, cy: PH/2, dw: PW, dh: PH, rot: 0 }; }
+        const sisi = Math.min(PW, PH);
+        const rArt = o.art.width / o.art.height;
+        let dw, dh;
+        if (rArt >= 1){ dw = sisi * o.skala; dh = dw / rArt; }
+        else { dh = sisi * o.skala; dw = dh * rArt; }
+        return { cx: PW*o.px, cy: PH*o.py, dw, dh, rot: o.rot };
+    };
+
+    // Gambar semua objek ke ctx. sorot=index objek yang diberi bingkai pilihan (atau -1).
+    window._mwGambarKanvasKe = function(ctx, PW, PH, sorot){
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, PW, PH);
+        for (let i=0; i<window._mwObjek.length; i++){
+            const o = window._mwObjek[i];
+            const g = window._mwGeoObjek(o, PW, PH);
+            ctx.save();
+            ctx.translate(g.cx, g.cy);
+            ctx.rotate(g.rot * Math.PI / 180);
+            if (o.flip) ctx.scale(-1, 1);
+            ctx.imageSmoothingEnabled = true;
+            ctx.drawImage(o.art, -g.dw/2, -g.dh/2, g.dw, g.dh);
+            if (o.flip) ctx.scale(-1, 1);   // kembalikan agar bingkai tak ikut terbalik
+            if (sorot === i){
+                ctx.strokeStyle = '#6a3fb0';
+                ctx.setLineDash([8,6]);
+                ctx.lineWidth = 2;
+                ctx.strokeRect(-g.dw/2, -g.dh/2, g.dw, g.dh);
+            }
+            ctx.restore();
+        }
+    };
+
+    window.mwRedrawPenata = function(){
+        const paper = document.getElementById('mw-paper');
+        const geo = window._mwGeoKertas();
+        const MAKS = 520;
+        let PW, PH;
+        if (geo.rasio >= 1){ PW = MAKS; PH = Math.round(MAKS / geo.rasio); }
+        else { PH = MAKS; PW = Math.round(MAKS * geo.rasio); }
+        window._mwPW = PW; window._mwPH = PH;
+        paper.width = PW; paper.height = PH;
+        paper.style.maxWidth = (geo.rasio >= 1 ? '100%' : (PW/PH*70)+'vh');
+        const ctx = paper.getContext('2d');
+        window._mwGambarKanvasKe(ctx, PW, PH, window._mwAktif);
+        ctx.strokeStyle = 'rgba(150,140,190,.5)';
+        ctx.setLineDash([]);
+        ctx.lineWidth = 1;
+        ctx.strokeRect(0.5, 0.5, PW-1, PH-1);
+    };
+
+    // Cari objek teratas yang menutupi titik (fx,fy relatif kertas). -1 jika kosong.
+    // Pemilihan presisi: klik tembus area transparan (pilih objek yang benar-benar ada garisnya).
+    window._mwPikselAda = function(o, g, lx, ly){
+        // lx,ly relatif pusat objek → koordinat piksel art
+        let ux = lx, uy = ly;
+        if (o.flip) ux = -ux;
+        const ax = Math.round((ux + g.dw/2) / g.dw * o.art.width);
+        const ay = Math.round((uy + g.dh/2) / g.dh * o.art.height);
+        if (ax < 0 || ay < 0 || ax >= o.art.width || ay >= o.art.height) return false;
+        try {
+            const px = o.art.getContext('2d').getImageData(ax, ay, 1, 1).data;
+            return px[3] > 20;   // ada piksel tak transparan
+        } catch(e){ return true; }
+    };
+    window._mwObjekDiTitik = function(fx, fy){
+        const X = fx * window._mwPW, Y = fy * window._mwPH;
+        let jatuhBox = -1;
+        for (let i=window._mwObjek.length-1; i>=0; i--){
+            const o = window._mwObjek[i];
+            if (o.tipe === 'coret') continue;   // lapisan coret tak dipilih via klik (biar tak menghalangi)
+            const g = window._mwGeoObjek(o, window._mwPW, window._mwPH);
+            const dx = X - g.cx, dy = Y - g.cy;
+            const a = -g.rot * Math.PI / 180;
+            const lx = dx*Math.cos(a) - dy*Math.sin(a);
+            const ly = dx*Math.sin(a) + dy*Math.cos(a);
+            if (Math.abs(lx) <= g.dw/2 && Math.abs(ly) <= g.dh/2){
+                if (window._mwPikselAda(o, g, lx, ly)) return i;   // presisi per-piksel
+                if (jatuhBox < 0) jatuhBox = i;                    // cadangan: kotak
+            }
+        }
+        return jatuhBox;
+    };
+
+    // Interaksi kertas: pilih + geser objek, atau hapus bila penghapus nyala.
+    window._mwPaperDrag = false;
+    window._mwPasangDragPaper = function(){
+        if (window._mwPaperDrag) return;
+        window._mwPaperDrag = true;
+        const paper = document.getElementById('mw-paper');
+        let seret = false, offx = 0, offy = 0, lastX = 0, lastY = 0;
+        const pos = function(e){
+            const r = paper.getBoundingClientRect();
+            const p = e.touches ? e.touches[0] : e;
+            return { x:(p.clientX - r.left)/r.width, y:(p.clientY - r.top)/r.height };
+        };
+        const mulai = function(e){
+            const p = pos(e);
+            if (window._mwPensilAktif){
+                window._mwSnapshot();     // simpan sebelum menggambar
+                seret = 'pensil';
+                lastX = p.x; lastY = p.y;
+                window._mwGarisPensil(p.x, p.y, p.x, p.y);   // titik awal
+                e.preventDefault(); return;
+            }
+            if (window._mwHapusAktif){
+                const i = window._mwObjekDiTitik(p.x, p.y);
+                if (i >= 0){ window._mwAktif = i; window._mwSyncKontrol(); }
+                window._mwSnapshot();     // simpan sebelum menghapus
+                seret = 'hapus';
+                window._mwHapusDiTitik(p.x, p.y);
+                e.preventDefault(); return;
+            }
+            const i = window._mwObjekDiTitik(p.x, p.y);
+            if (i >= 0){
+                window._mwAktif = i; window._mwSyncKontrol();
+                const o = window._mwObjAktif();
+                window._mwSnapshot();     // simpan sebelum menggeser
+                offx = p.x - o.px; offy = p.y - o.py;
+                seret = 'geser';
+                window.mwRedrawPenata();
+            }
+            e.preventDefault();
+        };
+        const move = function(e){
+            if (!seret) return;
+            const p = pos(e);
+            if (seret === 'pensil'){ window._mwGarisPensil(lastX, lastY, p.x, p.y); lastX = p.x; lastY = p.y; e.preventDefault(); return; }
+            if (seret === 'hapus'){ window._mwHapusDiTitik(p.x, p.y); e.preventDefault(); return; }
+            const o = window._mwObjAktif(); if (!o) return;
+            o.px = Math.min(1, Math.max(0, p.x - offx));
+            o.py = Math.min(1, Math.max(0, p.y - offy));
+            window.mwRedrawPenata();
+            e.preventDefault();
+        };
+        const stop = function(){ seret = false; };
+        paper.addEventListener('mousedown', mulai);
+        window.addEventListener('mousemove', move);
+        window.addEventListener('mouseup', stop);
+        paper.addEventListener('touchstart', mulai, {passive:false});
+        window.addEventListener('touchmove', move, {passive:false});
+        window.addEventListener('touchend', stop);
+    };
+
+    // Render kertas resolusi tinggi (untuk cetak & simpan): ~150 dpi.
+    window._mwRenderKertasHiRes = function(){
+        const geo = window._mwGeoKertas();
+        const skala = 150 / 25.4;
+        const PW = Math.round(geo.pw * skala), PH = Math.round(geo.ph * skala);
+        const cv = document.createElement('canvas');
+        cv.width = PW; cv.height = PH;
+        window._mwGambarKanvasKe(cv.getContext('2d'), PW, PH, -1);
+        return { canvas: cv, geo };
+    };
+
+    window.mwUnduhTata = function(){
+        try {
+            const r = window._mwRenderKertasHiRes();
+            const a = document.createElement('a');
+            a.download = 'mewarnai-aihana.png';
+            a.href = r.canvas.toDataURL('image/png');
+            a.click();
+            window.playSound && window.playSound('tap');
+        } catch(e){ alert('Maaf, gambar tidak bisa disimpan di perangkat ini.'); }
+    };
+
+    window.mwCetakTata = function(){
+        let r, dataUrl;
+        try { r = window._mwRenderKertasHiRes(); dataUrl = r.canvas.toDataURL('image/png'); }
+        catch(e){ alert('Maaf, gambar tidak bisa dicetak di perangkat ini.'); return; }
+        const judul = 'Mewarnai AiHana';
+        const kertas = document.getElementById('mw-kertas').value || 'A4';
+        const orient = document.getElementById('mw-orientasi').value || 'potret';
+        const dim = r.geo.pw + 'mm ' + r.geo.ph + 'mm';
+        const namaKertas = kertas + (orient==='lanskap' ? ' Lanskap' : '');
+        const w = window.open('', '_blank');
+        if (!w){ alert('Mohon izinkan pop-up untuk mencetak ya.'); return; }
+        w.document.write(
+            '<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><title>Mewarnai — ' + judul.replace(/</g,'') + '</title>'
+            + '<style>@page{size:' + dim + ';margin:0;}html,body{margin:0;padding:0;}'
+            + 'img{display:block;width:100%;height:100%;object-fit:contain;}'
+            + '</style></head><body>'
+            + '<img src="' + dataUrl + '">'
+            + '<scr'+'ipt>window.onload=function(){setTimeout(function(){window.print();},300);};</scr'+'ipt>'
+            + '</body></html>'
+        );
+        w.document.close();
     };
 
     // ==========================================

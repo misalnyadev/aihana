@@ -1,5 +1,5 @@
 /* Service Worker AiHana — bikin aplikasi bisa dibuka offline & di-"install" */
-const CACHE = 'aihana-v24';
+const CACHE = 'aihana-v25';
 const ASSETS = [
   './',
   './index.html',

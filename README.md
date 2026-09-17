@@ -31,14 +31,18 @@ database, atau instalasi apa pun. Cukup dibuka di browser, langsung jalan. ✨
 | 🦉 **Tanya Guru AI** | Anak bisa bertanya apa saja; AI menjawab dengan sabar, ramah, dan menyesuaikan tingkat kelas. |
 | 🤖 **AI Anti-Putus (Rotasi Otomatis)** | Bisa dipakai **langsung tanpa API Key** (memakai AI gratis bawaan). Kalau punya API Key gratis, AiHana **berpindah otomatis** antar provider saat kuota harian habis — jadi belajar bisa seharian tanpa terhenti. |
 | 📝 **Kuis Seru** | Soal pilihan ganda otomatis dari AI sesuai mata pelajaran & kelas, dengan animasi menyenangkan. |
-| 📊 **Rapor & Monitoring** | Nilai kuis tersimpan, bisa dicetak jadi rapor rapi lengkap dengan predikat. |
-| 📅 **Jadwal Belajar** | Atur jadwal pelajaran harian biar belajar lebih teratur. |
-| 📚 **Referensi Belajar** | Kumpulan situs & video edukasi aman untuk anak SD. |
+| 🎨 **Studio Karya** | Ketik nama benda/hewan → AI membuat **gambar/sketsa** yang bisa langsung **dicetak & diwarnai** anak, plus alat gambar bebas (pensil warna). Gratis, tanpa API Key. |
+| 📊 **Rapor & Monitoring** | Nilai kuis tersimpan, bisa dicetak jadi rapor rapi lengkap dengan predikat & tanda tangan. |
+| 🏫 **Jadwal Pelajaran (CRUD)** | Roster mata pelajaran sekolah yang bisa diatur guru sendiri (tambah/ubah/hapus), terpisah dari jadwal les. |
+| ⏰ **Jadwal Les** | Pengingat kegiatan les/kursus harian biar belajar lebih teratur. |
+| 🏆 **Peringkat & Kartu Nilai QR** | Papan peringkat kelas; nilai bisa dibagikan via **QR "Kartu Nilai"** dan dipindai guru. |
+| 📚 **Referensi Belajar** | Kumpulan situs & video edukasi aman untuk anak SD (bisa diatur guru). |
+| 💝 **Dukung** | Menu donasi (QRIS) untuk membantu Hana mengembangkan AiHana. Lihat bagian di bawah. |
 | 🔊 **Suara Maskot (TTS)** | Maskot bisa membaca teks dengan suara, ada pilihan preset suara yang mudah untuk anak. |
-| 🌙 **Mode Gelap** | Tampilan malam yang lembut (soft night-blue), nyaman di mata. |
+| 🌙 **Mode Gelap** | Tampilan malam yang lembut (soft night-blue), nyaman di mata — status bar PWA ikut menyatu. |
 | 🎨 **Tema Pastel & Animasi** | Desain lembut dengan animasi halus yang bikin betah belajar. |
 | 🏅 **Poin, Level & Lencana** | Kumpulkan poin dari kuis, naik level (Pemula → Master), buka 10 lencana seru. |
-| 📲 **Bisa Di-install (PWA)** | Klik "Pasang Aplikasi" → ikon AiHana muncul di layar HP, bisa dibuka offline. |
+| 📲 **Bisa Di-install (PWA)** | Klik "Pasang Aplikasi" → ikon AiHana muncul di layar HP, tampil layar-penuh & bisa dibuka offline. |
 | ✏️ **Atur Mapel & Referensi** | Guru/sekolah bisa menambah, mengubah, atau menghapus mapel & situs belajar sendiri. |
 
 > 💡 Data anak (nama, nilai) **hanya tersimpan di perangkat masing-masing**
@@ -131,12 +135,36 @@ aihana-deploy/
 ├── icon-512.png          ← ikon aplikasi (besar)
 ├── apple-touch.png       ← ikon untuk iPhone/iPad
 ├── vercel.json           ← pengaturan hosting untuk Vercel
+├── CHECKPOINT-STUDIO-FILM.md ← rencana fitur Studio Film Animasi (menunggu dukungan)
 └── README.md             ← file ini
 ```
 
 > ⚠️ **Penting:** agar fitur "Pasang Aplikasi" & offline berfungsi, semua file di
 > atas harus diunggah bersama (jangan hanya `index.html`). Fitur PWA hanya aktif
 > saat dibuka lewat **https://** (link online), bukan saat file dibuka langsung.
+
+---
+
+## 💝 Dukung Pengembangan AiHana
+
+AiHana dibuat dengan ❤️ oleh seorang siswi SD dan **gratis untuk semua**.
+Kalau aplikasi ini bermanfaat dan kamu ingin membantu Hana terus
+mengembangkannya, kamu bisa memberi **dukungan seikhlasnya** lewat menu
+**💝 Dukung** di dalam aplikasi (scan **QRIS** — bisa GoPay, DANA, OVO,
+ShopeePay, m-banking, dll). Nominal bebas, sekecil apa pun sangat berarti. 🙏
+
+**Dukunganmu dipakai untuk:**
+- 🎨 **AI Premium** — hasil gambar & sketsa makin realistis.
+- 🎬 **Studio Film Animasi** — supaya anak bisa berkreasi membuat film pendek
+  untuk pelajaran **SBdP & Prakarya** (rencana lengkap ada di
+  [`CHECKPOINT-STUDIO-FILM.md`](CHECKPOINT-STUDIO-FILM.md), dijalankan saat
+  dukungan mulai berdatangan).
+- 🚀 **Fitur baru** sesuai kebutuhan guru & sekolah.
+- 🖥️ **Biaya server & pengembangan** agar AiHana tetap gratis dipakai.
+
+> 🍎 **Untuk Bapak/Ibu Guru:** punya masukan atau ingin fitur khusus untuk kelas
+> & sekolah? Kami senang menambahkannya biar AiHana makin bermanfaat untuk
+> meningkatkan minat belajar yang menyenangkan. Sampaikan idenya ya! 🙏
 
 ---
 

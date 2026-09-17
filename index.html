@@ -829,6 +829,27 @@
         #mw-pensil-btn.on{background:#d9f2e3;color:#1f8a54;border-color:#9fd9ba;}
         body.dark #mw-pensil-btn.on{background:#204a37;color:#9df0c4;border-color:#3a7a5c;}
         #mw-paper.mw-pensil{cursor:crosshair;}
+        /* ===== Studio rapi di HP ===== */
+        .mw-penata-isi{box-sizing:border-box;}
+        .mw-kiri,.mw-kontrol{box-sizing:border-box;min-width:0;max-width:100%;}
+        .mw-tambah{box-sizing:border-box;max-width:100%;}
+        .mw-tambah input{min-width:0;}
+        .mw-rot-cepat button{min-width:0;}
+        @media(max-width:560px){
+            /* Panel & kanvas menumpuk penuh selebar layar, tak ada yang keluar body */
+            .mw-penata-isi{flex-direction:column;gap:14px;}
+            .mw-kiri,.mw-kontrol{flex:1 1 100%;width:100%;max-width:100%;min-width:0;}
+            /* Baris "Buat gambar": input + tombol tetap sebaris, tak melebar keluar */
+            .mw-tambah{flex-wrap:nowrap;}
+            .mw-tambah .aksi{width:auto!important;flex:0 0 auto;white-space:nowrap;padding:9px 12px;}
+            /* Tombol Cetak/Simpan PNG berdampingan, tak full-width bertumpuk */
+            .mw-aksi-utama .aksi{width:auto!important;flex:1 1 0;min-width:0;white-space:nowrap;}
+            /* Tombol grid tetap rapi & tak meluber */
+            .mw-rot-cepat{gap:6px;}
+            .mw-rot-cepat button{flex:1 1 40%;min-width:0;white-space:nowrap;}
+            .mw-mini{flex:1 1 40%;min-width:0;}
+            .mw-galeri{padding:8px;}
+        }
         body.dark .mw-form{background:linear-gradient(120deg,#26374a,#2f2a52);border-color:#4a4470;}
         body.dark .mw-ide span,body.dark .mw-loading p{color:#a9adde;}
         body.dark .mw-ide button{background:#2f3154;color:#d3bcff;}
@@ -1231,7 +1252,7 @@
         <button class="tab-btn" onclick="window.switchTab('jadwal')">⏰ Jadwal Les</button>
         <button class="tab-btn" onclick="window.switchTab('rapor')">📊 Rapor</button>
         <button class="tab-btn" onclick="window.switchTab('peringkat')">🏆 Peringkat</button>
-        <button class="tab-btn" onclick="window.switchTab('mewarnai')">🎨 Mewarnai</button>
+        <button class="tab-btn" onclick="window.switchTab('mewarnai')">🎨 Studio</button>
         <button class="tab-btn" onclick="window.switchTab('referensi')">📚 Referensi</button>
         <button class="tab-btn" onclick="window.switchTab('setelan')">⚙️ Setelan</button>
     </div>
@@ -1532,8 +1553,8 @@
     <!-- HALAMAN REFERENSI BELAJAR -->
     <!-- HALAMAN MEWARNAI (Generator Sketsa) -->
     <div id="konten-mewarnai" class="halaman">
-        <h3>🎨 Studio Mewarnai</h3>
-        <p class="helper-text">Buat gambar, tata seperti komik, lalu cetak &amp; warnai! ✏️ Klik gambar untuk memilih, geser untuk memindah.</p>
+        <h3>🎨 Studio Karya</h3>
+        <p class="helper-text">Buat sketsa, gambar sendiri, tata seperti komik, lalu cetak &amp; warnai! ✏️ Klik gambar untuk memilih, geser untuk memindah.</p>
 
         <div id="mw-loading" class="mw-loading" style="display:none;">
             <div class="mw-spinner">🖍️</div>
@@ -1556,8 +1577,8 @@
                 </div>
                 <!-- Tombol cetak & simpan DI BAWAH ASET -->
                 <div class="mw-aksi mw-aksi-utama">
-                    <button class="aksi" onclick="window.mwCetakTata()">🖨️ Cetak Sekarang</button>
-                    <button class="aksi secondary" onclick="window.mwUnduhTata()">⬇️ Simpan Hasil (PNG)</button>
+                    <button class="aksi" onclick="window.mwCetakTata()">🖨️ Cetak</button>
+                    <button class="aksi secondary" onclick="window.mwUnduhTata()">⬇️ Simpan PNG</button>
                 </div>
             </div>
 
@@ -2731,7 +2752,7 @@
     window.mwEksporAset = function(){
         if (!window._mwGaleri.length){ alert('Belum ada aset untuk diekspor. Buat gambar dulu ya. 😊'); return; }
         const data = {
-            aplikasi: 'AiHana Studio Mewarnai',
+            aplikasi: 'AiHana Studio Karya',
             versi: 1,
             tanggal: new Date().toISOString(),
             aset: window._mwGaleri.map(function(g){
@@ -3089,7 +3110,7 @@
         try {
             const r = window._mwRenderKertasHiRes();
             const a = document.createElement('a');
-            a.download = 'mewarnai-aihana.png';
+            a.download = 'studio-karya-aihana.png';
             a.href = r.canvas.toDataURL('image/png');
             a.click();
             window.playSound && window.playSound('tap');
@@ -3100,7 +3121,7 @@
         let r, dataUrl;
         try { r = window._mwRenderKertasHiRes(); dataUrl = r.canvas.toDataURL('image/png'); }
         catch(e){ alert('Maaf, gambar tidak bisa dicetak di perangkat ini.'); return; }
-        const judul = 'Mewarnai AiHana';
+        const judul = 'Studio Karya AiHana';
         const kertas = document.getElementById('mw-kertas').value || 'A4';
         const orient = document.getElementById('mw-orientasi').value || 'potret';
         const dim = r.geo.pw + 'mm ' + r.geo.ph + 'mm';
@@ -3108,7 +3129,7 @@
         const w = window.open('', '_blank');
         if (!w){ alert('Mohon izinkan pop-up untuk mencetak ya.'); return; }
         w.document.write(
-            '<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><title>Mewarnai — ' + judul.replace(/</g,'') + '</title>'
+            '<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><title>Studio Karya — ' + judul.replace(/</g,'') + '</title>'
             + '<style>@page{size:' + dim + ';margin:0;}html,body{margin:0;padding:0;}'
             + 'img{display:block;width:100%;height:100%;object-fit:contain;}'
             + '</style></head><body>'
@@ -5691,5 +5712,6 @@
     });
 </script>
 
-</body>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3c973ff6f4cf8dc',t:'MTc4OTY2MjE4Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

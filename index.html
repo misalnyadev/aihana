@@ -2914,7 +2914,8 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         "Muatan Lokal (Bahasa Sunda / Mulok)",
         "Test Kemampuan Akademik (TKA)",
         "Baca Tulis Qur'an (BTQ)",
-        "Coding & Informatika"
+        "Coding & Informatika",
+        "Komputer"
     ];
     // mapelList aktif sekarang disimpan di dalam state agar bisa diubah & tersimpan.
     // (lihat window.state.mapelList di bawah)
@@ -2924,7 +2925,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         "Agama":"🕌","Pancasila":"🇮🇩","PPKn":"🇮🇩","Indonesia":"📖",
         "Matematika":"🔢","IPAS":"🔬","Alam":"🔬","PJOK":"⚽",
         "Jasmani":"⚽","Seni":"🎨","SBdP":"🎨","Inggris":"🔤","Sunda":"🏞️","Mulok":"🏞️",
-        "TKA":"🧠","Akademik":"🧠","BTQ":"📗","Qur'an":"📗","Coding":"💻","Informatika":"💻"
+        "TKA":"🧠","Akademik":"🧠","BTQ":"📗","Qur'an":"📗","Coding":"&lt;/&gt;","Informatika":"💻","Komputer":"💻"
     };
     window.getIkonMapel = function(nama){
         for(const k in window.mapelIkon){ if(nama.includes(k)) return window.mapelIkon[k]; }
@@ -3038,6 +3039,11 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
                 window.state.notifMalam = !!parsed.notifMalam;
                 window.state.prList = Array.isArray(parsed.prList) ? parsed.prList : [];
                 if (Array.isArray(parsed.mapelList) && parsed.mapelList.length) window.state.mapelList = parsed.mapelList;
+                // Migrasi: pastikan "Komputer" ada di daftar mapel (agar muncul di dropdown Jadwal Les)
+                if (Array.isArray(window.state.mapelList) &&
+                    !window.state.mapelList.some(function(m){ return String(m).toLowerCase() === 'komputer'; })) {
+                    window.state.mapelList.push('Komputer');
+                }
                 if (Array.isArray(parsed.referensiList) && parsed.referensiList.length) window.state.referensiList = parsed.referensiList;
                 window.state.profil = { nama: "", kelas: "", nis: "", foto: "", sekolah: "SD Negeri Sindang Barang 3", wali: "", ...(parsed.profil || {}) };
                 window.state.aktivitas = Array.isArray(parsed.aktivitas) ? parsed.aktivitas : [];
@@ -7723,6 +7729,6 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
     });
 </script>
 
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3d12c8b398da077',t:'MTc4OTc0MzE0MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3d14f2888112fbd',t:'MTc4OTc0NDU1OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
+</body>
 </html>

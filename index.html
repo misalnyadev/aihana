@@ -751,6 +751,157 @@
         @media (max-width:560px){
             .dukung-aksi .aksi{flex:1 1 100%;min-width:0;}
         }
+        /* ---------- Lab Koding ---------- */
+        .kd-belajar{display:flex;flex-direction:column;gap:9px;margin-bottom:18px;}
+        .kd-materi{
+            background:var(--card);border:2px solid rgba(180,150,230,.22);
+            border-radius:15px;overflow:hidden;box-shadow:var(--shadow);
+        }
+        .kd-materi>summary{
+            list-style:none;cursor:pointer;padding:13px 15px;
+            font-family:var(--font-head);font-weight:700;font-size:14.5px;color:#7a5fd0;
+            display:flex;align-items:center;gap:10px;user-select:none;
+            transition:background .18s;
+        }
+        .kd-materi>summary::-webkit-details-marker{display:none;}
+        .kd-materi>summary::after{content:"▾";margin-left:auto;font-size:16px;color:var(--ink-soft);transition:transform .25s;}
+        .kd-materi[open]>summary::after{transform:rotate(180deg);}
+        .kd-materi>summary:hover{background:var(--grape-soft);}
+        .kd-m-emo{font-size:20px;flex:none;}
+        .kd-m-isi{padding:2px 16px 16px;font-size:13.5px;line-height:1.65;color:var(--ink);}
+        .kd-m-isi p{margin:8px 0;}
+        .kd-m-isi ul{margin:8px 0;padding-left:20px;display:flex;flex-direction:column;gap:5px;}
+        .kd-m-isi li{line-height:1.5;}
+        .kd-m-kotak{
+            background:var(--sky-soft);border-radius:12px;padding:11px 14px;margin:10px 0 2px;
+            font-size:13px;
+        }
+        .kd-m-kotak small{display:block;margin-top:6px;color:var(--ink-soft);font-weight:600;}
+        .kd-materi-bijak>summary{color:#c05e8a;}
+        .kd-materi-bakat>summary{color:#2f8f6f;}
+        .kd-m-dua{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0;}
+        .kd-m-plus,.kd-m-minus{border-radius:12px;padding:10px 12px;font-size:12.5px;}
+        .kd-m-plus{background:var(--mint-soft);}
+        .kd-m-minus{background:var(--peach-soft);}
+        .kd-m-plus ul,.kd-m-minus ul{padding-left:16px;gap:3px;margin:6px 0 0;}
+        .kd-m-janji{background:linear-gradient(120deg,var(--butter-soft),var(--rose-soft));}
+        @media (max-width:560px){
+            .kd-m-dua{grid-template-columns:1fr;}
+        }
+        .kd-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px;}
+        .kd-label{font-weight:700;color:var(--ink-soft);font-size:13px;font-family:var(--font-head);}
+        .kd-select{
+            border:2px solid rgba(180,150,230,.35);border-radius:12px;
+            padding:8px 12px;font-size:13px;font-weight:600;background:var(--card);
+            color:var(--ink);cursor:pointer;max-width:100%;font-family:var(--font-body);
+        }
+        .kd-wrap{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch;}
+        .kd-editor-kol,.kd-hasil-kol{display:flex;flex-direction:column;min-width:0;}
+        .kd-kol-judul{
+            display:flex;justify-content:space-between;align-items:center;
+            font-family:var(--font-head);font-weight:700;font-size:13.5px;color:#7a5fd0;
+            padding:0 4px 7px;
+        }
+        .kd-mini-aksi{display:flex;gap:8px;align-items:center;}
+        .kd-mini{
+            border:none;cursor:pointer;background:var(--sky-soft);color:#2f6f92;
+            font-family:var(--font-head);font-weight:700;font-size:11.5px;
+            padding:4px 10px;border-radius:999px;transition:transform .15s,background .15s;
+        }
+        .kd-mini:hover{transform:translateY(-2px);background:var(--butter-soft);}
+        .kd-mini:active{transform:scale(.95);}
+        .kd-auto{font-size:12px;font-weight:600;color:var(--ink-soft);display:flex;align-items:center;gap:5px;cursor:pointer;}
+        .kd-auto input{width:15px;height:15px;accent-color:#7a5fd0;cursor:pointer;}
+        .kd-kode{
+            width:100%;box-sizing:border-box;min-height:280px;resize:vertical;
+            border:2px solid rgba(180,150,230,.35);border-radius:16px;
+            padding:14px;font-family:'Courier New',ui-monospace,monospace;
+            font-size:13.5px;line-height:1.55;background:#fbfaff;color:#2d2a44;
+            box-shadow:var(--shadow);tab-size:2;
+        }
+        body.dark .kd-kode{background:#20223d;color:#e6e8ff;border-color:#413c66;}
+        .kd-kode:focus{outline:none;border-color:#a98cf0;box-shadow:0 0 0 3px rgba(169,140,240,.25);}
+        .kd-preview{
+            width:100%;box-sizing:border-box;min-height:280px;flex:1;
+            border:2px solid rgba(180,150,230,.35);border-radius:16px;
+            background:#fff;box-shadow:var(--shadow);
+        }
+        .kd-aksi{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:16px 0 6px;}
+        .kd-aksi .aksi{width:auto;min-width:150px;}
+        .kd-tips{font-size:12.5px;color:var(--ink-soft);font-weight:600;text-align:center;margin:10px 0 0;line-height:1.55;}
+        .kd-tantangan{
+            margin-top:22px;background:linear-gradient(120deg,var(--grape-soft),var(--sky-soft));
+            border:2px dashed var(--grape);border-radius:20px;padding:16px 18px;
+        }
+        .kd-tan-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+        .kd-tan-judul{font-family:var(--font-head);font-weight:800;font-size:17px;margin:0;color:#7a5fd0;}
+        .kd-tan-skor{font-size:12px;font-weight:700;color:#fff;background:#a98cf0;padding:4px 12px;border-radius:999px;}
+        .kd-tan-sub{font-size:12.5px;color:var(--ink-soft);font-weight:600;margin:6px 0 14px;line-height:1.55;}
+        .kd-tan-list{display:flex;flex-direction:column;gap:10px;}
+        .kd-tan-item{
+            display:flex;align-items:center;gap:12px;background:var(--card);
+            border:2px solid rgba(180,150,230,.22);border-radius:14px;padding:12px 14px;
+            cursor:pointer;transition:transform .15s,box-shadow .15s;
+        }
+        .kd-tan-item:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+        .kd-tan-item:active{transform:scale(.99);}
+        .kd-tan-emo{font-size:26px;flex:none;}
+        .kd-tan-teks{flex:1;min-width:0;}
+        .kd-tan-nm{font-family:var(--font-head);font-weight:700;font-size:14px;color:var(--ink);margin:0;}
+        .kd-tan-desc{font-size:12px;color:var(--ink-soft);margin:2px 0 0;line-height:1.4;}
+        .kd-tan-status{flex:none;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(150,150,180,.18);color:var(--ink-soft);}
+        .kd-tan-item.selesai .kd-tan-status{background:#7bd88f;color:#0f4d23;}
+        .kd-tan-item.selesai{border-color:#7bd88f;}
+        .kd-tan-cek{
+            display:block;margin-top:10px;border:none;cursor:pointer;width:100%;
+            background:linear-gradient(135deg,#7bd88f,#4fb96a);color:#fff;
+            font-family:var(--font-head);font-weight:700;font-size:14px;
+            padding:11px;border-radius:12px;transition:transform .15s,filter .15s;
+        }
+        .kd-tan-cek:hover{transform:translateY(-2px);filter:brightness(1.05);}
+        .kd-tan-cek:active{transform:scale(.98);}
+        .kd-tan-aktif{
+            margin-top:12px;background:var(--card);border:2px solid #a98cf0;
+            border-radius:14px;padding:12px 14px;
+        }
+        .kd-tan-aktif-judul{font-family:var(--font-head);font-weight:700;font-size:13.5px;color:#7a5fd0;margin:0 0 4px;}
+        .kd-tan-aktif-perintah{font-size:12.5px;color:var(--ink);margin:0;line-height:1.5;}
+        .kd-tan-pesan{font-size:12.5px;font-weight:700;margin:8px 0 0;text-align:center;min-height:18px;}
+        /* ---------- Kuis Bijak Berteknologi ---------- */
+        .kd-kuis{
+            margin-top:18px;background:linear-gradient(120deg,var(--butter-soft),var(--rose-soft));
+            border:2px dashed #e6a3c5;border-radius:20px;padding:16px 18px;
+        }
+        .kd-kuis-soal{
+            background:var(--card);border:2px solid rgba(180,150,230,.22);
+            border-radius:14px;padding:14px;margin-bottom:12px;
+        }
+        .kd-kuis-tanya{font-family:var(--font-head);font-weight:700;font-size:14px;color:var(--ink);margin:0 0 10px;line-height:1.5;}
+        .kd-kuis-tanya .no{color:#c05e8a;margin-right:4px;}
+        .kd-kuis-opsi{display:flex;flex-direction:column;gap:8px;}
+        .kd-kuis-opsi button{
+            text-align:left;border:2px solid rgba(180,150,230,.3);background:var(--card);
+            color:var(--ink);font-family:var(--font-body);font-size:13.5px;font-weight:600;
+            padding:10px 13px;border-radius:12px;cursor:pointer;transition:transform .12s,background .15s,border-color .15s;
+            line-height:1.4;
+        }
+        .kd-kuis-opsi button:hover{transform:translateY(-2px);border-color:#a98cf0;background:var(--grape-soft);}
+        .kd-kuis-opsi button:disabled{cursor:default;opacity:1;}
+        .kd-kuis-opsi button.benar{background:#7bd88f;border-color:#4fb96a;color:#0f4d23;}
+        .kd-kuis-opsi button.salah{background:#f4a6b8;border-color:#e0679a;color:#6d1029;}
+        .kd-kuis-jelas{font-size:12.5px;margin:9px 0 0;padding:8px 11px;border-radius:10px;background:var(--sky-soft);color:var(--ink);line-height:1.5;display:none;}
+        .kd-kuis-jelas.tampil{display:block;}
+        .kd-kuis-hasil{
+            text-align:center;background:var(--card);border-radius:14px;padding:18px;
+            border:2px solid #a98cf0;
+        }
+        .kd-kuis-hasil .angka{font-family:var(--font-head);font-weight:800;font-size:30px;color:#7a5fd0;}
+        .kd-kuis-hasil .pesan{font-weight:700;margin:6px 0 12px;color:var(--ink);}
+        @media (max-width:720px){
+            .kd-wrap{grid-template-columns:1fr;}
+            .kd-kode,.kd-preview{min-height:220px;}
+            .kd-aksi .aksi{flex:1 1 100%;min-width:0;}
+        }
         /* ---------- Studio Mewarnai ---------- */
         .mw-form{background:linear-gradient(120deg,var(--sky-soft),var(--grape-soft));border:2px dashed var(--grape);
             border-radius:20px;padding:18px;margin-bottom:18px;}
@@ -1376,6 +1527,7 @@
         <button class="tab-btn" onclick="window.switchTab('rapor')">📊 Rapor</button>
         <button class="tab-btn" onclick="window.switchTab('peringkat')">🏆 Peringkat</button>
         <button class="tab-btn" onclick="window.switchTab('mewarnai')">🎨 Studio</button>
+        <button class="tab-btn" onclick="window.switchTab('koding')">💻 Koding</button>
         <button class="tab-btn" onclick="window.switchTab('referensi')">📚 Referensi</button>
         <button class="tab-btn" onclick="window.switchTab('dukung')">💝 Dukung</button>
         <button class="tab-btn" onclick="window.switchTab('setelan')">⚙️ Setelan</button>
@@ -1846,6 +1998,272 @@
         </div>
     </div>
 
+    <!-- HALAMAN KODING / PLAYGROUND -->
+    <div id="konten-koding" class="halaman">
+        <h3>💻 Lab Koding</h3>
+        <p class="helper-text" style="margin:-4px 0 16px;">Ketik kode di sebelah kiri, lalu tekan <b>▶️ Jalankan</b> untuk melihat hasilnya! Belajar HTML, CSS, & JavaScript sambil bermain 🌈</p>
+
+        <!-- MATERI: PENGETAHUAN DASAR KODING -->
+        <div class="kd-belajar">
+            <details class="kd-materi">
+                <summary><span class="kd-m-emo">🤔</span> Apa itu Koding? (Baca dulu, yuk!)</summary>
+                <div class="kd-m-isi">
+                    <p><b>Koding</b> (coding) artinya <b>menulis perintah</b> supaya komputer, HP, atau website melakukan sesuatu. Perintah itu ditulis dengan <b>bahasa pemrograman</b> — seperti kita menulis resep masakan, tapi untuk komputer. 👩‍🍳➡️💻</p>
+                    <p>Contohnya halaman yang kamu buat di Lab ini: kamu menulis <b>HTML</b>, lalu komputer membacanya dan menampilkannya jadi tulisan, gambar, atau tombol. ✨</p>
+                    <div class="kd-m-kotak">
+                        <b>3 bahasa yang kamu pelajari di sini:</b>
+                        <ul>
+                            <li>🧱 <b>HTML</b> — kerangka/isi halaman (judul, teks, gambar).</li>
+                            <li>🎨 <b>CSS</b> — menghias halaman (warna, ukuran, bentuk).</li>
+                            <li>⚡ <b>JavaScript</b> — membuat halaman jadi pintar & bisa bergerak (tombol yang bekerja).</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+
+            <details class="kd-materi">
+                <summary><span class="kd-m-emo">🎯</span> Untuk Apa & Apa Manfaatnya?</summary>
+                <div class="kd-m-isi">
+                    <p><b>Tujuan belajar koding</b> bukan cuma jadi ahli komputer, tapi melatih cara <b>berpikir</b>:</p>
+                    <ul>
+                        <li>🧩 <b>Memecahkan masalah</b> — memilah masalah besar jadi langkah kecil.</li>
+                        <li>🔍 <b>Teliti & sabar</b> — satu huruf salah bisa bikin beda, jadi belajar cermat.</li>
+                        <li>💡 <b>Kreatif</b> — mewujudkan ide jadi game, cerita, atau aplikasi.</li>
+                        <li>🔁 <b>Pantang menyerah</b> — kalau error, dicoba lagi sampai berhasil!</li>
+                    </ul>
+                    <p><b>Manfaatnya</b>: kamu bisa membuat karya sendiri — website, permainan, animasi, bahkan aplikasi yang membantu orang lain. Banyak pekerjaan masa depan butuh keterampilan ini. 🚀</p>
+                </div>
+            </details>
+
+            <details class="kd-materi">
+                <summary><span class="kd-m-emo">🌱</span> Cara Mengembangkan Kemampuan Koding</summary>
+                <div class="kd-m-isi">
+                    <ul>
+                        <li>1️⃣ <b>Mulai dari kecil</b> — coba contoh di Lab ini, ubah sedikit-sedikit, lihat apa yang terjadi.</li>
+                        <li>2️⃣ <b>Berani bereksperimen</b> — ganti warna, angka, atau kata. Salah itu wajar & bagian dari belajar!</li>
+                        <li>3️⃣ <b>Selesaikan tantangan</b> di bawah untuk melatih diri. 🎯</li>
+                        <li>4️⃣ <b>Bertanya</b> — kalau bingung, tekan 🦉 <b>Tanya Guru AI</b>.</li>
+                        <li>5️⃣ <b>Rutin berlatih</b> — sedikit tiap hari lebih baik daripada sekali banyak.</li>
+                        <li>6️⃣ <b>Buat proyek sendiri</b> — misalnya kartu ucapan, profil hewan kesukaan, atau daftar cita-cita.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="kd-materi">
+                <summary><span class="kd-m-emo">📜</span> Sejarah Singkat: Dari Mana Koding Berasal?</summary>
+                <div class="kd-m-isi">
+                    <p>Koding ternyata sudah ada sejak <b>lama sekali</b>, jauh sebelum ada HP & internet!</p>
+                    <ul>
+                        <li>👩‍🔬 <b>Tahun 1843</b> — <b>Ada Lovelace</b> menulis "program" pertama di dunia untuk sebuah mesin hitung. Ia dijuluki <b>programmer pertama</b> — dan seorang perempuan! 💜</li>
+                        <li>🖥️ <b>Tahun 1940–1950-an</b> — komputer pertama sebesar ruangan. Perintahnya masih rumit sekali (angka 0 dan 1).</li>
+                        <li>⌨️ <b>Tahun 1950–1970-an</b> — muncul bahasa yang lebih mudah dibaca manusia (seperti Fortran, C).</li>
+                        <li>🌐 <b>Tahun 1990-an</b> — internet & website lahir; muncul HTML & JavaScript (yang kamu pakai sekarang!).</li>
+                        <li>📱 <b>Tahun 2000-an sampai kini</b> — koding ada di mana-mana: HP, game, mobil, robot, sampai <b>kecerdasan buatan (AI)</b>. 🚀</li>
+                    </ul>
+                    <div class="kd-m-kotak"><small>Artinya: ilmu yang kamu pelajari ini punya sejarah panjang dan terus berkembang sampai masa depan!</small></div>
+                </div>
+            </details>
+
+            <details class="kd-materi">
+                <summary><span class="kd-m-emo">🗂️</span> Jenis Bahasa Pemrograman & Kegunaannya</summary>
+                <div class="kd-m-isi">
+                    <p>Sama seperti ada banyak bahasa manusia (Indonesia, Inggris, Sunda), ada juga banyak <b>bahasa pemrograman</b> — tiap bahasa punya <b>kegunaan berbeda</b>:</p>
+                    <ul>
+                        <li>🌐 <b>HTML, CSS, JavaScript</b> → membuat <b>website</b> (seperti AiHana ini).</li>
+                        <li>🐍 <b>Python</b> → mudah dipelajari; dipakai untuk <b>AI</b>, sains, & analisa data.</li>
+                        <li>📱 <b>Kotlin / Swift</b> → membuat aplikasi <b>HP</b> (Android / iPhone).</li>
+                        <li>🎮 <b>C# / C++</b> → membuat <b>game</b> & program yang butuh kecepatan tinggi.</li>
+                        <li>☕ <b>Java</b> → aplikasi besar untuk kantor, bank, & Android.</li>
+                        <li>🗄️ <b>SQL</b> → mengatur <b>database</b> (tempat menyimpan data rapi).</li>
+                    </ul>
+                    <div class="kd-m-kotak">
+                        <b>⭐ Yang populer saat ini (2026):</b>
+                        <p style="margin:6px 0 0;">Python 🐍, JavaScript 🌐, Java ☕, C++, C#, Go, Rust, dan Swift/Kotlin untuk HP. <b>Python & JavaScript</b> paling ramah untuk pemula.</p>
+                    </div>
+                </div>
+            </details>
+
+            <details class="kd-materi">
+                <summary><span class="kd-m-emo">🏗️</span> Frontend, Backend, & Fullstack</summary>
+                <div class="kd-m-isi">
+                    <p>Membuat aplikasi itu seperti membangun & menjalankan sebuah <b>restoran</b> 🍽️:</p>
+                    <ul>
+                        <li>🎨 <b>Frontend</b> = <b>bagian yang dilihat pengguna</b> — meja, kursi, menu, tampilan cantik. Contoh: tombol, warna, teks di layar. (HTML, CSS, JavaScript)</li>
+                        <li>⚙️ <b>Backend</b> = <b>dapur di belakang</b> — memasak, menyimpan bahan, mengatur pesanan. Contoh: menyimpan data, mengecek password. (Python, Java, dll + database)</li>
+                        <li>🧑‍🍳 <b>Fullstack</b> = orang yang bisa <b>keduanya</b> — dari dapur sampai ruang makan. Hebat, kan?</li>
+                    </ul>
+                    <div class="kd-m-kotak"><small>Di Lab ini kamu sedang belajar <b>frontend</b> — bagian yang bisa langsung kamu lihat hasilnya! 👀</small></div>
+                </div>
+            </details>
+
+            <details class="kd-materi">
+                <summary><span class="kd-m-emo">🤖</span> Bagaimana AI (Kecerdasan Buatan) Dibuat?</summary>
+                <div class="kd-m-isi">
+                    <p><b>AI</b> adalah program komputer yang bisa "belajar" dan membantu, seperti Guru AI di AiHana. 🦉 Bagaimana dibuatnya?</p>
+                    <ul>
+                        <li>📚 <b>1. Diberi banyak contoh</b> — AI "dilatih" dengan jutaan tulisan, gambar, atau suara. Seperti anak belajar dari banyak buku.</li>
+                        <li>🧠 <b>2. Belajar pola</b> — AI mencari pola dari contoh itu (mana yang benar, mana yang mirip).</li>
+                        <li>💬 <b>3. Diminta membantu</b> — saat kita bertanya, AI menebak jawaban terbaik dari yang sudah ia pelajari.</li>
+                    </ul>
+                    <p>Membuat AI biasanya memakai bahasa <b>Python</b> 🐍 dan matematika. Ini bidang yang sedang <b>sangat berkembang</b> dan banyak dibutuhkan di masa depan!</p>
+                    <div class="kd-m-kotak"><small>Ingat ya: AI itu <b>alat bantu</b>, bukan pengganti usaha & kejujuran kita. Tetap berpikir sendiri dulu! 💡</small></div>
+                </div>
+            </details>
+
+            <details class="kd-materi kd-materi-bakat">
+                <summary><span class="kd-m-emo">💼</span> Koding sebagai Bakat & Pilihan Masa Depan</summary>
+                <div class="kd-m-isi">
+                    <p>Kalau kamu suka koding, ini bisa jadi <b>bakat & cita-cita</b> yang keren! Belajar koding bukan cuma "ngetik", tapi bisa mengantarmu jadi:</p>
+                    <ul>
+                        <li>🌐 <b>Web Developer</b> — pembuat website.</li>
+                        <li>📱 <b>App Developer</b> — pembuat aplikasi HP.</li>
+                        <li>🎮 <b>Game Developer</b> — pembuat game.</li>
+                        <li>🤖 <b>AI Engineer / Data Scientist</b> — pembuat & pelatih kecerdasan buatan.</li>
+                        <li>🛡️ <b>Ahli Keamanan Siber</b> — penjaga data dari penjahat online.</li>
+                        <li>🚀 <b>Pembuat startup</b> — menciptakan aplikasi yang membantu banyak orang.</li>
+                    </ul>
+                    <p>Tapi ingat: <b>setiap anak punya bakat berbeda</b> — ada yang suka menggambar, olahraga, menyanyi, atau menulis. Koding hanyalah <b>salah satu pilihan</b>. Yang penting kamu <b>mencoba, menemukan yang kamu suka, dan menekuninya</b>. 🌈</p>
+                    <div class="kd-m-kotak kd-m-janji"><b>✨ Kalau kamu tertarik, teruslah berlatih ya! Siapa tahu kelak kamu menciptakan aplikasi hebat untuk Indonesia. 🇮🇩</b></div>
+                </div>
+            </details>
+
+            <details class="kd-materi">
+                <summary><span class="kd-m-emo">📴</span> Aplikasi Offline vs. Online</summary>
+                <div class="kd-m-isi">
+                    <p><b>Aplikasi OFFLINE</b> 📴 = bisa dipakai <b>tanpa internet</b>, karena semua filenya sudah ada di perangkat.</p>
+                    <ul>
+                        <li>Contoh: file <b>.html</b> yang kamu simpan lalu dibuka di HP/laptop — tetap jalan walau tidak ada sinyal.</li>
+                        <li>AiHana pun bisa dipakai offline setelah dipasang (PWA), karena filenya tersimpan di HP-mu. 🦉</li>
+                    </ul>
+                    <p><b>Aplikasi ONLINE</b> 🌐 = perlu <b>internet</b> karena filenya disimpan di <b>server</b> (komputer khusus yang selalu menyala), lalu bisa dibuka lewat <b>alamat website</b> (URL).</p>
+                    <div class="kd-m-kotak">
+                        <b>Bagaimana caranya agar bisa dilihat semua orang di internet?</b>
+                        <ul>
+                            <li>📤 File aplikasi di-<b>unggah (upload)</b> ke layanan <b>hosting</b> (contoh gratis: Vercel, GitHub Pages, Netlify).</li>
+                            <li>🔗 Hosting memberi <b>link/alamat</b> — misalnya <b>aihana.vercel.app</b>.</li>
+                            <li>🌍 Siapa pun yang punya link itu & terhubung internet bisa membukanya, dari mana saja!</li>
+                        </ul>
+                        <small>Itulah kenapa AiHana bisa kamu bagikan ke teman lewat satu link. 💛</small>
+                    </div>
+                </div>
+            </details>
+
+            <details class="kd-materi kd-materi-bijak">
+                <summary><span class="kd-m-emo">⚖️</span> Bijak Berteknologi: Dampak Positif & Negatif</summary>
+                <div class="kd-m-isi">
+                    <p>Teknologi itu seperti <b>pisau</b> 🔪 — bisa bermanfaat (memotong buah) atau berbahaya kalau salah pakai. Maka kita harus <b>bijak</b>.</p>
+                    <div class="kd-m-dua">
+                        <div class="kd-m-plus">
+                            <b>✅ Dampak Positif</b>
+                            <ul>
+                                <li>Belajar hal baru jadi mudah & seru</li>
+                                <li>Membuat karya yang membantu orang lain</li>
+                                <li>Terhubung & berbagi ilmu dengan teman</li>
+                                <li>Menyelesaikan pekerjaan lebih cepat</li>
+                            </ul>
+                        </div>
+                        <div class="kd-m-minus">
+                            <b>⚠️ Dampak Negatif</b>
+                            <ul>
+                                <li>Kecanduan main gadget → lupa waktu & belajar</li>
+                                <li>Mata lelah, kurang gerak & tidur</li>
+                                <li>Konten tidak baik / berita bohong (hoaks)</li>
+                                <li>Menyakiti orang (kata kasar/perundungan online)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="kd-m-kotak kd-m-janji">
+                        <b>🌟 Janji Anak Bijak Berteknologi:</b>
+                        <ul>
+                            <li>⏰ Atur waktu — ada saatnya belajar, bermain, & istirahat.</li>
+                            <li>🤝 Berkata baik & sopan, tidak menyakiti siapa pun.</li>
+                            <li>🔒 Jaga rahasia — tidak sembarangan memberi data pribadi (nama lengkap, alamat, nomor HP).</li>
+                            <li>👨‍👩‍👧 Minta izin & tanya orang tua/guru bila ragu.</li>
+                            <li>💡 Pakai teknologi untuk hal <b>positif</b> — belajar, berkarya, & membantu.</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="kd-bar">
+            <label class="kd-label">Contoh:</label>
+            <select id="kd-contoh" class="kd-select" onchange="window.kdMuatContoh(this.value)">
+                <option value="">— Pilih contoh —</option>
+                <optgroup label="🟢 HTML Dasar">
+                    <option value="halo">👋 Halo Dunia</option>
+                    <option value="daftar">📝 Membuat Daftar</option>
+                    <option value="gambar">🖼️ Menampilkan Gambar</option>
+                    <option value="tautan">🔗 Membuat Tautan</option>
+                    <option value="tabel">📊 Membuat Tabel</option>
+                </optgroup>
+                <optgroup label="🎨 CSS (Menghias)">
+                    <option value="warna">🎨 Judul Berwarna</option>
+                    <option value="kucing">🐱 Kartu Hewan</option>
+                    <option value="kotak">🟦 Kotak Warna-warni</option>
+                    <option value="tombolcss">✨ Tombol Cantik</option>
+                </optgroup>
+                <optgroup label="⚡ JavaScript (Pintar)">
+                    <option value="tombol">🔘 Tombol Ajaib</option>
+                    <option value="hitung">🔢 Kalkulator Mini</option>
+                    <option value="warnaacak">🌈 Ganti Warna Acak</option>
+                </optgroup>
+            </select>
+            <select id="kd-bahasa" class="kd-select" onchange="window.kdGantiBahasa()">
+                <option value="html">HTML</option>
+                <option value="css">HTML + CSS</option>
+                <option value="js">HTML + JavaScript</option>
+            </select>
+        </div>
+
+        <div class="kd-wrap">
+            <div class="kd-editor-kol">
+                <div class="kd-kol-judul"><span>✏️ Kode Kamu</span>
+                    <span class="kd-mini-aksi">
+                        <button class="kd-mini" onclick="window.kdBersih()" title="Kosongkan kode">🧹 Bersih</button>
+                    </span>
+                </div>
+                <textarea id="kd-kode" class="kd-kode" spellcheck="false" oninput="window.kdAutoJalan()" placeholder="Tulis kode HTML di sini..."></textarea>
+            </div>
+            <div class="kd-hasil-kol">
+                <div class="kd-kol-judul"><span>👀 Hasil</span>
+                    <span class="kd-mini-aksi">
+                        <label class="kd-auto"><input type="checkbox" id="kd-auto" checked onchange="window.kdAutoJalan()"> Otomatis</label>
+                    </span>
+                </div>
+                <iframe id="kd-preview" class="kd-preview" title="Hasil kode" sandbox="allow-scripts"></iframe>
+            </div>
+        </div>
+
+        <div class="kd-aksi">
+            <button class="aksi" onclick="window.kdJalankan()">▶️ Jalankan</button>
+            <button class="aksi secondary" onclick="window.kdTanyaGuru()">🦉 Tanya Guru AI</button>
+            <button class="aksi secondary" onclick="window.kdUnduh()">💾 Simpan .html</button>
+        </div>
+        <p class="kd-tips">💡 <b>Tips:</b> kodemu tersimpan otomatis di perangkat ini. Kalau kodemu error atau bingung, tekan <b>🦉 Tanya Guru AI</b> — Guru AI akan membantu memperbaikinya! 🚀</p>
+
+        <!-- TANTANGAN KODING -->
+        <section class="kd-tantangan">
+            <div class="kd-tan-head">
+                <p class="kd-tan-judul">🎯 Tantangan Koding</p>
+                <span class="kd-tan-skor" id="kd-tan-skor">0 / 0 selesai</span>
+            </div>
+            <p class="kd-tan-sub">Selesaikan tantangan untuk dapat <b>+30 poin</b> & buka lencana koding! Klik tantangan untuk memuat kodenya, lalu perbaiki sesuai perintah. 💪</p>
+            <div id="kd-tan-list" class="kd-tan-list"></div>
+        </section>
+
+        <!-- KUIS BIJAK BERTEKNOLOGI -->
+        <section class="kd-kuis">
+            <div class="kd-tan-head">
+                <p class="kd-tan-judul">⚖️ Kuis Bijak Berteknologi</p>
+                <span class="kd-tan-skor" id="kd-kuis-badge">Belum dikerjakan</span>
+            </div>
+            <p class="kd-tan-sub">Uji pemahamanmu jadi anak yang bijak berteknologi! Jawab semua pertanyaan dengan benar untuk dapat <b>+50 poin</b> & lencana 🌟. Baca dulu materi <b>⚖️ Bijak Berteknologi</b> di atas ya!</p>
+            <div id="kd-kuis-area"></div>
+            <button class="aksi" id="kd-kuis-mulai" onclick="window.kdKuisMulai()" style="width:100%;">▶️ Mulai Kuis</button>
+        </section>
+    </div>
+
     <div id="konten-referensi" class="halaman">
         <h3>📚 Referensi Belajar Seru</h3>
         <p class="helper-text">Tempat belajar tambahan yang aman & menyenangkan untuk anak SD! 🌈</p>
@@ -2180,6 +2598,9 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         referensiList: [],   // daftar referensi aktif (diisi dari default saat init)
         profil: { nama: "", kelas: "", nis: "", foto: "", sekolah: "SD Negeri Sindang Barang 3", wali: "" },
         aktivitas: [],   // daftar tanggal (YYYY-MM-DD) anak membuka aplikasi — untuk keaktifan
+        kodingKode: "",          // kode terakhir di Lab Koding (auto-save)
+        kodingTantangan: [],     // id tantangan koding yang sudah diselesaikan
+        kuisBijakLulus: false,   // sudah lulus Kuis Bijak Berteknologi (semua benar)?
         settings: {
             provider: "pollinations",
             model: "openai",
@@ -2349,7 +2770,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         const btns = document.querySelectorAll('.tab-btn');
         btns.forEach(b => b.classList.remove('active'));
 
-        const tabNames = ['beranda', 'profil', 'tanya-guru', 'kuis', 'roster', 'jadwal', 'rapor', 'peringkat', 'mewarnai', 'referensi', 'dukung', 'setelan'];
+        const tabNames = ['beranda', 'profil', 'tanya-guru', 'kuis', 'roster', 'jadwal', 'rapor', 'peringkat', 'mewarnai', 'koding', 'referensi', 'dukung', 'setelan'];
         const idx = tabNames.indexOf(tabId);
         if (idx !== -1 && btns[idx]) btns[idx].classList.add('active');
 
@@ -2363,6 +2784,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         if (tabId === 'profil') window.renderProfilDashboard();
         if (tabId === 'referensi') window.faktaBerikutnya();
         if (tabId === 'mewarnai') window.mwInit();
+        if (tabId === 'koding') window.initKoding();
         if (tabId === 'dukung') window.initDukung();
     };
 
@@ -2385,6 +2807,317 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         if (window.playSound) window.playSound('tap');
         if (window.oyenBicara) window.oyenBicara("Yeay! QR-nya sudah tersimpan. Terima kasih ya sudah mau mendukung! 💕", 4000, 'wave');
     };
+    // ==========================================
+    //  LAB KODING (Playground HTML/CSS/JS)
+    // ==========================================
+    window._kdContoh = {
+        halo: '<h1>Halo Dunia! 👋</h1>\n<p>Ini halaman pertamaku.</p>\n<p>Namaku <b>Hana</b> dan aku sedang belajar koding!</p>',
+        warna: '<h1 style="color: deeppink;">Judul Warna Pink</h1>\n<h2 style="color: royalblue;">Ini biru</h2>\n<p style="color: green; font-size: 20px;">Teks hijau besar 🌈</p>',
+        gambar: '<h2>Gambar Acak 🖼️</h2>\n<img src="https://picsum.photos/300/200" alt="gambar" width="300" style="border-radius:12px;">\n<p>Ganti angka di link untuk ukuran berbeda!</p>',
+        daftar: '<h2>Daftar Kesukaanku 📝</h2>\n<ul>\n  <li>Menggambar 🎨</li>\n  <li>Membaca 📚</li>\n  <li>Bermain 🎮</li>\n</ul>\n<ol>\n  <li>Bangun pagi</li>\n  <li>Sekolah</li>\n  <li>Belajar koding</li>\n</ol>',
+        tombol: '<h2>Tombol Ajaib 🔘</h2>\n<button onclick="pesan()">Klik Aku!</button>\n<p id="hasil"></p>\n\n<script>\nfunction pesan() {\n  document.getElementById("hasil").innerHTML = "Yeay! Kamu berhasil! 🎉";\n}\n<\/script>',
+        kucing: '<div style="border: 3px solid deeppink; border-radius: 16px; padding: 16px; width: 200px; text-align: center; font-family: sans-serif;">\n  <div style="font-size: 60px;">🐱</div>\n  <h3 style="color: deeppink;">Si Oyen</h3>\n  <p>Kucing oranye yang lucu dan suka bermain!</p>\n</div>',
+        tautan: '<h2>Situs Kesukaanku 🔗</h2>\n<p>Klik tautan di bawah ini:</p>\n<a href="https://id.wikipedia.org" target="_blank">Buka Wikipedia</a>\n<br><br>\n<a href="https://www.google.com" target="_blank">Buka Google</a>',
+        tabel: '<h2>Jadwal Piket 📊</h2>\n<table border="1" cellpadding="8" style="border-collapse: collapse;">\n  <tr style="background: gold;">\n    <th>Hari</th>\n    <th>Petugas</th>\n  </tr>\n  <tr>\n    <td>Senin</td>\n    <td>Hana</td>\n  </tr>\n  <tr>\n    <td>Selasa</td>\n    <td>Budi</td>\n  </tr>\n</table>',
+        kotak: '<h2>Kotak Warna 🟦</h2>\n<div style="display: flex; gap: 10px;">\n  <div style="width: 80px; height: 80px; background: tomato; border-radius: 12px;"></div>\n  <div style="width: 80px; height: 80px; background: gold; border-radius: 12px;"></div>\n  <div style="width: 80px; height: 80px; background: mediumseagreen; border-radius: 12px;"></div>\n  <div style="width: 80px; height: 80px; background: royalblue; border-radius: 12px;"></div>\n</div>',
+        tombolcss: '<h2>Tombol Cantik ✨</h2>\n<button style="background: deeppink; color: white; border: none; padding: 14px 28px; font-size: 18px; border-radius: 999px; cursor: pointer; box-shadow: 0 6px 14px rgba(0,0,0,0.2);">\n  Klik Aku! 💖\n</button>',
+        hitung: '<h2>Kalkulator Mini 🔢</h2>\n<input type="number" id="a" value="5" style="width:60px;">\n+\n<input type="number" id="b" value="3" style="width:60px;">\n<button onclick="hitung()">=</button>\n<h1 id="hasil">?</h1>\n\n<script>\nfunction hitung() {\n  var a = Number(document.getElementById("a").value);\n  var b = Number(document.getElementById("b").value);\n  document.getElementById("hasil").innerHTML = a + b;\n}\n<\/script>',
+        warnaacak: '<h2>Ganti Warna Acak 🌈</h2>\n<button onclick="ganti()">Ubah Warna Latar!</button>\n\n<script>\nfunction ganti() {\n  var warna = ["tomato","gold","skyblue","violet","lightgreen"];\n  var pilih = warna[Math.floor(Math.random() * warna.length)];\n  document.body.style.background = pilih;\n}\n<\/script>'
+    };
+    // ---- Daftar tantangan koding (id, judul, deskripsi, kode awal, syarat lulus) ----
+    window._kdTantangan = [
+        {
+            id:'t1', emo:'👋', nm:'Sapa Namamu',
+            perintah:'Ubah tulisan di dalam <h1> supaya bertuliskan: Halo, aku hebat!',
+            kode:'<h1>Halo, aku ...</h1>',
+            cek:function(k){ return /<h1[^>]*>\s*halo,\s*aku\s+hebat!?\s*<\/h1>/i.test(k); }
+        },
+        {
+            id:'t2', emo:'🎨', nm:'Beri Warna',
+            perintah:'Buat sebuah <h1> yang tulisannya berwarna biru (pakai style="color: blue").',
+            kode:'<h1 style="color: ...">Judulku</h1>',
+            cek:function(k){ return /<h1[^>]*style\s*=\s*["'][^"']*color\s*:\s*blue/i.test(k); }
+        },
+        {
+            id:'t3', emo:'📝', nm:'Buat Daftar 3 Hal',
+            perintah:'Buat daftar <ul> yang berisi TEPAT 3 poin <li> (kesukaanmu).',
+            kode:'<ul>\n  <li>Satu</li>\n</ul>',
+            cek:function(k){ var li=(k.match(/<li[\s>]/gi)||[]).length; return /<ul[\s>]/i.test(k) && li>=3; }
+        },
+        {
+            id:'t4', emo:'🖼️', nm:'Tampilkan Gambar',
+            perintah:'Tambahkan sebuah gambar dengan tag <img> yang punya atribut src.',
+            kode:'<h2>Gambarku</h2>\n',
+            cek:function(k){ return /<img[^>]*src\s*=\s*["'][^"']+["']/i.test(k); }
+        },
+        {
+            id:'t5', emo:'🔘', nm:'Tombol Bicara',
+            perintah:'Buat sebuah <button> yang memakai onclick untuk menjalankan sesuatu.',
+            kode:'<button>Klik</button>',
+            cek:function(k){ return /<button[^>]*onclick\s*=/i.test(k); }
+        },
+        {
+            id:'t6', emo:'🔢', nm:'Pakai JavaScript',
+            perintah:'Tambahkan blok <script> ... <\/script> yang berisi kode JavaScript.',
+            kode:'<h2>Belajar JS</h2>\n',
+            cek:function(k){ return /<script[\s>][\s\S]*<\/script>/i.test(k) && k.replace(/<script[^>]*>|<\/script>/gi,'').trim().length>3; }
+        }
+    ];
+    window._kdTanAktif = null;
+    window._kdTimer = null;
+
+    window.initKoding = function(){
+        const ta = document.getElementById('kd-kode');
+        if (!ta) return;
+        // muat kode tersimpan, atau contoh default pertama kali
+        const simpan = (window.state && window.state.kodingKode);
+        if (ta.value === '') {
+            ta.value = (typeof simpan === 'string' && simpan.length) ? simpan : window._kdContoh.halo;
+        }
+        window.kdJalankan();
+        window.kdRenderTantangan();
+        window.kdKuisBadge();
+    };
+    window.kdRenderTantangan = function(){
+        const list = document.getElementById('kd-tan-list');
+        if (!list) return;
+        const selesai = window.state.kodingTantangan || [];
+        const skor = document.getElementById('kd-tan-skor');
+        if (skor) skor.innerText = selesai.length + ' / ' + window._kdTantangan.length + ' selesai';
+        list.innerHTML = '';
+        window._kdTantangan.forEach(function(t){
+            const sudah = selesai.indexOf(t.id) !== -1;
+            const item = document.createElement('div');
+            item.className = 'kd-tan-item' + (sudah ? ' selesai' : '');
+            item.onclick = function(){ window.kdMulaiTantangan(t.id); };
+            item.innerHTML = '<span class="kd-tan-emo">'+t.emo+'</span>' +
+                '<div class="kd-tan-teks"><p class="kd-tan-nm">'+window._esc(t.nm)+'</p>' +
+                '<p class="kd-tan-desc">'+window._esc(t.perintah)+'</p></div>' +
+                '<span class="kd-tan-status">'+(sudah ? '✅ Selesai' : '+30 poin')+'</span>';
+            list.appendChild(item);
+        });
+    };
+    window.kdMulaiTantangan = function(id){
+        const t = window._kdTantangan.find(function(x){ return x.id===id; });
+        if (!t) return;
+        window._kdTanAktif = id;
+        const ta = document.getElementById('kd-kode');
+        if (ta){ ta.value = t.kode; window.kdJalankan(); }
+        // tampilkan panel tantangan aktif dengan tombol Periksa
+        let box = document.getElementById('kd-tan-aktif');
+        if (!box){
+            box = document.createElement('div');
+            box.id = 'kd-tan-aktif';
+            box.className = 'kd-tan-aktif';
+            const sec = document.querySelector('.kd-tantangan');
+            if (sec) sec.appendChild(box);
+        }
+        box.innerHTML = '<p class="kd-tan-aktif-judul">'+t.emo+' Tantangan: '+window._esc(t.nm)+'</p>' +
+            '<p class="kd-tan-aktif-perintah">📌 '+window._esc(t.perintah)+'</p>' +
+            '<button class="kd-tan-cek" onclick="window.kdPeriksaTantangan()">✅ Periksa Jawabanku</button>' +
+            '<p class="kd-tan-pesan" id="kd-tan-pesan"></p>';
+        box.scrollIntoView({behavior:'smooth', block:'center'});
+        if (window.playSound) window.playSound('tap');
+    };
+    window.kdPeriksaTantangan = function(){
+        const id = window._kdTanAktif;
+        const t = window._kdTantangan.find(function(x){ return x.id===id; });
+        if (!t) return;
+        const ta = document.getElementById('kd-kode');
+        const pesan = document.getElementById('kd-tan-pesan');
+        const kode = ta ? ta.value : '';
+        let lulus = false;
+        try { lulus = t.cek(kode); } catch(e){ lulus = false; }
+        if (lulus){
+            const sudah = (window.state.kodingTantangan || []);
+            const baru = sudah.indexOf(id) === -1;
+            if (baru){
+                sudah.push(id);
+                window.state.kodingTantangan = sudah;
+                if (window.saveData) window.saveData();
+            }
+            if (pesan){ pesan.style.color = '#2e9e52'; pesan.innerText = baru ? '🎉 Hebat! Tantangan selesai, +30 poin!' : '✅ Sudah pernah selesai — kerja bagus!'; }
+            if (window.playSound) window.playSound('win');
+            if (window.launchConfetti) window.launchConfetti();
+            if (baru && window.oyenBicara) window.oyenBicara("Keren! Kamu berhasil menyelesaikan tantangan koding! Poinmu bertambah 30. 🎉", 5000, 'happy');
+            window.kdRenderTantangan();
+        } else {
+            if (pesan){ pesan.style.color = '#e0679a'; pesan.innerText = '🤔 Belum sesuai. Baca lagi perintahnya, atau tekan 🦉 Tanya Guru AI untuk bantuan!'; }
+            if (window.playSound) window.playSound('soft');
+        }
+    };
+    window.kdTanyaGuru = function(){
+        const ta = document.getElementById('kd-kode');
+        const kode = ta ? ta.value.trim() : '';
+        if (!kode){ if (window.oyenBicara) window.oyenBicara("Tulis dulu kodenya ya, baru aku bisa bantu memeriksanya! 😊", 4000, 'wave'); return; }
+        let konteks = "Aku sedang belajar koding di Lab Koding AiHana. Tolong periksa kode HTML/CSS/JavaScript-ku ini dengan bahasa yang ramah & mudah untuk anak SD. Jelaskan kalau ada yang salah, beri tahu cara memperbaikinya langkah demi langkah, dan beri satu pujian. Ini kodeku:\n\n```\n" + kode + "\n```";
+        if (window._kdTanAktif){
+            const t = window._kdTantangan.find(function(x){ return x.id===window._kdTanAktif; });
+            if (t) konteks = "Aku sedang mengerjakan tantangan koding: \"" + t.perintah + "\". " + konteks;
+        }
+        window.switchTab('tanya-guru');
+        const input = document.getElementById('chat-input');
+        if (input){ input.value = konteks; }
+        setTimeout(function(){ if (window.kirimPesan) window.kirimPesan(); }, 300);
+        if (window.playSound) window.playSound('tap');
+    };
+
+    // ---- Kuis Bijak Berteknologi ----
+    window._kdKuis = [
+        {
+            t:"Kamu sudah main game di HP selama 3 jam tanpa henti dan besok ada ulangan. Apa yang paling bijak?",
+            o:["Lanjut main sampai malam","Berhenti, istirahat, lalu belajar untuk ulangan","Main sambil belajar sedikit-sedikit"],
+            j:1, e:"Mengatur waktu itu penting. Ada waktunya bermain, belajar, dan istirahat. 👍"
+        },
+        {
+            t:"Ada orang tak dikenal di internet meminta nama lengkap, alamat rumah, dan nomor HP-mu. Sebaiknya?",
+            o:["Berikan saja biar dianggap ramah","Jangan berikan & beri tahu orang tua/guru","Berikan alamatnya saja"],
+            j:1, e:"Data pribadi itu rahasia. Jangan dibagikan ke orang asing, dan selalu beri tahu orang dewasa. 🔒"
+        },
+        {
+            t:"Temanmu dihina dengan kata kasar di grup chat. Sikap anak bijak adalah?",
+            o:["Ikut menghina biar seru","Membela dengan sopan / lapor ke guru & orang tua","Diam dan ikut menertawakan"],
+            j:1, e:"Teknologi dipakai untuk kebaikan. Jangan menyakiti orang, dan bantu teman yang dirundung. 🤝"
+        },
+        {
+            t:"Kamu menemukan berita yang mengagetkan di internet. Apa yang sebaiknya dilakukan?",
+            o:["Langsung sebarkan ke semua teman","Periksa dulu kebenarannya, tanya orang dewasa","Percaya saja karena ada di internet"],
+            j:1, e:"Tidak semua yang ada di internet itu benar. Hati-hati dengan berita bohong (hoaks). 🔍"
+        },
+        {
+            t:"Manakah contoh memakai teknologi untuk hal POSITIF?",
+            o:["Menyontek jawaban saat ulangan","Belajar hal baru & membuat karya yang bermanfaat","Menyebar foto teman tanpa izin"],
+            j:1, e:"Teknologi paling bermanfaat saat dipakai untuk belajar, berkarya, dan membantu orang lain. 💡"
+        }
+    ];
+    window._kdKuisJwb = [];
+    window._kdKuisIdx = 0;
+
+    window.kdKuisBadge = function(){
+        const b = document.getElementById('kd-kuis-badge');
+        if (b) b.innerText = window.state.kuisBijakLulus ? '🌟 Lulus!' : 'Belum dikerjakan';
+    };
+    window.kdKuisMulai = function(){
+        window._kdKuisJwb = [];
+        window._kdKuisIdx = 0;
+        const tombol = document.getElementById('kd-kuis-mulai');
+        if (tombol) tombol.style.display = 'none';
+        window.kdKuisRender();
+        if (window.playSound) window.playSound('tap');
+    };
+    window.kdKuisRender = function(){
+        const area = document.getElementById('kd-kuis-area');
+        if (!area) return;
+        const i = window._kdKuisIdx;
+        const soal = window._kdKuis[i];
+        let html = '<div class="kd-kuis-soal">';
+        html += '<p class="kd-kuis-tanya"><span class="no">'+(i+1)+'/'+window._kdKuis.length+'.</span>'+window._esc(soal.t)+'</p>';
+        html += '<div class="kd-kuis-opsi">';
+        soal.o.forEach(function(op, idx){
+            html += '<button onclick="window.kdKuisJawab('+idx+')">'+window._esc(op)+'</button>';
+        });
+        html += '</div><p class="kd-kuis-jelas" id="kd-kuis-jelas"></p></div>';
+        area.innerHTML = html;
+    };
+    window.kdKuisJawab = function(pilih){
+        const i = window._kdKuisIdx;
+        const soal = window._kdKuis[i];
+        const area = document.getElementById('kd-kuis-area');
+        if (!area) return;
+        const tombols = area.querySelectorAll('.kd-kuis-opsi button');
+        tombols.forEach(function(b){ b.disabled = true; });
+        const benar = (pilih === soal.j);
+        tombols[pilih].classList.add(benar ? 'benar' : 'salah');
+        if (!benar) tombols[soal.j].classList.add('benar');
+        const jelas = document.getElementById('kd-kuis-jelas');
+        if (jelas){ jelas.classList.add('tampil'); jelas.innerHTML = (benar?'✅ Benar! ':'❌ Kurang tepat. ')+window._esc(soal.e); }
+        window._kdKuisJwb.push(benar);
+        if (window.playSound) window.playSound(benar ? 'star' : 'soft');
+        // lanjut otomatis
+        setTimeout(function(){
+            window._kdKuisIdx++;
+            if (window._kdKuisIdx < window._kdKuis.length){ window.kdKuisRender(); }
+            else { window.kdKuisSelesai(); }
+        }, 1900);
+    };
+    window.kdKuisSelesai = function(){
+        const area = document.getElementById('kd-kuis-area');
+        if (!area) return;
+        const benar = window._kdKuisJwb.filter(Boolean).length;
+        const total = window._kdKuis.length;
+        const lulus = (benar === total);
+        const baru = lulus && !window.state.kuisBijakLulus;
+        if (lulus){ window.state.kuisBijakLulus = true; if (window.saveData) window.saveData(); }
+        let pesan = lulus ? 'Hebat! Kamu Anak Bijak Digital! 🌟' : 'Bagus! Coba lagi untuk jawab semua dengan benar ya. 💪';
+        let bonus = baru ? '<p class="pesan" style="color:#2e9e52;">🎉 +50 poin & lencana ⚖️ Anak Bijak Digital!</p>' :
+                    (lulus ? '<p class="pesan" style="color:#7a5fd0;">✅ Kamu sudah pernah lulus. Kerja bagus!</p>' : '');
+        area.innerHTML = '<div class="kd-kuis-hasil">' +
+            '<div class="angka">'+benar+' / '+total+'</div>' +
+            '<p class="pesan">'+pesan+'</p>' + bonus +
+            '<button class="aksi" onclick="window.kdKuisMulai()" style="width:auto;min-width:150px;">🔄 Coba Lagi</button>' +
+            '</div>';
+        window.kdKuisBadge();
+        if (lulus){ if (window.launchConfetti) window.launchConfetti(); if (window.playSound) window.playSound('win');
+            if (baru && window.oyenBicara) window.oyenBicara("Luar biasa! Kamu lulus Kuis Bijak Berteknologi dan jadi Anak Bijak Digital! Poinmu bertambah 50. 🌟", 5500, 'happy');
+        }
+    };
+
+    window.kdMuatContoh = function(key){
+        if (!key || !window._kdContoh[key]) return;
+        const ta = document.getElementById('kd-kode');
+        if (ta){ ta.value = window._kdContoh[key]; window.kdJalankan(); window.kdSimpan(); }
+        if (window.playSound) window.playSound('tap');
+    };
+    window.kdGantiBahasa = function(){
+        // sekadar petunjuk; semua tetap ditulis dalam satu kotak HTML
+        const b = document.getElementById('kd-bahasa');
+        if (window.oyenBicara && b){
+            const t = b.value === 'css' ? "Pakai atribut style= atau tag <style> untuk mewarnai halaman!" :
+                      b.value === 'js' ? "Tambahkan tag <script> untuk membuat halaman jadi pintar!" :
+                      "HTML adalah kerangka halaman. Ayo mulai menulis!";
+            window.oyenBicara(t, 4000, 'wave');
+        }
+    };
+    window.kdJalankan = function(){
+        const ta = document.getElementById('kd-kode');
+        const frame = document.getElementById('kd-preview');
+        if (!ta || !frame) return;
+        const kode = ta.value;
+        const html = '<!DOCTYPE html><html><head><meta charset="utf-8">' +
+            '<style>body{font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;padding:14px;color:#333;}</style>' +
+            '</head><body>' + kode + '</body></html>';
+        frame.srcdoc = html;
+        window.kdSimpan();
+    };
+    window.kdAutoJalan = function(){
+        const auto = document.getElementById('kd-auto');
+        if (auto && !auto.checked){ window.kdSimpan(); return; }
+        clearTimeout(window._kdTimer);
+        window._kdTimer = setTimeout(window.kdJalankan, 600);
+    };
+    window.kdSimpan = function(){
+        const ta = document.getElementById('kd-kode');
+        if (ta && window.state){ window.state.kodingKode = ta.value; if (window.saveData) window.saveData(); }
+    };
+    window.kdBersih = function(){
+        const ta = document.getElementById('kd-kode');
+        if (ta){ ta.value = ''; window.kdJalankan(); ta.focus(); }
+        if (window.playSound) window.playSound('tap');
+    };
+    window.kdUnduh = function(){
+        const ta = document.getElementById('kd-kode');
+        if (!ta) return;
+        const html = '<!DOCTYPE html>\n<html>\n<head>\n<meta charset="utf-8">\n<title>Karya Koding</title>\n</head>\n<body>\n' + ta.value + '\n</body>\n</html>';
+        const blob = new Blob([html], {type:'text/html'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'karya-koding.html';
+        document.body.appendChild(a); a.click();
+        setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+        if (window.playSound) window.playSound('tap');
+        if (window.oyenBicara) window.oyenBicara("Karyamu tersimpan! Buka filenya untuk melihat hasilnya. 🎉", 4000, 'wave');
+    };
+
     window.bagikanDukung = async function(){
         const teks = "Yuk dukung AiHana — aplikasi belajar seru untuk anak SD! Scan QRIS di aplikasi untuk berdonasi. Dibuat dengan ❤️ oleh Hana.";
         const url = "https://aihana.vercel.app/";
@@ -4946,6 +5679,11 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
             if (r.nilai === 100) poin += 50;                     // bonus nilai sempurna
             else if (r.nilai >= 80) poin += 20;                  // bonus nilai bagus
         });
+        // Bonus poin dari tantangan koding yang diselesaikan (30 poin/tantangan)
+        const tSelesai = (window.state.kodingTantangan || []).length;
+        poin += tSelesai * 30;
+        // Bonus poin lulus Kuis Bijak Berteknologi (50 poin, sekali)
+        if (window.state.kuisBijakLulus) poin += 50;
         return poin;
     };
     // Daftar level: ambang poin + gelar lucu
@@ -5007,7 +5745,10 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
             { emo:"⚡", nm:"2x Sempurna Beruntun", raih: maxRuntun>=2, tip:"Dapat nilai 100 dua kali berturut-turut" },
             { emo:"🗺️", nm:"5 Mapel Dijelajahi", raih: mapelUnik>=5, tip:"Coba 5 mapel berbeda" },
             { emo:"📚", nm:"Kutu Buku (25 Kuis)", raih: total>=25, tip:"Selesaikan 25 kuis" },
-            { emo:"👑", nm:"Kolektor 1000 Poin", raih: poin>=1000, tip:"Kumpulkan 1000 poin" }
+            { emo:"👑", nm:"Kolektor 1000 Poin", raih: poin>=1000, tip:"Kumpulkan 1000 poin" },
+            { emo:"💻", nm:"Coder Pemula", raih: (window.state.kodingTantangan||[]).length>=1, tip:"Selesaikan 1 tantangan koding" },
+            { emo:"🚀", nm:"Jagoan Koding", raih: (window.state.kodingTantangan||[]).length>=5, tip:"Selesaikan 5 tantangan koding" },
+            { emo:"⚖️", nm:"Anak Bijak Digital", raih: !!window.state.kuisBijakLulus, tip:"Lulus Kuis Bijak Berteknologi" }
         ];
     };
 
@@ -6338,5 +7079,5 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
 </script>
 
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3ce39556f07fdbf',t:'MTc4OTcxMjIwOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3cea203a8d5de6c',t:'MTc4OTcxNjQ5NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

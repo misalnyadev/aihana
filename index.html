@@ -384,6 +384,8 @@
         .status-box{padding:14px;border-radius:14px;margin-top:12px;text-align:center;font-weight:700;font-family:var(--font-head);animation:popIn .35s;}
         .status-sukses{background:var(--ok-soft);color:#1f6f47;}
         .status-gagal{background:var(--bad-soft);color:#a23230;}
+        .offline-tanda{background:var(--peach-soft);color:#9a4a34;border-radius:12px;padding:9px 13px;font-size:12.5px;font-weight:700;margin:0 0 10px;line-height:1.5;}
+        body.dark .offline-tanda{background:#4a3730;color:#ffd9c9;}
         .loading{text-align:center;color:#8a5fd0;font-weight:700;padding:16px;}
         .loading .dots span{display:inline-block;animation:blink 1.2s infinite both;}
         .loading .dots span:nth-child(2){animation-delay:.2s;}
@@ -539,6 +541,9 @@
         .set-kartu.warna-suara > .set-judul .emo{background:var(--peach-soft);}
         .set-kartu.warna-koneksi{background:linear-gradient(135deg,#f5fbff,#eefff7);border-color:#c9ecf6;}
         .set-kartu.warna-koneksi > .set-judul{color:#2f88a8;}
+        .set-kartu.warna-data{background:linear-gradient(135deg,#f2fff8,#eefbff);border-color:#c4f0da;}
+        .set-kartu.warna-data > .set-judul{color:#2f9e6f;}
+        .set-kartu.warna-data > .set-judul .emo{background:var(--mint-soft);}
         .set-kartu.warna-koneksi > .set-judul .emo{background:var(--sky-soft);}
         body.dark .set-kartu{background:#2b2b4d;border-color:#413c66;}
         body.dark .set-kartu.warna-tampilan{background:linear-gradient(135deg,#2c2a4e,#282f4a);border-color:#413c66;}
@@ -1640,6 +1645,7 @@
     <div id="konten-tanya-guru" class="halaman">
         <h3>🦉 Tanya Guru AI</h3>
         <div id="info-fokus-mapel"></div>
+        <div id="offline-tanda" class="offline-tanda" style="display:none;">📴 Kamu sedang offline. Guru AI perlu internet, tapi menu belajar lain tetap bisa dipakai ya! 💛</div>
         <div id="chat-container" class="chat-box"></div>
         <div class="input-group">
             <input type="text" id="chat-input" placeholder="Ketik pertanyaanmu di sini..." onkeypress="if(event.key==='Enter') window.kirimPesan()">
@@ -2774,6 +2780,19 @@
             </div>
             <div id="status-setelan" class="status-box" style="display:none;"></div>
         </section>
+
+        <!-- KARTU 4: DATA & CADANGAN -->
+        <section class="set-kartu warna-data">
+            <p class="set-judul"><span class="emo">💾</span> Data &amp; Cadangan <small>Simpan semua progres ke satu file, atau pindahkan ke HP lain</small></p>
+            <div class="info-cadangan" style="background:var(--mint-soft);">🔒 Semua data (profil, poin, rapor, jadwal, karya koding, kuis) tersimpan di HP ini. Kalau HP diganti atau cache dibersihkan, data bisa hilang. <b>Buat cadangan supaya aman!</b> 💛</div>
+            <div class="input-group" style="margin-top:12px; flex-wrap:wrap;">
+                <button class="aksi" onclick="window.eksporSemuaData()">📤 Ekspor Semua Data</button>
+                <button class="aksi secondary" onclick="document.getElementById('impor-data-file').click()">📥 Impor Data</button>
+                <input type="file" id="impor-data-file" accept="application/json,.json,.aihana,.aihanadata" style="display:none;" onchange="window.imporSemuaData(event)">
+            </div>
+            <p class="helper-text" style="margin:10px 2px 0; font-size:12px;">📤 <b>Ekspor</b> mengunduh 1 file cadangan. 📥 <b>Impor</b> memuat kembali dari file itu (data sekarang akan diganti). Simpan filenya di tempat aman ya, mis. kirim ke WhatsApp/email sendiri. 😊</p>
+            <div id="status-data" class="status-box" style="display:none;"></div>
+        </section>
     </div>
 </div>
 
@@ -3052,6 +3071,14 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
             });
         });
         window.switchTab('beranda');
+        // Tampilkan/hilangkan tanda offline di menu Tanya Guru AI secara otomatis
+        window._perbaruiTandaOffline = function(){
+            const t = document.getElementById('offline-tanda');
+            if (t) t.style.display = (navigator.onLine === false) ? 'block' : 'none';
+        };
+        window._perbaruiTandaOffline();
+        window.addEventListener('online', window._perbaruiTandaOffline);
+        window.addEventListener('offline', window._perbaruiTandaOffline);
         // Sapaan hangat dari maskot yang sedang aktif (siang Oyen / malam Pio)
         setTimeout(function(){
             const nama = window.state.profil.nama || "teman";
@@ -3296,6 +3323,27 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         if (window.playSound) window.playSound('tap');
     };
 
+    // ---- Utilitas pengacakan kuis (biar bukan hafalan) ----
+    // Acak isi array (Fisher–Yates), mengembalikan array BARU (tidak mengubah aslinya).
+    window._acakArray = function(arr){
+        const a = arr.slice();
+        for (let i = a.length - 1; i > 0; i--){
+            const j = Math.floor(Math.random() * (i + 1));
+            const t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+        return a;
+    };
+    // Bangun sesi kuis: acak URUTAN soal DAN acak URUTAN opsi tiap soal,
+    // lalu hitung ulang indeks jawaban yang benar. Format sumber: {t, o:[...], j, e}.
+    window._buatSesiKuis = function(bank){
+        return window._acakArray(bank).map(function(soal){
+            const opsiAsli = soal.o.slice();
+            const jawabanBenar = opsiAsli[soal.j];
+            const opsiAcak = window._acakArray(opsiAsli);
+            return { t: soal.t, o: opsiAcak, j: opsiAcak.indexOf(jawabanBenar), e: soal.e };
+        });
+    };
+
     // ---- Kuis Bijak Berteknologi ----
     window._kdKuis = [
         {
@@ -3326,6 +3374,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
     ];
     window._kdKuisJwb = [];
     window._kdKuisIdx = 0;
+    window._kdKuisSesi = [];   // soal yang sudah diacak untuk sesi ini
 
     window.kdKuisBadge = function(){
         const b = document.getElementById('kd-kuis-badge');
@@ -3334,6 +3383,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
     window.kdKuisMulai = function(){
         window._kdKuisJwb = [];
         window._kdKuisIdx = 0;
+        window._kdKuisSesi = window._buatSesiKuis(window._kdKuis);   // acak soal & opsi tiap main
         const tombol = document.getElementById('kd-kuis-mulai');
         if (tombol) tombol.style.display = 'none';
         window.kdKuisRender();
@@ -3343,9 +3393,9 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         const area = document.getElementById('kd-kuis-area');
         if (!area) return;
         const i = window._kdKuisIdx;
-        const soal = window._kdKuis[i];
+        const soal = window._kdKuisSesi[i];
         let html = '<div class="kd-kuis-soal">';
-        html += '<p class="kd-kuis-tanya"><span class="no">'+(i+1)+'/'+window._kdKuis.length+'.</span>'+window._esc(soal.t)+'</p>';
+        html += '<p class="kd-kuis-tanya"><span class="no">'+(i+1)+'/'+window._kdKuisSesi.length+'.</span>'+window._esc(soal.t)+'</p>';
         html += '<div class="kd-kuis-opsi">';
         soal.o.forEach(function(op, idx){
             html += '<button onclick="window.kdKuisJawab('+idx+')">'+window._esc(op)+'</button>';
@@ -3355,7 +3405,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
     };
     window.kdKuisJawab = function(pilih){
         const i = window._kdKuisIdx;
-        const soal = window._kdKuis[i];
+        const soal = window._kdKuisSesi[i];
         const area = document.getElementById('kd-kuis-area');
         if (!area) return;
         const tombols = area.querySelectorAll('.kd-kuis-opsi button');
@@ -3370,7 +3420,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         // lanjut otomatis
         setTimeout(function(){
             window._kdKuisIdx++;
-            if (window._kdKuisIdx < window._kdKuis.length){ window.kdKuisRender(); }
+            if (window._kdKuisIdx < window._kdKuisSesi.length){ window.kdKuisRender(); }
             else { window.kdKuisSelesai(); }
         }, 1900);
     };
@@ -3378,7 +3428,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         const area = document.getElementById('kd-kuis-area');
         if (!area) return;
         const benar = window._kdKuisJwb.filter(Boolean).length;
-        const total = window._kdKuis.length;
+        const total = window._kdKuisSesi.length;
         const lulus = (benar === total);
         const baru = lulus && !window.state.kuisBijakLulus;
         if (lulus){ window.state.kuisBijakLulus = true; if (window.saveData) window.saveData(); }
@@ -3443,6 +3493,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
     ];
     window._kmpKuisJwb = [];
     window._kmpKuisIdx = 0;
+    window._kmpKuisSesi = [];   // soal yang sudah diacak untuk sesi ini
 
     window.kmpKuisBadge = function(){
         const b = document.getElementById('kmp-kuis-badge');
@@ -3451,6 +3502,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
     window.kmpKuisMulai = function(){
         window._kmpKuisJwb = [];
         window._kmpKuisIdx = 0;
+        window._kmpKuisSesi = window._buatSesiKuis(window._kmpKuis);   // acak soal & opsi tiap main
         const tombol = document.getElementById('kmp-kuis-mulai');
         if (tombol) tombol.style.display = 'none';
         window.kmpKuisRender();
@@ -3460,9 +3512,9 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         const area = document.getElementById('kmp-kuis-area');
         if (!area) return;
         const i = window._kmpKuisIdx;
-        const soal = window._kmpKuis[i];
+        const soal = window._kmpKuisSesi[i];
         let html = '<div class="kd-kuis-soal">';
-        html += '<p class="kd-kuis-tanya"><span class="no">'+(i+1)+'/'+window._kmpKuis.length+'.</span>'+window._esc(soal.t)+'</p>';
+        html += '<p class="kd-kuis-tanya"><span class="no">'+(i+1)+'/'+window._kmpKuisSesi.length+'.</span>'+window._esc(soal.t)+'</p>';
         html += '<div class="kd-kuis-opsi">';
         soal.o.forEach(function(op, idx){
             html += '<button onclick="window.kmpKuisJawab('+idx+')">'+window._esc(op)+'</button>';
@@ -3472,7 +3524,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
     };
     window.kmpKuisJawab = function(pilih){
         const i = window._kmpKuisIdx;
-        const soal = window._kmpKuis[i];
+        const soal = window._kmpKuisSesi[i];
         const area = document.getElementById('kmp-kuis-area');
         if (!area) return;
         const tombols = area.querySelectorAll('.kd-kuis-opsi button');
@@ -3486,7 +3538,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         if (window.playSound) window.playSound(benar ? 'star' : 'soft');
         setTimeout(function(){
             window._kmpKuisIdx++;
-            if (window._kmpKuisIdx < window._kmpKuis.length){ window.kmpKuisRender(); }
+            if (window._kmpKuisIdx < window._kmpKuisSesi.length){ window.kmpKuisRender(); }
             else { window.kmpKuisSelesai(); }
         }, 1900);
     };
@@ -3494,7 +3546,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         const area = document.getElementById('kmp-kuis-area');
         if (!area) return;
         const benar = window._kmpKuisJwb.filter(Boolean).length;
-        const total = window._kmpKuis.length;
+        const total = window._kmpKuisSesi.length;
         const lulus = (benar === total);
         const baru = lulus && !window.state.kuisKomputerLulus;
         if (lulus){ window.state.kuisKomputerLulus = true; if (window.saveData) window.saveData(); }
@@ -4024,6 +4076,11 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         const inp = document.getElementById('mw-tambah-prompt');
         const prompt = (teks || (inp ? inp.value : '') || '').trim();
         if (!prompt){ if (inp) inp.focus(); return; }
+        // Membuat gambar AI butuh internet. Beri tahu dengan ramah bila offline.
+        if (navigator.onLine === false){
+            alert('🌸 Membuat gambar baru perlu internet ya. Saat offline, kamu tetap bisa menata, mewarnai, & mencetak karya yang sudah ada. 🎨');
+            return;
+        }
         const btn = document.getElementById('mw-tambah-btn');
         const loading = window._mwLoadEl();
         window._mwProses = true;
@@ -4277,6 +4334,83 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         reader.readAsText(file);
         ev.target.value = '';   // reset agar bisa impor file sama lagi
     };
+    // ==========================================
+    //  EKSPOR / IMPOR SEMUA DATA (cadangan penuh)
+    // ==========================================
+    // Kunci localStorage yang ikut dicadangkan.
+    window._KUNCI_DATA = [
+        'pintarai_sindangbarang3_data',   // data utama (profil, poin, rapor, jadwal, koding, kuis...)
+        'aihana_galeri_mewarnai',          // galeri karya Studio
+        'aihana_notif_terakhir',
+        'aihana_pengingat_ditutup'
+    ];
+    window._setStatusData = function(pesan, ok){
+        const el = document.getElementById('status-data');
+        if (!el) return;
+        el.style.display = 'block';
+        el.className = 'status-box ' + (ok ? 'status-sukses' : 'status-gagal');
+        el.innerText = pesan;
+        setTimeout(function(){ if (el) el.style.display = 'none'; }, 6000);
+    };
+    window.eksporSemuaData = function(){
+        try {
+            const isi = {};
+            window._KUNCI_DATA.forEach(function(k){
+                const v = localStorage.getItem(k);
+                if (v !== null) isi[k] = v;
+            });
+            const bungkus = {
+                aplikasi: 'AiHana',
+                jenis: 'cadangan-penuh',
+                versi: 1,
+                tanggal: new Date().toISOString(),
+                data: isi
+            };
+            const nama = (window.state.profil && window.state.profil.nama ? window.state.profil.nama.replace(/[^\w-]+/g,'_') : 'AiHana');
+            const tgl = new Date().toISOString().slice(0,10);
+            const blob = new Blob([JSON.stringify(bungkus)], { type: 'application/json' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'cadangan-' + nama + '-' + tgl + '.aihanadata';
+            document.body.appendChild(a); a.click(); a.remove();
+            setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000);
+            window.playSound && window.playSound('sukses');
+            window._setStatusData('✅ Berhasil! File cadangan sudah diunduh. Simpan baik-baik ya. 💛', true);
+        } catch(e){
+            window._setStatusData('😢 Maaf, gagal membuat cadangan di perangkat ini.', false);
+        }
+    };
+    window.imporSemuaData = function(ev){
+        const file = ev.target.files && ev.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e){
+            let bungkus;
+            try { bungkus = JSON.parse(e.target.result); }
+            catch(err){ window._setStatusData('😕 File tidak dikenali. Pastikan file cadangan .aihanadata yang benar ya.', false); ev.target.value=''; return; }
+            const isi = (bungkus && bungkus.data && typeof bungkus.data === 'object') ? bungkus.data
+                      : (bungkus && typeof bungkus === 'object' && bungkus['pintarai_sindangbarang3_data'] ? bungkus : null);
+            if (!isi || !isi['pintarai_sindangbarang3_data']){
+                window._setStatusData('😕 Isi file tidak lengkap / bukan cadangan AiHana.', false); ev.target.value=''; return;
+            }
+            if (!confirm('⚠️ Impor akan MENGGANTI semua data di HP ini dengan isi file cadangan.\n\nData sekarang akan hilang & diganti. Lanjutkan?')){ ev.target.value=''; return; }
+            try {
+                Object.keys(isi).forEach(function(k){
+                    if (window._KUNCI_DATA.indexOf(k) !== -1 && typeof isi[k] === 'string'){
+                        localStorage.setItem(k, isi[k]);
+                    }
+                });
+                window.playSound && window.playSound('sukses');
+                alert('🎉 Berhasil memuat data cadangan! Aplikasi akan dimuat ulang sekarang.');
+                location.reload();
+            } catch(err){
+                window._setStatusData('😢 Maaf, gagal menyimpan data cadangan di perangkat ini.', false);
+            }
+            ev.target.value = '';
+        };
+        reader.readAsText(file);
+    };
+
     // Render deretan thumbnail galeri di bawah kanvas (dengan tombol hapus).
     window._mwRenderGaleri = function(){
         const box = document.getElementById('mw-galeri'); if (!box) return;
@@ -5110,6 +5244,13 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
         input.value = '';
         window.renderChat();
 
+        // Tanpa internet, Guru AI tak bisa dihubungi — beri pesan ramah, bukan error teknis.
+        if (navigator.onLine === false) {
+            window.state.chatHistory.push({ role: 'guru', text: "🌸 Ups, sepertinya kamu sedang offline (tidak ada internet). Guru AI perlu internet untuk menjawab ya. 🦉\n\nTapi tenang, kamu tetap bisa belajar! Coba kerjakan 📝 Kuis Seru, buka menu 🖥️ Komputer, atau berlatih di 💻 Lab Koding — semuanya bisa dipakai tanpa internet. 💛" });
+            window.renderChat();
+            return;
+        }
+
         const loadingDiv = document.createElement('div');
         loadingDiv.className = 'loading';
         loadingDiv.innerHTML = 'Guru AI sedang mengetik<span class="dots"><span>.</span><span>.</span><span>.</span></span>';
@@ -5129,7 +5270,10 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
             }
             window.state.chatHistory.push({ role: 'guru', text: response });
         } catch (e) {
-            window.state.chatHistory.push({ role: 'guru', text: "Maaf, terjadi kesalahan koneksi. Periksa pengaturan API Key-mu ya! (" + e.message + ")" });
+            const pesanRamah = (navigator.onLine === false)
+                ? "🌸 Sepertinya internetmu terputus di tengah jalan. Coba lagi kalau sudah tersambung ya. Sementara itu, belajar lain tetap bisa jalan tanpa internet! 🦉💛"
+                : "🌸 Maaf, Guru AI sedang sulit dihubungi. Coba beberapa saat lagi ya. Kalau kamu punya API Key sendiri, cek juga di ⚙️ Setelan. Belajar lain tetap bisa jalan, kok! 🦉";
+            window.state.chatHistory.push({ role: 'guru', text: pesanRamah });
         }
 
         loadingDiv.remove();
@@ -5289,6 +5433,12 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
                 if (match) { soalList = JSON.parse(match[0]); }
                 else { throw new Error("Format respons AI tidak valid (bukan JSON array)."); }
             }
+
+            // Acak urutan opsi tiap soal biar jawaban tidak selalu di posisi yang sama.
+            // Cocok/kunci tetap dibandingkan berdasarkan TEKS, jadi tetap valid.
+            soalList.forEach(function(q){
+                if (Array.isArray(q.opsi) && q.opsi.length) q.opsi = window._acakArray(q.opsi);
+            });
 
             window.currentQuizAnswers = {};
             window.currentQuizTotal = soalList.length;
@@ -7557,6 +7707,6 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
     });
 </script>
 
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3cfebb8abb1fdf8',t:'MTc4OTczMDAwMA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
-</body>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3d0b1c038bbf02d',t:'MTc4OTczODExMg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

@@ -32,6 +32,8 @@ database, atau instalasi apa pun. Cukup dibuka di browser, langsung jalan. ✨
 | 🤖 **AI Anti-Putus (Rotasi Otomatis)** | Bisa dipakai **langsung tanpa API Key** (memakai AI gratis bawaan). Kalau punya API Key gratis, AiHana **berpindah otomatis** antar provider saat kuota harian habis — jadi belajar bisa seharian tanpa terhenti. |
 | 📝 **Kuis Seru** | Soal pilihan ganda otomatis dari AI sesuai mata pelajaran & kelas, dengan animasi menyenangkan. |
 | 🎨 **Studio Karya** | Ketik nama benda/hewan → AI membuat **gambar/sketsa** yang bisa langsung **dicetak & diwarnai** anak, plus alat gambar bebas (pensil warna). Gratis, tanpa API Key. |
+| 🖥️ **Komputer** | Materi pengenalan komputer yang ramah anak (apa itu komputer, bagian-bagiannya, cara kerja) + **kuis** untuk menguji pemahaman. |
+| 💻 **Lab Koding** | Playground **HTML/CSS/JavaScript** dengan pratinjau langsung, contoh siap pakai, **tantangan koding** bertahap, dan **Kuis Bijak Berteknologi**. Semua jalan tanpa internet. |
 | 📊 **Rapor & Monitoring** | Nilai kuis tersimpan, bisa dicetak jadi rapor rapi lengkap dengan predikat & tanda tangan. |
 | 🏫 **Jadwal Pelajaran (CRUD)** | Roster mata pelajaran sekolah yang bisa diatur guru sendiri (tambah/ubah/hapus), terpisah dari jadwal les. |
 | ⏰ **Jadwal Les** | Pengingat kegiatan les/kursus harian biar belajar lebih teratur. |
@@ -44,6 +46,7 @@ database, atau instalasi apa pun. Cukup dibuka di browser, langsung jalan. ✨
 | 🏅 **Poin, Level & Lencana** | Kumpulkan poin dari kuis, naik level (Pemula → Master), buka 10 lencana seru. |
 | 📲 **Bisa Di-install (PWA)** | Klik "Pasang Aplikasi" → ikon AiHana muncul di layar HP, tampil layar-penuh & bisa dibuka offline. |
 | ✏️ **Atur Mapel & Referensi** | Guru/sekolah bisa menambah, mengubah, atau menghapus mapel & situs belajar sendiri. |
+| 💾 **Data & Cadangan** | **Ekspor** semua data (profil, nilai, jadwal, PR, dll) jadi satu file cadangan, dan **impor** kembali kapan saja — praktis saat ganti HP atau berbagi antar perangkat. |
 
 > 💡 Data anak (nama, nilai) **hanya tersimpan di perangkat masing-masing**
 > (localStorage) — tidak dikirim ke mana-mana. Aman & privat.
@@ -177,12 +180,24 @@ ShopeePay, m-banking, dll). Nominal bebas, sekecil apa pun sangat berarti. 🙏
 **Untuk kelas berapa?** Semua kelas SD (1–6). AI menyesuaikan tingkat kesulitan
 dengan kelas yang diisi anak di profilnya.
 
-**Perlu internet?** Untuk membuka lewat link & fitur AI: ya. Fitur kuis lokal,
-jadwal, dan rapor tetap bisa dipakai offline (setelah halaman terbuka).
+**Perlu internet?** Hanya **fitur AI** (Tanya Guru & Studio) yang butuh internet.
+Semua fitur lain — kuis lokal (Komputer & Bijak), Lab Koding, jadwal, roster,
+rapor, peringkat, lencana — **tetap jalan offline** setelah halaman pernah dibuka.
+Kalau internet mati saat membuka chat AI, muncul pesan ramah yang mengarahkan
+anak ke fitur-fitur yang bisa dipakai tanpa internet.
 
 **Harus punya API Key untuk pakai AI?** Tidak wajib — AI gratis bawaan
 (Pollinations) langsung jalan. API Key gratis hanya untuk hasil lebih
 cepat/berkualitas dan tahan lama lewat rotasi otomatis.
+
+**Bagaimana kalau ganti HP — data hilang?** Tidak perlu khawatir. Buka menu
+**⚙️ Setelan → 💾 Data & Cadangan → Ekspor**, simpan file cadangannya (mis.
+kirim ke WhatsApp/email sendiri), lalu **Impor** di perangkat baru.
+
+**Apakah aman dari sisi keamanan?** Ya. Teks jawaban AI & isian pengguna
+ditampilkan sebagai teks biasa (tahan penyuntikan kode/XSS), Lab Koding berjalan
+di area terkurung (*sandboxed iframe*), semua koneksi memakai **HTTPS**, dan
+tidak ada data pribadi yang dikirim ke luar perangkat.
 
 ---
 

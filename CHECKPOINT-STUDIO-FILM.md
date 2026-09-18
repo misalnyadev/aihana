@@ -64,9 +64,23 @@ gerak → film jadi yang bisa disimpan & dibagikan.
 
 ---
 
+## ✅ Sudah Selesai (dulu backlog, kini terpasang)
+- [x] 🖍️ **Warna pensil di Studio** (pensil bebas + ketebalan bisa diatur, ramah sentuh).
+- [x] 🖥️ **Menu Komputer** (materi + kuis) & 💻 **Lab Koding** (HTML/CSS/JS + tantangan + Kuis Bijak).
+- [x] 💾 **Ekspor/Impor semua data** (cadangan pindah HP).
+- [x] 🎲 **Acak soal kuis** (urutan soal & pilihan diacak tiap main).
+- [x] 📱 **Perapian tampilan HP** (anti-zoom iOS, banner 1 baris, form rapi).
+- [x] 🔒 **Pengerasan keamanan** (escape input, sandbox iframe, HTTPS).
+
 ## 📌 Ide Lain yang Ditampung (backlog)
-- 🖍️ Warna pensil di Studio selain hitam (beberapa warna crayon).
-- 🧑‍🏫 Fitur khusus atas permintaan guru (menyesuaikan kebutuhan kelas/sekolah).
+- 🔤 **Aksesibilitas**: pengatur ukuran teks global + mode kontras tinggi.
+- 📈 **Mode bertingkat** (Dasar → Menengah → Lanjutan) dalam satu app yang "tumbuh" bersama anak.
+- 🧑‍🏫 **Fitur guru**: kelola kelas, kumpulkan tugas, pantau banyak murid.
+- 🧑‍🏫 Fitur khusus lain atas permintaan guru (menyesuaikan kebutuhan kelas/sekolah).
+
+> ⏳ **Prioritas sekarang (arahan pemilik):** *tidak menambah fitur baru dulu* —
+> matangkan & stabilkan yang ada, kumpulkan masukan pengguna, baru kembangkan
+> sesuai kebutuhan nyata yang selaras dengan tujuan aplikasi.
 
 ---
 

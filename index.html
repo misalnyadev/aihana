@@ -716,9 +716,14 @@
         .dukung-hero-emoji{font-size:34px;flex:none;animation:bob 3s ease-in-out infinite;}
         .dukung-hero-judul{font-family:var(--font-head);font-weight:800;font-size:19px;margin:0;color:#c05e8a;}
         .dukung-hero-sub{margin:3px 0 0;font-size:13px;color:var(--ink-soft);font-weight:600;}
+        /* Di HP potret: emoji di ATAS teks biar tidak menumpuk */
+        @media (max-width:560px){
+            .dukung-hero{flex-direction:column;text-align:center;gap:8px;padding:16px 14px;}
+            .dukung-hero-emoji{font-size:40px;}
+        }
         .dukung-kartu{
-            background:var(--card);border:2px solid rgba(180,150,230,.22);
-            border-radius:20px;padding:16px 18px;margin-bottom:16px;box-shadow:var(--shadow);
+            background:var(--card);border-radius:20px;
+            padding:16px 18px;margin-bottom:16px;box-shadow:var(--shadow);
         }
         .dukung-kartu-judul{font-family:var(--font-head);font-weight:700;font-size:16px;margin:0 0 8px;color:#7a5fd0;}
         .dukung-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
@@ -779,6 +784,9 @@
         .kd-m-kotak small{display:block;margin-top:6px;color:var(--ink-soft);font-weight:600;}
         .kd-materi-bijak>summary{color:#c05e8a;}
         .kd-materi-bakat>summary{color:#2f8f6f;}
+        .kd-m-ref a{color:#7a5fd0;font-weight:700;text-decoration:none;border-bottom:2px dotted #a98cf0;}
+        .kd-m-ref a:hover{color:#c05e8a;border-bottom-color:#e0679a;}
+        .kd-m-ref small{display:block;margin-top:8px;color:var(--ink-soft);font-weight:600;}
         .kd-m-dua{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0;}
         .kd-m-plus,.kd-m-minus{border-radius:12px;padding:10px 12px;font-size:12.5px;}
         .kd-m-plus{background:var(--mint-soft);}
@@ -2080,6 +2088,18 @@
                         <b>⭐ Yang populer saat ini (2026):</b>
                         <p style="margin:6px 0 0;">Python 🐍, JavaScript 🌐, Java ☕, C++, C#, Go, Rust, dan Swift/Kotlin untuk HP. <b>Python & JavaScript</b> paling ramah untuk pemula.</p>
                     </div>
+                    <div class="kd-m-kotak kd-m-ref">
+                        <b>📖 Mau belajar lebih dalam? Kunjungi referensi ini:</b>
+                        <ul style="margin:8px 0 0;">
+                            <li>🌐 <a href="https://www.w3schools.com" target="_blank" rel="noopener noreferrer">W3Schools</a> — belajar HTML, CSS, JS, Python (lengkap & ada "Try it").</li>
+                            <li>🦊 <a href="https://developer.mozilla.org" target="_blank" rel="noopener noreferrer">MDN Web Docs</a> — panduan resmi web (lebih mendalam).</li>
+                            <li>🎓 <a href="https://www.khanacademy.org/computing" target="_blank" rel="noopener noreferrer">Khan Academy</a> — pelajaran koding gratis & bertahap.</li>
+                            <li>🧩 <a href="https://scratch.mit.edu" target="_blank" rel="noopener noreferrer">Scratch (MIT)</a> — koding pakai blok, seru untuk pemula anak.</li>
+                            <li>⏰ <a href="https://code.org" target="_blank" rel="noopener noreferrer">Code.org</a> — belajar koding lewat permainan.</li>
+                            <li>🐍 <a href="https://www.python.org" target="_blank" rel="noopener noreferrer">Python.org</a> — situs resmi bahasa Python.</li>
+                        </ul>
+                        <small>💡 Situs di atas berbahasa Inggris & butuh internet. Belajar bareng orang tua/guru ya, biar makin paham! 😊</small>
+                    </div>
                 </div>
             </details>
 
@@ -2193,7 +2213,8 @@
                 <optgroup label="🟢 HTML Dasar">
                     <option value="halo">👋 Halo Dunia</option>
                     <option value="daftar">📝 Membuat Daftar</option>
-                    <option value="gambar">🖼️ Menampilkan Gambar</option>
+                    <option value="gambar">🖼️ Gambar Acak (aman & lokal)</option>
+                    <option value="galeri">🎲 Galeri Gambar Lokal</option>
                     <option value="tautan">🔗 Membuat Tautan</option>
                     <option value="tabel">📊 Membuat Tabel</option>
                 </optgroup>
@@ -2810,10 +2831,20 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
     // ==========================================
     //  LAB KODING (Playground HTML/CSS/JS)
     // ==========================================
+    window._kdGambarLokal = [
+        {n:"Kucing 🐱", u:'data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27200%27%20height%3D%27160%27%20viewBox%3D%270%200%20200%20160%27%3E%3Crect%20width%3D%27200%27%20height%3D%27160%27%20rx%3D%2716%27%20fill%3D%27%23ffe6f2%27%2F%3E%3Cellipse%20cx%3D%27100%27%20cy%3D%2795%27%20rx%3D%2752%27%20ry%3D%2746%27%20fill%3D%27%23ffb56b%27%2F%3E%3Cpolygon%20points%3D%2760%2C55%2052%2C20%2088%2C45%27%20fill%3D%27%23ffb56b%27%2F%3E%3Cpolygon%20points%3D%27140%2C55%20148%2C20%20112%2C45%27%20fill%3D%27%23ffb56b%27%2F%3E%3Ccircle%20cx%3D%2782%27%20cy%3D%2788%27%20r%3D%277%27%20fill%3D%27%23333%27%2F%3E%3Ccircle%20cx%3D%27118%27%20cy%3D%2788%27%20r%3D%277%27%20fill%3D%27%23333%27%2F%3E%3Cpath%20d%3D%27M92%20104%20q8%208%2016%200%27%20stroke%3D%27%23333%27%20stroke-width%3D%273%27%20fill%3D%27none%27%2F%3E%3Cpolygon%20points%3D%2796%2C98%20104%2C98%20100%2C104%27%20fill%3D%27%23e0679a%27%2F%3E%3C%2Fsvg%3E'},
+        {n:"Anjing 🐶", u:'data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27200%27%20height%3D%27160%27%20viewBox%3D%270%200%20200%20160%27%3E%3Crect%20width%3D%27200%27%20height%3D%27160%27%20rx%3D%2716%27%20fill%3D%27%23e7f0ff%27%2F%3E%3Cellipse%20cx%3D%27100%27%20cy%3D%2795%27%20rx%3D%2750%27%20ry%3D%2744%27%20fill%3D%27%23c99a63%27%2F%3E%3Cellipse%20cx%3D%2758%27%20cy%3D%2795%27%20rx%3D%2716%27%20ry%3D%2734%27%20fill%3D%27%23a97b46%27%2F%3E%3Cellipse%20cx%3D%27142%27%20cy%3D%2795%27%20rx%3D%2716%27%20ry%3D%2734%27%20fill%3D%27%23a97b46%27%2F%3E%3Ccircle%20cx%3D%2784%27%20cy%3D%2786%27%20r%3D%277%27%20fill%3D%27%23333%27%2F%3E%3Ccircle%20cx%3D%27116%27%20cy%3D%2786%27%20r%3D%277%27%20fill%3D%27%23333%27%2F%3E%3Cellipse%20cx%3D%27100%27%20cy%3D%27104%27%20rx%3D%2710%27%20ry%3D%278%27%20fill%3D%27%235b3d21%27%2F%3E%3Cpath%20d%3D%27M92%20116%20q8%208%2016%200%27%20stroke%3D%27%235b3d21%27%20stroke-width%3D%273%27%20fill%3D%27none%27%2F%3E%3C%2Fsvg%3E'},
+        {n:"Burung Hantu 🦉", u:'data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27200%27%20height%3D%27160%27%20viewBox%3D%270%200%20200%20160%27%3E%3Crect%20width%3D%27200%27%20height%3D%27160%27%20rx%3D%2716%27%20fill%3D%27%23efe7ff%27%2F%3E%3Cellipse%20cx%3D%27100%27%20cy%3D%2792%27%20rx%3D%2748%27%20ry%3D%2752%27%20fill%3D%27%23a98cf0%27%2F%3E%3Cpolygon%20points%3D%2762%2C52%2074%2C30%2086%2C52%27%20fill%3D%27%23a98cf0%27%2F%3E%3Cpolygon%20points%3D%27138%2C52%20126%2C30%20114%2C52%27%20fill%3D%27%23a98cf0%27%2F%3E%3Ccircle%20cx%3D%2782%27%20cy%3D%2784%27%20r%3D%2716%27%20fill%3D%27%23fff%27%2F%3E%3Ccircle%20cx%3D%27118%27%20cy%3D%2784%27%20r%3D%2716%27%20fill%3D%27%23fff%27%2F%3E%3Ccircle%20cx%3D%2782%27%20cy%3D%2784%27%20r%3D%277%27%20fill%3D%27%23333%27%2F%3E%3Ccircle%20cx%3D%27118%27%20cy%3D%2784%27%20r%3D%277%27%20fill%3D%27%23333%27%2F%3E%3Cpolygon%20points%3D%2794%2C96%20106%2C96%20100%2C108%27%20fill%3D%27%23ffb56b%27%2F%3E%3C%2Fsvg%3E'},
+        {n:"Bunga 🌸", u:'data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27200%27%20height%3D%27160%27%20viewBox%3D%270%200%20200%20160%27%3E%3Crect%20width%3D%27200%27%20height%3D%27160%27%20rx%3D%2716%27%20fill%3D%27%23fff5e6%27%2F%3E%3Crect%20x%3D%2796%27%20y%3D%2795%27%20width%3D%278%27%20height%3D%2750%27%20fill%3D%27%234caf7d%27%2F%3E%3Cellipse%20cx%3D%27100%27%20cy%3D%2770%27%20rx%3D%2716%27%20ry%3D%2724%27%20fill%3D%27%23ff8fb0%27%2F%3E%3Cellipse%20cx%3D%27100%27%20cy%3D%2770%27%20rx%3D%2724%27%20ry%3D%2716%27%20fill%3D%27%23ff8fb0%27%2F%3E%3Cellipse%20cx%3D%27100%27%20cy%3D%2770%27%20rx%3D%2718%27%20ry%3D%2718%27%20fill%3D%27%23ffd36b%27%20transform%3D%27rotate%2845%20100%2070%29%27%2F%3E%3Ccircle%20cx%3D%27100%27%20cy%3D%2770%27%20r%3D%2711%27%20fill%3D%27%23ffcf4d%27%2F%3E%3C%2Fsvg%3E'},
+        {n:"Rumah 🏠", u:'data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27200%27%20height%3D%27160%27%20viewBox%3D%270%200%20200%20160%27%3E%3Crect%20width%3D%27200%27%20height%3D%27160%27%20rx%3D%2716%27%20fill%3D%27%23e6f7ff%27%2F%3E%3Crect%20x%3D%2760%27%20y%3D%2780%27%20width%3D%2780%27%20height%3D%2760%27%20fill%3D%27%23ffe0a3%27%2F%3E%3Cpolygon%20points%3D%2750%2C80%20100%2C40%20150%2C80%27%20fill%3D%27%23e0679a%27%2F%3E%3Crect%20x%3D%2790%27%20y%3D%27104%27%20width%3D%2720%27%20height%3D%2736%27%20fill%3D%27%238a5a2b%27%2F%3E%3Crect%20x%3D%2768%27%20y%3D%2790%27%20width%3D%2716%27%20height%3D%2716%27%20fill%3D%27%237fd1ff%27%2F%3E%3Crect%20x%3D%27116%27%20y%3D%2790%27%20width%3D%2716%27%20height%3D%2716%27%20fill%3D%27%237fd1ff%27%2F%3E%3C%2Fsvg%3E'},
+        {n:"Roket 🚀", u:'data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27200%27%20height%3D%27160%27%20viewBox%3D%270%200%20200%20160%27%3E%3Crect%20width%3D%27200%27%20height%3D%27160%27%20rx%3D%2716%27%20fill%3D%27%231b1d33%27%2F%3E%3Ccircle%20cx%3D%2740%27%20cy%3D%2740%27%20r%3D%272%27%20fill%3D%27%23fff%27%2F%3E%3Ccircle%20cx%3D%27160%27%20cy%3D%2730%27%20r%3D%272%27%20fill%3D%27%23fff%27%2F%3E%3Ccircle%20cx%3D%27150%27%20cy%3D%27120%27%20r%3D%272%27%20fill%3D%27%23fff%27%2F%3E%3Cellipse%20cx%3D%27100%27%20cy%3D%2775%27%20rx%3D%2720%27%20ry%3D%2742%27%20fill%3D%27%23e6e9ff%27%2F%3E%3Cpolygon%20points%3D%2780%2C90%2066%2C120%2088%2C108%27%20fill%3D%27%23ff8fb0%27%2F%3E%3Cpolygon%20points%3D%27120%2C90%20134%2C120%20112%2C108%27%20fill%3D%27%23ff8fb0%27%2F%3E%3Ccircle%20cx%3D%27100%27%20cy%3D%2762%27%20r%3D%279%27%20fill%3D%27%237fd1ff%27%2F%3E%3Cpolygon%20points%3D%2792%2C118%20108%2C118%20100%2C140%27%20fill%3D%27%23ffb56b%27%2F%3E%3C%2Fsvg%3E'},
+        {n:"Bintang ⭐", u:'data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27200%27%20height%3D%27160%27%20viewBox%3D%270%200%20200%20160%27%3E%3Crect%20width%3D%27200%27%20height%3D%27160%27%20rx%3D%2716%27%20fill%3D%27%23fff8e1%27%2F%3E%3Cpolygon%20points%3D%27100%2C32%20116%2C74%20160%2C74%20124%2C100%20138%2C142%20100%2C116%2062%2C142%2076%2C100%2040%2C74%2084%2C74%27%20fill%3D%27%23ffcf4d%27%20stroke%3D%27%23f2a900%27%20stroke-width%3D%273%27%2F%3E%3Ccircle%20cx%3D%2786%27%20cy%3D%2784%27%20r%3D%274%27%20fill%3D%27%23333%27%2F%3E%3Ccircle%20cx%3D%27114%27%20cy%3D%2784%27%20r%3D%274%27%20fill%3D%27%23333%27%2F%3E%3Cpath%20d%3D%27M90%2096%20q10%208%2020%200%27%20stroke%3D%27%23333%27%20stroke-width%3D%273%27%20fill%3D%27none%27%2F%3E%3C%2Fsvg%3E'},
+        {n:"Robot 🤖", u:'data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27200%27%20height%3D%27160%27%20viewBox%3D%270%200%20200%20160%27%3E%3Crect%20width%3D%27200%27%20height%3D%27160%27%20rx%3D%2716%27%20fill%3D%27%23eafbff%27%2F%3E%3Crect%20x%3D%2764%27%20y%3D%2760%27%20width%3D%2772%27%20height%3D%2760%27%20rx%3D%2710%27%20fill%3D%27%239fd3e0%27%2F%3E%3Crect%20x%3D%2778%27%20y%3D%2776%27%20width%3D%2718%27%20height%3D%2718%27%20rx%3D%274%27%20fill%3D%27%23fff%27%2F%3E%3Crect%20x%3D%27104%27%20y%3D%2776%27%20width%3D%2718%27%20height%3D%2718%27%20rx%3D%274%27%20fill%3D%27%23fff%27%2F%3E%3Ccircle%20cx%3D%2787%27%20cy%3D%2785%27%20r%3D%275%27%20fill%3D%27%23333%27%2F%3E%3Ccircle%20cx%3D%27113%27%20cy%3D%2785%27%20r%3D%275%27%20fill%3D%27%23333%27%2F%3E%3Crect%20x%3D%2784%27%20y%3D%27104%27%20width%3D%2732%27%20height%3D%276%27%20rx%3D%273%27%20fill%3D%27%23333%27%2F%3E%3Crect%20x%3D%2796%27%20y%3D%2744%27%20width%3D%278%27%20height%3D%2716%27%20fill%3D%27%23888%27%2F%3E%3Ccircle%20cx%3D%27100%27%20cy%3D%2742%27%20r%3D%275%27%20fill%3D%27%23e0679a%27%2F%3E%3C%2Fsvg%3E'},
+    ];
     window._kdContoh = {
         halo: '<h1>Halo Dunia! 👋</h1>\n<p>Ini halaman pertamaku.</p>\n<p>Namaku <b>Hana</b> dan aku sedang belajar koding!</p>',
         warna: '<h1 style="color: deeppink;">Judul Warna Pink</h1>\n<h2 style="color: royalblue;">Ini biru</h2>\n<p style="color: green; font-size: 20px;">Teks hijau besar 🌈</p>',
-        gambar: '<h2>Gambar Acak 🖼️</h2>\n<img src="https://picsum.photos/300/200" alt="gambar" width="300" style="border-radius:12px;">\n<p>Ganti angka di link untuk ukuran berbeda!</p>',
+        gambar: '<h2>Menampilkan Gambar 🖼️</h2>\n<p>Gambar di bawah ini aman & dibuat sendiri (tidak dari internet):</p>\n<img width="200" alt="kucing lucu"\n  src="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'160\' viewBox=\'0 0 200 160\'%3E%3Crect width=\'200\' height=\'160\' rx=\'16\' fill=\'%23ffe6f2\'/%3E%3Cellipse cx=\'100\' cy=\'95\' rx=\'52\' ry=\'46\' fill=\'%23ffb56b\'/%3E%3Cpolygon points=\'60,55 52,20 88,45\' fill=\'%23ffb56b\'/%3E%3Cpolygon points=\'140,55 148,20 112,45\' fill=\'%23ffb56b\'/%3E%3Ccircle cx=\'82\' cy=\'88\' r=\'7\' fill=\'%23333\'/%3E%3Ccircle cx=\'118\' cy=\'88\' r=\'7\' fill=\'%23333\'/%3E%3Cpath d=\'M92 104 q8 8 16 0\' stroke=\'%23333\' stroke-width=\'3\' fill=\'none\'/%3E%3Cpolygon points=\'96,98 104,98 100,104\' fill=\'%23e0679a\'/%3E%3C/svg%3E">\n<p>Nanti kamu juga bisa menampilkan foto — pakai gambarmu sendiri, dan minta izin orang tua/guru ya! 😊</p>',
         daftar: '<h2>Daftar Kesukaanku 📝</h2>\n<ul>\n  <li>Menggambar 🎨</li>\n  <li>Membaca 📚</li>\n  <li>Bermain 🎮</li>\n</ul>\n<ol>\n  <li>Bangun pagi</li>\n  <li>Sekolah</li>\n  <li>Belajar koding</li>\n</ol>',
         tombol: '<h2>Tombol Ajaib 🔘</h2>\n<button onclick="pesan()">Klik Aku!</button>\n<p id="hasil"></p>\n\n<script>\nfunction pesan() {\n  document.getElementById("hasil").innerHTML = "Yeay! Kamu berhasil! 🎉";\n}\n<\/script>',
         kucing: '<div style="border: 3px solid deeppink; border-radius: 16px; padding: 16px; width: 200px; text-align: center; font-family: sans-serif;">\n  <div style="font-size: 60px;">🐱</div>\n  <h3 style="color: deeppink;">Si Oyen</h3>\n  <p>Kucing oranye yang lucu dan suka bermain!</p>\n</div>',
@@ -3063,10 +3094,36 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
     };
 
     window.kdMuatContoh = function(key){
-        if (!key || !window._kdContoh[key]) return;
+        if (!key) return;
         const ta = document.getElementById('kd-kode');
-        if (ta){ ta.value = window._kdContoh[key]; window.kdJalankan(); window.kdSimpan(); }
+        if (!ta) return;
+        let kode;
+        if (key === 'gambar'){ kode = window.kdKodeGambarAcak(); }
+        else if (key === 'galeri'){ kode = window.kdKodeGaleri(); }
+        else { if (!window._kdContoh[key]) return; kode = window._kdContoh[key]; }
+        ta.value = kode; window.kdJalankan(); window.kdSimpan();
         if (window.playSound) window.playSound('tap');
+    };
+    // Satu gambar ACAK dari koleksi lokal (aman, tanpa internet).
+    window.kdKodeGambarAcak = function(){
+        const arr = window._kdGambarLokal;
+        const g = arr[Math.floor(Math.random()*arr.length)];
+        return '<h2>Gambar Acak: '+g.n+'</h2>\n' +
+            '<p>Gambar ini aman & tersimpan di dalam aplikasi (bukan dari internet).</p>\n' +
+            '<img width="200" alt="'+g.n+'" src="'+g.u+'">\n' +
+            '<p>Pilih menu ini lagi untuk gambar acak lainnya! 🎲</p>';
+    };
+    // Semua gambar dari galeri lokal, ditampilkan berjajar.
+    window.kdKodeGaleri = function(){
+        let kode = '<h2>🎲 Galeri Gambar Lokal</h2>\n<p>Semua gambar ini aman & dibuat sendiri:</p>\n<div style="display:flex; flex-wrap:wrap; gap:10px;">\n';
+        window._kdGambarLokal.forEach(function(g){
+            kode += '  <figure style="margin:0; text-align:center;">\n' +
+                    '    <img width="110" alt="'+g.n+'" src="'+g.u+'">\n' +
+                    '    <figcaption>'+g.n+'</figcaption>\n' +
+                    '  </figure>\n';
+        });
+        kode += '</div>';
+        return kode;
     };
     window.kdGantiBahasa = function(){
         // sekadar petunjuk; semua tetap ditulis dalam satu kotak HTML
@@ -7078,6 +7135,6 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
     });
 </script>
 
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3cea203a8d5de6c',t:'MTc4OTcxNjQ5NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3cf028c2ce8ce15',t:'MTc4OTcyMDQ0OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","spa":2}' crossorigin="anonymous"></script>
+</body>
 </html>
